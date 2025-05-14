@@ -1,0 +1,84 @@
+/* Theme Toggle Specific Styles */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--gray);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.theme-toggle:hover {
+  background-color: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+.theme-toggle i {
+  font-size: 18px;
+  transition: transform 0.5s var(--bounce);
+}
+
+.theme-toggle:hover i {
+  transform: rotate(360deg);
+}
+
+/* Animation when theme is changing */
+.theme-toggle.theme-changing i {
+  animation: themeChangeAnimation 0.5s var(--bounce);
+}
+
+@keyframes themeChangeAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Mobile theme toggle */
+.mobile-theme-toggle {
+  margin: 0 15px;
+}
+
+/* Theme transition class - added after initial theme is set */
+.theme-transition-enabled * {
+  transition: var(--theme-transition);
+}
+
+/* Screen reader only class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Dark mode specific adjustments */
+[data-theme="dark"] .theme-toggle {
+  background-color: var(--secondary-color);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Smooth transition for all elements when theme changes */
+html.theme-transitioning * {
+  transition: var(--theme-transition) !important;
+}

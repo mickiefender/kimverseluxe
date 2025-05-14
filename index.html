@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kimverse Luxe - Premium Fashion & Accessories</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1> Kimverse<span>Luxe</span></h1>
+                    </a>
+                </div>
+                
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <a href="#" class="action-btn search-toggle">
+                        <i class="fas fa-search"></i>
+                    </a>
+                 
+                    <a href="wishlist.html" class="action-btn">
+                        <i class="far fa-heart"></i>
+                        <span class="count wishlist-count">0</span>
+                    </a>
+                    <a href="cart.html" class="action-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="count cart-count">0</span>
+                    </a>
+                    <button class="mobile-menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="menu-header">
+            <div class="logo">
+                <h1>Kimverse<span>Luxe</span></h1>
+            </div>
+            <button class="close-menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="menu-footer">
+            <div class="menu-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Search Overlay -->
+    <div class="search-overlay">
+        <div class="search-content">
+            <button class="close-search">
+                <i class="fas fa-times"></i>
+            </button>
+            <form>
+                <input type="text" placeholder="Search for products...">
+                <button type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Hero Slider -->
+    <section class="hero-slider">
+        <div class="slide active" style="background-image: url('/images/hero1.jpg')">
+            <div class="container">
+                <div class="slide-content">
+                    <h2 class="animate-item">Luxury Fashion Collection</h2>
+                    <p class="animate-item">Discover our exclusive range of premium fashion items designed for the modern elite.</p>
+                    <a href="shop.html" class="btn primary-btn animate-item">Shop Now</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide" style="background-image: url('images/gucci.jpg')">
+            <div class="container">
+                <div class="slide-content">
+                    <h2 class="animate-item">Elegant Accessories</h2>
+                    <p class="animate-item">Complete your look with our handcrafted accessories made from the finest materials.</p>
+                    <a href="shop.html?category=accessories" class="btn primary-btn animate-item">Explore Collection</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide" style="background-image: url('/images/hero3.jpg')">
+            <div class="container">
+                <div class="slide-content">
+                    <h2 class="animate-item">Summer Essentials</h2>
+                    <p class="animate-item">Stay cool and stylish with our curated selection of summer must-haves.</p>
+                    <a href="shop.html?tag=summer" class="btn primary-btn animate-item">View Products</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slider Controls -->
+        <div class="slider-controls">
+            <button class="slider-prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="slider-dots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+            </div>
+            <button class="slider-next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+    
+    
+    
+    <!-- Categories Section -->
+    <section class="categories-section animate-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Shop by Category</h2>
+                <p>Explore our curated collections of premium products</p>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="category-card animate-item">
+                    <div class="category-image">
+                        <img src="images/categories/fashion/classic-ladies wear Background Removed.png" alt="Clothing">
+                    </div>
+                    <div class="category-content">
+                        <h3>Clothing</h3>
+                        <a href="shop.html?category=clothing" class="btn outline-btn">Shop Now</a>
+                    </div>
+                </div>
+                
+                <div class="category-card animate-item">
+                    <div class="category-image">
+                        <img src="images/categories/accessories/classic watch Background Removed.png" alt="Accessories">
+                    </div>
+                    <div class="category-content">
+                        <h3>Accessories</h3>
+                        <a href="shop.html?category=accessories" class="btn outline-btn">Shop Now</a>
+                    </div>
+                </div>
+                
+                <div class="category-card animate-item">
+                    <div class="category-image">
+                        <img src="images/categories/accessories/jewelry- chain Background Removed.png" alt="Jewelry">
+                    </div>
+                    <div class="category-content">
+                        <h3>Jewelry</h3>
+                        <a href="shop.html?category=jewelry" class="btn outline-btn">Shop Now</a>
+                    </div>
+                </div>
+                
+                <div class="category-card animate-item">
+                    <div class="category-image">
+                        <img src="images/categories/shoes/heal-black Background Removed.png" alt="Footwear">
+                    </div>
+                    <div class="category-content">
+                        <h3>Footwear</h3>
+                        <a href="shop.html?category=footwear" class="btn outline-btn">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Features Section -->
+    <section class="features-section animate-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item animate-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Free Shipping</h3>
+                        <p>On all orders over $200</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item animate-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-undo"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Easy Returns</h3>
+                        <p>30-day return policy</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item animate-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Secure Payment</h3>
+                        <p>100% secure checkout</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item animate-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>24/7 Support</h3>
+                        <p>Dedicated customer service</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Products Section -->
+    <section class="products-section animate-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Products</h2>
+                <p>Our most popular premium items</p>
+            </div>
+            
+            <div class="products-grid" id="featured-products">
+                <!-- Products will be loaded dynamically -->
+            </div>
+            
+            <div class="section-footer">
+                <a href="shop.html?filter=featured" class="btn primary-btn">View All Products</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Collection Banner -->
+    <section class="collection-banner animate-section">
+        <div class="container">
+            <div class="banner-content">
+                <h2 class="animate-item">Summer Collection 2023</h2>
+                <p class="animate-item">Discover our latest arrivals for the season</p>
+                <a href="shop.html?tag=summer" class="btn primary-btn animate-item">Shop the Collection</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- New Arrivals Section -->
+    <section class="products-section new-arrivals animate-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>New Arrivals</h2>
+                <p>The latest additions to our collection</p>
+            </div>
+            
+            <div class="products-tabs">
+                <div class="tabs-container">
+                    <div class="tab-triggers">
+                        <button class="tab-trigger active" data-tab="all">All</button>
+                        <button class="tab-trigger" data-tab="clothing">Clothing</button>
+                        <button class="tab-trigger" data-tab="accessories">Accessories</button>
+                        <button class="tab-trigger" data-tab="jewelry">Jewelry</button>
+                    </div>
+                    
+                    <div class="tab-contents">
+                        <div class="tab-content active" data-tab="all">
+                            <div class="products-grid" id="new-arrivals-all">
+                                <!-- Products will be loaded dynamically -->
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" data-tab="clothing">
+                            <div class="products-grid" id="new-arrivals-clothing">
+                                <!-- Products will be loaded dynamically -->
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" data-tab="accessories">
+                            <div class="products-grid" id="new-arrivals-accessories">
+                                <!-- Products will be loaded dynamically -->
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" data-tab="jewelry">
+                            <div class="products-grid" id="new-arrivals-jewelry">
+                                <!-- Products will be loaded dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="testimonials-section animate-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Customers Say</h2>
+                <p>Hear from our satisfied clients</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate-item">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The quality of the products is exceptional. I've been a loyal customer for years and have never been disappointed."</p>
+                    <div class="testimonial-author">
+                        <img src="/images/testimonial1.jpg" alt="Sarah Johnson">
+                        <div>
+                            <h4>Sarah Johnson</h4>
+                            <p>Loyal Customer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card animate-item">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The attention to detail in every piece is remarkable. The customer service is also top-notch. Highly recommend!"</p>
+                    <div class="testimonial-author">
+                        <img src="/images/testimonial2.jpg" alt="Michael Chen">
+                        <div>
+                            <h4>Michael Chen</h4>
+                            <p>Fashion Enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card animate-item">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text">"I received so many compliments on my new handbag. The craftsmanship is impeccable and worth every penny."</p>
+                    <div class="testimonial-author">
+                        <img src="/images/testimonial3.jpg" alt="Emma Rodriguez">
+                        <div>
+                            <h4>Emma Rodriguez</h4>
+                            <p>New Customer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Instagram Section -->
+    <section class="instagram-section animate-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Follow Us on Instagram</h2>
+                <p>@kimverseluxe</p>
+            </div>
+            
+            <div class="instagram-grid">
+                <a href="index.html" class="instagram-item animate-item">
+                    <img src="images/categories/instagram posts/slides.jpg" alt="Instagram Post">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+                
+                <a href="index.html" class="instagram-item animate-item">
+                    <img src="images/categories/instagram posts/jeans.jpg" alt="Instagram Post">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+                
+                <a href="index.html" class="instagram-item animate-item">
+                    <img src="images/categories/instagram posts/top and jean.jpg" alt="Instagram Post">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+                
+                <a href="index.html" class="instagram-item animate-item">
+                    <img src="images/categories/instagram posts/yellow top and jean.jpg" alt="Instagram Post">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+                
+                <a href="index.html" class="instagram-item animate-item">
+                    <img src="images/categories/instagram posts/t-shirts.jpg" alt="Instagram Post">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+                
+                <a href="index.html" class="instagram-item animate-item">
+                    <img src="images/categories/instagram posts/hoodie.jpg" alt="Instagram Post">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="newsletter-section animate-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text animate-item">
+                    <h2>Subscribe to Our Newsletter</h2>
+                    <p>Stay updated with our latest collections and exclusive offers</p>
+                </div>
+                
+                <form class="newsletter-form animate-item">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn primary-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <h2>Kimverse<span>Luxe</span></h2>
+                    </div>
+                    <p>Premium fashion and accessories for the modern elite. Quality, elegance, and luxury in every piece.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i>Takoradi-Ghana</li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+233208517482">+233 208 517 482</a> </li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@kimverseluxe.com">info@kimverseluxe.com</a> </li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM, Sat: 10AM-5PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2023 KimverseLuxe. All Rights Reserved.</p>
+                </div>
+                <div class="payment-methods">
+                    <img style="width: 200px;" src="images/categories/payment-methods/payment-methods-removebg-preview.png" alt="Payment Methods">
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    
+    <!-- Scripts -->
+    <script src="js/products.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/mobile-optimizations.js"></script>
+    <script src="js/wishlist.js"></script>
+    
+    <script>
+        // Initialize featured products and new arrivals
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load featured products
+            loadFeaturedProducts();
+            
+            // Load new arrivals
+            loadNewArrivals();
+            
+            // Initialize new arrivals tab triggers
+            initNewArrivalsTabTriggers();
+        });
+        
+        // Load featured products
+        function loadFeaturedProducts() {
+            const featuredContainer = document.getElementById('featured-products');
+            if (!featuredContainer) return;
+            
+            // Get featured products
+            let featuredProducts = [];
+            if (typeof getFeaturedProducts === 'function') {
+                featuredProducts = getFeaturedProducts().slice(0, 4);
+            } else if (typeof getProducts === 'function') {
+                featuredProducts = getProducts().filter(p => p.featured).slice(0, 4);
+            }
+            
+            // Render featured products
+            featuredProducts.forEach((product, index) => {
+                const productCard = createProductCard(product, index);
+                featuredContainer.appendChild(productCard);
+            });
+            
+            // Initialize product actions
+            initProductActions();
+        }
+        
+        // Load new arrivals
+        function loadNewArrivals() {
+            // Get new arrivals
+            let newArrivals = [];
+            if (typeof getNewProducts === 'function') {
+                newArrivals = getNewProducts().slice(0, 12); // Increased from 8 to 12 for more products
+            } else if (typeof getProducts === 'function') {
+                newArrivals = getProducts()
+                    .sort((a, b) => new Date(b.date) - new Date(a.date))
+                    .slice(0, 12);
+            }
+            
+            // Store new arrivals in a global variable for filtering
+            window.newArrivalsProducts = newArrivals;
+            
+            // Load all new arrivals
+            const allContainer = document.getElementById('new-arrivals-all');
+            if (allContainer) {
+                allContainer.innerHTML = ''; // Clear container first
+                newArrivals.forEach((product, index) => {
+                    const productCard = createProductCard(product, index);
+                    allContainer.appendChild(productCard);
+                });
+            }
+            
+            // Load category-specific new arrivals
+            const categories = ['clothing', 'accessories', 'jewelry'];
+            categories.forEach(category => {
+                const categoryContainer = document.getElementById(`new-arrivals-${category}`);
+                if (categoryContainer) {
+                    categoryContainer.innerHTML = ''; // Clear container first
+                    const categoryProducts = newArrivals.filter(p => p.category === category);
+                    
+                    if (categoryProducts.length === 0) {
+                        categoryContainer.innerHTML = '<p class="no-products">No products found in this category.</p>';
+                        return;
+                    }
+                    
+                    categoryProducts.forEach((product, index) => {
+                        const productCard = createProductCard(product, index);
+                        categoryContainer.appendChild(productCard);
+                    });
+                }
+            });
+            
+            // Initialize product actions
+            initProductActions();
+            
+            // Initialize tab triggers for new arrivals
+            initNewArrivalsTabTriggers();
+        }
+
+        // Now add the initNewArrivalsTabTriggers function after the loadNewArrivals function:
+        function initNewArrivalsTabTriggers() {
+            const tabTriggers = document.querySelectorAll('.products-tabs .tab-trigger');
+            const tabContents = document.querySelectorAll('.products-tabs .tab-content');
+            
+            tabTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function() {
+                    // Get the tab name (category)
+                    const tabName = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all triggers and contents
+                    tabTriggers.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked trigger and corresponding content
+                    this.classList.add('active');
+                    document.querySelector(`.tab-content[data-tab="${tabName}"]`).classList.add('active');
+                    
+                    // If we have the tab name and it's not "all", update the URL with the category
+                    if (tabName && tabName !== 'all') {
+                        // Update URL with the selected category (optional)
+                        const url = new URL(window.location.href);
+                        url.searchParams.set('category', tabName);
+                        window.history.replaceState({}, '', url);
+                    } else {
+                        // Remove category parameter if "all" is selected
+                        const url = new URL(window.location.href);
+                        url.searchParams.delete('category');
+                        window.history.replaceState({}, '', url);
+                    }
+                });
+            });
+            
+            // Check if there's a category in the URL and select that tab
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+            if (category) {
+                const categoryTab = document.querySelector(`.tab-trigger[data-tab="${category}"]`);
+                if (categoryTab) {
+                    categoryTab.click();
+                }
+            }
+        }
+        
+        // Create product card
+        function createProductCard(product, index) {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card animate-item';
+            productCard.style.animationDelay = `${index * 0.1}s`;
+            
+            const discount = product.oldPrice ? Math.round((1 - product.price / product.oldPrice) * 100) : 0;
+            
+            productCard.innerHTML = `
+                <div class="product-image">
+                    <a href="product.html?id=${product.id}">
+                        <img src="${product.image || '/placeholder.svg?height=300&width=300'}" alt="${product.name}">
+                    </a>
+                    ${discount > 0 ? `<span class="discount-badge">-${discount}%</span>` : ''}
+                    ${product.new ? '<span class="badge new-badge">New</span>' : ''}
+                    ${product.sale ? '<span class="badge sale-badge">Sale</span>' : ''}
+                    ${product.bestseller ? '<span class="badge bestseller-badge">Best Seller</span>' : ''}
+                    <div class="product-actions">
+                        <button class="action-btn add-to-cart-btn" data-product-id="${product.id}" title="Add to Cart">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                        <button class="action-btn wishlist-btn" data-product-id="${product.id}" title="Add to Wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button class="action-btn quick-view-btn" data-product-id="${product.id}" title="Quick View">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name"><a href="product.html?id=${product.id}">${product.name}</a></h3>
+                    <div class="product-price">
+                        ${product.oldPrice ? `<span class="old-price">₵${product.oldPrice.toFixed(2)}</span>` : ''}
+                        <span class="current-price">₵${product.price.toFixed(2)}</span>
+                    </div>
+                    <div class="product-rating">
+                        ${generateStarRating(product.rating || 0)}
+                        <span class="rating-count">(${product.reviews || 0})</span>
+                    </div>
+                </div>
+            `;
+            
+            return productCard;
+        }
+        
+        // Generate star rating HTML
+        function generateStarRating(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= rating) {
+                    stars += '<i class="fas fa-star"></i>';
+                } else if (i - 0.5 <= rating) {
+                    stars += '<i class="fas fa-star-half-alt"></i>';
+                } else {
+                    stars += '<i class="far fa-star"></i>';
+                }
+            }
+            return stars;
+        }
+        
+        // Initialize product actions
+        function initProductActions() {
+            // Add to cart buttons
+            const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const productId = this.getAttribute('data-product-id');
+                    if (!productId) return;
+                    
+                    if (typeof addToCart === 'function') {
+                        addToCart(productId, 1);
+                        showNotification('Product added to cart!', 'success');
+                    } else {
+                        console.error('addToCart function not found');
+                    }
+                });
+            });
+            
+            // Wishlist buttons
+            const wishlistButtons = document.querySelectorAll('.wishlist-btn');
+            wishlistButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    this.classList.toggle('active');
+                    const isActive = this.classList.contains('active');
+                    
+                    if (this.querySelector('i')) {
+                        this.querySelector('i').className = isActive ? 'fas fa-heart' : 'far fa-heart';
+                    }
+                    
+                    showNotification(isActive ? 'Product added to wishlist!' : 'Product removed from wishlist!', isActive ? 'success' : 'info');
+                });
+            });
+            
+            // Quick view buttons
+            const quickViewButtons = document.querySelectorAll('.quick-view-btn');
+            quickViewButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const productId = this.getAttribute('data-product-id');
+                    if (!productId) return;
+                    
+                    if (typeof showQuickView === 'function') {
+                        showQuickView(productId);
+                    } else {
+                        console.error('showQuickView function not found');
+                    }
+                });
+            });
+        }
+        
+        // Show notification
+        function showNotification(message, type = 'success') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            
+            // Add to DOM
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            // Remove after delay
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

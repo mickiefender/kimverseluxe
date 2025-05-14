@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Kimverse Luxe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/whatsapp-integration.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>Kimverse<span>Luxe</span></h1>
+                    </a>
+                </div>
+                
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <a href="#" class="action-btn search-toggle">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a href="#" class="action-btn">
+                        <i class="far fa-user"></i>
+                    </a>
+                    <a href="wishlist.html" class="action-btn">
+                        <i class="far fa-heart"></i>
+                        <span class="count wishlist-count">0</span>
+                    </a>
+                    <a href="cart.html" class="action-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="count cart-count">0</span>
+                    </a>
+                    <button class="mobile-menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="menu-header">
+            <div class="logo">
+                <h1>Kimverse<span>Luxe</span></h1>
+            </div>
+            <button class="close-menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="menu-footer">
+            <div class="menu-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Search Overlay -->
+    <div class="search-overlay">
+        <div class="search-content">
+            <button class="close-search">
+                <i class="fas fa-times"></i>
+            </button>
+            <form>
+                <input type="text" placeholder="Search for products...">
+                <button type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Shopping Cart</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Cart</span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Cart Section -->
+    <section class="cart-section">
+        <div class="container">
+            <div class="cart-header">
+                <h2>Your Shopping Cart</h2>
+                <a href="shop.html" class="btn outline-btn">Continue Shopping</a>
+            </div>
+            
+            <div class="cart-layout">
+                <div id="cart-items">
+                    <!-- Cart items will be loaded dynamically -->
+                </div>
+                
+                <div class="cart-totals">
+                    <h2>Cart Totals</h2>
+                    <table class="cart-totals-table">
+                        <tr>
+                            <th>Subtotal</th>
+                            <td id="cart-subtotal">₵0.00</td>
+                        </tr>
+                        <tr>
+                            <th>Shipping</th>
+                            <td id="cart-shipping">₵0.00</td>
+                        </tr>
+                        <tr>
+                            <th>Discount</th>
+                            <td id="cart-discount">₵0.00</td>
+                        </tr>
+                        <tr class="total">
+                            <th>Total</th>
+                            <td id="cart-total">₵0.00</td>
+                        </tr>
+                    </table>
+                    <a href="checkout.html">
+                        <button id="checkout-btn" class="btn primary-btn checkout-btn">
+                            <i class="fas fa-lock"></i> Proceed to Checkout
+                        </button>
+                    </a>
+                    <div class="cart-info">
+                        <p><i class="fas fa-truck"></i> Free shipping on orders over ₵200</p>
+                        <p><i class="fas fa-shield-alt"></i> Secure checkout</p>
+                        <p><i class="fas fa-undo"></i> 30-day return policy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <h2>Kimverse<span>Luxe</span></h2>
+                    </div>
+                    <p>Premium fashion and accessories for the modern elite. Quality, elegance, and luxury in every piece.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Fashion Street, New York, NY 10001</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@kimverseluxe.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM, Sat: 10AM-5PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2023 KimverseLuxe. All Rights Reserved.</p>
+                </div>
+                <div class="payment-methods">
+                    <img src="/images/payment-methods.png" alt="Payment Methods">
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    
+    <!-- Scripts -->
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Add WhatsApp integration script -->
+    <script src="js/whatsapp-integration.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+/* WhatsApp Integration Styles for Kimverse Luxe */
+
+/* Floating WhatsApp Button */
+.whatsapp-floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-floating-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-floating-button i {
+  font-size: 2rem;
+}
+
+.whatsapp-tooltip {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-floating-button:hover .whatsapp-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Customer Form Modal */
+.customer-form-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.customer-form-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.customer-form-modal .modal-content {
+  background-color: white;
+  border-radius: 8px;
+  padding: 30px;
+  width: 500px;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.customer-form-modal.active .modal-content {
+  transform: translateY(0);
+}
+
+.customer-form-modal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.customer-form-modal .modal-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.customer-form-modal .close-modal {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #777;
+  transition: color 0.3s ease;
+}
+
+.customer-form-modal .close-modal:hover {
+  color: #333;
+}
+
+.customer-form-modal .form-group {
+  margin-bottom: 15px;
+}
+
+.customer-form-modal label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.customer-form-modal input,
+.customer-form-modal textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.customer-form-modal textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.customer-form-modal .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+  .whatsapp-floating-button {
+    width: 50px;
+    height: 50px;
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .whatsapp-floating-button i {
+    font-size: 1.5rem;
+  }
+
+  .customer-form-modal .modal-content {
+    padding: 20px;
+  }
+
+  .customer-form-modal .modal-title {
+    font-size: 1.2rem;
+  }
+
+  .customer-form-modal .form-actions {
+    flex-direction: column;
+  }
+
+  .customer-form-modal .form-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 375px) {
+  .whatsapp-floating-button {
+    width: 45px;
+    height: 45px;
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .whatsapp-floating-button i {
+    font-size: 1.3rem;
+  }
+}
