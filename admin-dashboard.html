@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Kimverse Luxe</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="admin-body">
+  <!-- Admin Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="admin-logo">
+      <h2>Kimverse Luxe</h2>
+    </div>
+    <nav class="admin-nav">
+      <ul>
+        <li class="active"><a href="admin-dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+        <li><a href="admin-orders.html"><i class="fas fa-shopping-bag"></i> Orders</a></li>
+        <li><a href="admin-products.html"><i class="fas fa-box"></i> Products</a></li>
+        <li><a href="admin-customers.html"><i class="fas fa-users"></i> Customers</a></li>
+        <li><a href="admin-analytics.html"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+        <li><a href="admin-settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+        <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Admin Content -->
+  <main class="admin-content">
+    <!-- Admin Header -->
+    <header class="admin-header">
+      <div class="admin-header-left">
+        <button class="toggle-sidebar">
+          <i class="fas fa-bars"></i>
+        </button>
+        <h1>Dashboard</h1>
+      </div>
+      <div class="admin-header-right">
+        <div class="admin-search">
+          <input type="text" placeholder="Search...">
+          <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="admin-notifications">
+          <button class="notification-btn">
+            <i class="far fa-bell"></i>
+            <span class="notification-count">3</span>
+          </button>
+        </div>
+        <div class="admin-user">
+          <img src="/placeholder.svg?height=40&width=40&text=Admin" alt="Admin">
+          <span>Admin</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-content">
+      <!-- Stats Cards -->
+      <div class="stats-cards">
+        <div class="stat-card">
+          <div class="stat-card-icon orders-icon">
+            <i class="fas fa-shopping-bag"></i>
+          </div>
+          <div class="stat-card-info">
+            <h3>Total Orders</h3>
+            <p id="total-orders">0</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon revenue-icon">
+            <i class="fas fa-dollar-sign"></i>
+          </div>
+          <div class="stat-card-info">
+            <h3>Total Revenue</h3>
+            <p id="total-revenue">₵0.00</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon pending-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="stat-card-info">
+            <h3>Pending Orders</h3>
+            <p id="pending-orders">0</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon completed-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <div class="stat-card-info">
+            <h3>Completed Orders</h3>
+            <p id="completed-orders">0</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Orders -->
+      <div class="dashboard-card">
+        <div class="card-header">
+          <h2>Recent Orders</h2>
+          <a href="admin-orders.html" class="view-all">View All</a>
+        </div>
+        <div class="card-content">
+          <div class="table-responsive">
+            <table class="admin-table admin-orders-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Date</th>
+                  <th>Customer</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Orders will be loaded here by JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/order-tracking.js"></script>
+  <script>
+    // Initialize admin dashboard
+    document.addEventListener("DOMContentLoaded", () => {
+      // Toggle sidebar
+      const toggleSidebarBtn = document.querySelector(".toggle-sidebar");
+      const adminBody = document.querySelector(".admin-body");
+      
+      if (toggleSidebarBtn && adminBody) {
+        toggleSidebarBtn.addEventListener("click", () => {
+          adminBody.classList.toggle("sidebar-collapsed");
+        });
+      }
+      
+      // Load admin dashboard data
+      if (typeof window.loadAdminDashboard === "function") {
+        window.loadAdminDashboard();
+      }
+    });
+  </script>
+</body>
+</html>

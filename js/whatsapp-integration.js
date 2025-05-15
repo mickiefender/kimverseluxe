@@ -4,7 +4,7 @@
  */
 
 // WhatsApp number (replace with your actual number)
-const sellerWhatsApp = "233123456789"
+const sellerWhatsApp = "233208517482"
 
 // Initialize WhatsApp integration
 document.addEventListener("DOMContentLoaded", () => {
@@ -664,7 +664,7 @@ function openWhatsAppWithProduct(productId, quantity = 1) {
       const message = formatProductForWhatsApp(product, quantity, selectedColor, selectedSize, customerInfo)
 
       // Get seller's WhatsApp number (replace with your actual number)
-      const sellerWhatsApp = "233123456789" // Format: country code + number without +
+      const sellerWhatsApp = "233208517482" // Format: country code + number without +
 
       // Create product image card
       const imageDataUrl = await createProductImageCard(product, quantity, selectedColor, selectedSize, customerInfo)
@@ -697,7 +697,7 @@ function openWhatsAppWithCart() {
       const message = formatCartForWhatsApp(cartItems, customerInfo)
 
       // Get seller's WhatsApp number (replace with your actual number)
-      const sellerWhatsApp = "233123456789" // Format: country code + number without +
+      const sellerWhatsApp = "233208517482" // Format: country code + number without +
 
       // Create cart image card
       const imageDataUrl = await createCartImageCard(cartItems, customerInfo)

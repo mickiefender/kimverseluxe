@@ -908,7 +908,7 @@
 
   /* Categories Grid - Extra Small Optimization */
   .categories-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 2fr;
     gap: 8px;
   }
 
@@ -994,10 +994,10 @@
 
   /* About Page - Extra Small Optimization */
   .stats-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 2fr;
     gap: var(--spacing-md);
   }
-
+     
   /* WhatsApp Integration - Extra Small Optimization */
   .whatsapp-floating-button {
     width: 45px;
@@ -1118,7 +1118,7 @@
 
   /* Product detail page in landscape */
   .product-detail {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: var(--spacing-md);
   }
 

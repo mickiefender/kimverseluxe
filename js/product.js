@@ -1006,29 +1006,3 @@ window.showNotification = showNotification
 window.createProductCard = createProductCard
 window.loadRecentlyViewedProducts = loadRecentlyViewedProducts
 window.addToRecentlyViewed = addToRecentlyViewed
-
-// js/product.js
-
-// Function to initialize the add to cart button
-function initAddToCartButton(product) {
-  // Add Buy Now button if it exists
-  const buyNowBtn = document.getElementById("buy-now-btn")
-  if (buyNowBtn) {
-    buyNowBtn.addEventListener("click", (e) => {
-      e.preventDefault()
-
-      // Get selected options
-      const selectedColor = document.querySelector(".color-option.active")?.getAttribute("data-color")
-      const selectedSize = document.querySelector(".size-option.active")?.getAttribute("data-size")
-      const quantity = Number.parseInt(document.getElementById("product-quantity")?.value || 1)
-
-      // Open WhatsApp with product details
-      if (typeof window.openWhatsAppWithProduct === "function") {
-        window.openWhatsAppWithProduct(product.id, quantity)
-      } else {
-        console.error("openWhatsAppWithProduct function not found")
-        showNotification("WhatsApp integration not available. Please try again later.", "error")
-      }
-    })
-  }
-}
