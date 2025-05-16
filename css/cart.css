@@ -23,13 +23,13 @@
 
 /* Fix for cart page horizontal scrolling issue */
 .cart-table {
-  width: 100%;
+  width: 60%;
   border-collapse: collapse;
   margin-bottom: var(--spacing-xl);
   box-shadow: var(--shadow-sm);
   border-radius: var(--border-radius-md);
   overflow: hidden;
-  max-width: 100%;
+  max-width: 70%;
 }
 
 .cart-table th {
@@ -158,6 +158,7 @@
 .coupon-form {
   display: flex;
   gap: var(--spacing-sm);
+  align-items: center;
 }
 
 .coupon-form input {
@@ -165,11 +166,24 @@
   border: 1px solid var(--light-gray);
   border-radius: var(--border-radius-sm);
   font-size: 0.9rem;
+  
 }
 
 .cart-buttons {
   display: flex;
   gap: var(--spacing-sm);
+   width: 50%;
+  padding: var(--spacing-md);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+
+
+
+
+
 }
 
 .cart-totals {
@@ -186,7 +200,7 @@
 }
 
 .cart-totals-table {
-  width: 100%;
+  width: 50%;
   margin-bottom: var(--spacing-lg);
 }
 
@@ -223,7 +237,7 @@
 }
 
 .checkout-btn {
-  width: 100%;
+  width: 50%;
   padding: var(--spacing-md);
   font-size: 1rem;
   display: flex;
@@ -271,6 +285,7 @@
 
   .coupon-form {
     flex-direction: column;
+    
   }
 
   .coupon-form input {
@@ -307,7 +322,7 @@
 @media (max-width: 576px) {
   .cart-product {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: var(--spacing-sm);
     max-width: 150px;
   }
@@ -321,3 +336,5 @@
     width: 100%;
   }
 }
+
+
