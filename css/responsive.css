@@ -87,7 +87,7 @@
   }
 
   .mobile-menu-toggle {
-   display: none;
+    display: none;
     flex-direction: column;
     justify-content: space-between;
     width: 24px;
@@ -997,7 +997,7 @@
     grid-template-columns: 2fr;
     gap: var(--spacing-md);
   }
-     
+
   /* WhatsApp Integration - Extra Small Optimization */
   .whatsapp-floating-button {
     width: 45px;
@@ -1259,12 +1259,10 @@
   }
 }
 
-
 /* Mobile Responsive CSS for Shop Page */
 
-
 /* General responsive adjustments */
-@media (max-width: 1199px) {
+@media (max-width: 340px) {
   .container {
     max-width: 960px;
   }
@@ -1717,5 +1715,50 @@
 
   select {
     min-height: 44px;
+  }
+}
+
+/* Additional responsive fixes for cart page */
+@media (max-width: 768px) {
+  .cart-table {
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .cart-table th,
+  .cart-table td {
+    min-width: 100px; /* Ensure columns don't get too narrow */
+  }
+
+  .cart-table th:first-child,
+  .cart-table td:first-child {
+    min-width: 150px; /* Product column needs more space */
+  }
+}
+
+/* Additional responsive fixes for product detail page */
+@media (max-width: 576px) {
+  .product-detail {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-gallery {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .product-variations {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .product-meta-bottom {
+    margin-bottom: var(--spacing-xxl); /* Extra space to prevent overlap with fixed buttons */
+  }
+
+  /* Ensure product tabs don't get covered by fixed action buttons */
+  .product-tabs {
+    margin-bottom: var(--spacing-xxl);
+    padding-bottom: var(--spacing-xl);
   }
 }

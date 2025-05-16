@@ -314,9 +314,6 @@ document.addEventListener("DOMContentLoaded", () => {
       <button class="action-btn quick-view-btn" data-product-id="${product.id}" title="Quick View">
         <i class="fas fa-eye"></i>
       </button>
-      <button class="action-btn compare-btn" data-product-id="${product.id}" title="Compare">
-        <i class="fas fa-exchange-alt"></i>
-      </button>
     </div>
   </div>
   <div class="product-info">
@@ -375,9 +372,6 @@ document.addEventListener("DOMContentLoaded", () => {
                   </button>
                   <button class="action-btn wishlist-btn" data-product-id="${product.id}" title="Add to Wishlist">
                       <i class="far fa-heart"></i>
-                  </button>
-                  <button class="action-btn compare-btn" data-product-id="${product.id}" title="Compare">
-                      <i class="fas fa-exchange-alt"></i>
                   </button>
               </div>
           </div>
@@ -721,21 +715,6 @@ document.addEventListener("DOMContentLoaded", () => {
           console.log(`Showing quick view for product ${productId}`)
           showNotification("Quick view not available")
         }
-      })
-    })
-
-    // Compare buttons
-    const compareButtons = document.querySelectorAll(".compare-btn")
-    compareButtons.forEach((button) => {
-      button.addEventListener("click", function (e) {
-        e.preventDefault()
-        e.stopPropagation()
-
-        const productId = this.getAttribute("data-product-id")
-        if (!productId) return
-
-        // Add to compare (placeholder)
-        showNotification("Product added to compare!")
       })
     })
   }
