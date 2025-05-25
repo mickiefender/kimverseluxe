@@ -6982,7 +6982,7 @@ html {
     position: absolute !important;
     left: 0 !important;
     bottom: 0 !important;
-    width: 25% !important;
+    width: 35% !important;
     display: flex !important;
     justify-content: center !important;
     gap: var(--spacing-xs) !important;
