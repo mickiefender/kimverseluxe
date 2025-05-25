@@ -3,11 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kimverse Luxe - Premium Fashion & Accessories</title>
-    <link rel="stylesheet" href="css/fonts.css">
+    <title>Kimverse Luxe - Premium Boutique</title>
+    <meta name="description" content="Kimverse Luxe - Premium boutique offering luxury clothing, accessories, jewelry, and more.">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
     <!-- Header -->
@@ -15,9 +25,7 @@
         <div class="container">
             <div class="header-inner">
                 <div class="logo">
-                    <a href="index.html">
-                        <h1> Kimverse<span>Luxe</span></h1>
-                    </a>
+                    <h1><a href="index.html">Kimverse<span>Luxe</span></a></h1>
                 </div>
                 
                 <nav class="main-nav">
@@ -33,7 +41,6 @@
                     <a href="#" class="action-btn search-toggle">
                         <i class="fas fa-search"></i>
                     </a>
-                 
                     <a href="wishlist.html" class="action-btn">
                         <i class="far fa-heart"></i>
                         <span class="count wishlist-count">0</span>
@@ -56,12 +63,13 @@
     <div class="mobile-menu">
         <div class="menu-header">
             <div class="logo">
-                <h1>Kimverse<span>Luxe</span></h1>
+                <h2>Kimverse<span>Luxe</span></h2>
             </div>
             <button class="close-menu">
                 <i class="fas fa-times"></i>
             </button>
         </div>
+        
         <nav>
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
@@ -70,8 +78,9 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+        
         <div class="menu-footer">
-            <div class="menu-social">
+            <div class="social-icons">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
@@ -86,8 +95,8 @@
             <button class="close-search">
                 <i class="fas fa-times"></i>
             </button>
-            <form>
-                <input type="text" placeholder="Search for products...">
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Search for products...">
                 <button type="submit">
                     <i class="fas fa-search"></i>
                 </button>
@@ -97,66 +106,65 @@
     
     <!-- Hero Slider -->
     <section class="hero-slider">
-        <div class="slide active" style="background-image: url('team-images/GroupPic.jpg')">
+        <div class="slide active" style="background-image: url('team-images/GroupPic.jpg');">
             <div class="container">
                 <div class="slide-content">
                     <h2 class="animate-item">Luxury Fashion Collection</h2>
-                    <p class="animate-item">Discover our exclusive range of premium fashion items designed for the modern elite.</p>
+                    <p class="animate-item">Discover our exclusive range of premium clothing and accessories.</p>
                     <a href="shop.html" class="btn primary-btn animate-item">Shop Now</a>
                 </div>
             </div>
         </div>
         
-        <div class="slide" style="background-image: url('team-images/girlsGroup.jpg')">
+        <div class="slide" style="background-image: url('team-images/girlsGroup.jpg');">
             <div class="container">
                 <div class="slide-content">
-                    <h2 class="animate-item">Elegant Accessories</h2>
-                    <p class="animate-item">Complete your look with our handcrafted accessories made from the finest materials.</p>
-                    <a href="shop.html?category=accessories" class="btn primary-btn animate-item">Explore Collection</a>
+                    <h2 class="animate-item">Elegant Jewelry</h2>
+                    <p class="animate-item">Exquisite pieces crafted with precision and passion.</p>
+                    <a href="shop.html?category=jewelry" class="btn primary-btn animate-item">Explore Collection</a>
                 </div>
             </div>
         </div>
         
-        <div class="slide" style="background-image: url('team-images/mickie.png')">
+        <div class="slide" style="background-image: url('team-images/mickie.JPG');">
             <div class="container">
                 <div class="slide-content">
-                    <h2 class="animate-item">Summer Essentials</h2>
-                    <p class="animate-item">Stay cool and stylish with our curated selection of summer must-haves.</p>
-                    <a href="shop.html?tag=summer" class="btn primary-btn animate-item">View Products</a>
+                    <h2 class="animate-item">Premium Accessories</h2>
+                    <p class="animate-item">Complete your look with our carefully curated accessories.</p>
+                    <a href="shop.html?category=accessories" class="btn primary-btn animate-item">View Products</a>
                 </div>
             </div>
         </div>
         
-        <!-- Slider Controls -->
         <div class="slider-controls">
             <button class="slider-prev">
                 <i class="fas fa-chevron-left"></i>
             </button>
+            
             <div class="slider-dots">
-                <span class="dot active" data-index="0"></span>
-                <span class="dot" data-index="1"></span>
-                <span class="dot" data-index="2"></span>
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
             </div>
+            
             <button class="slider-next">
                 <i class="fas fa-chevron-right"></i>
             </button>
         </div>
     </section>
     
-    
-    
     <!-- Categories Section -->
-    <section class="categories-section animate-section">
+    <section class="categories-section">
         <div class="container">
             <div class="section-header">
                 <h2>Shop by Category</h2>
-                <p>Explore our curated collections of premium products</p>
+                <p>Browse our wide range of premium products</p>
             </div>
             
             <div class="categories-grid">
-                <div class="category-card animate-item">
+                <div class="category-card">
                     <div class="category-image">
-                        <img src="images/categories/fashion/classic-ladies wear Background Removed.png" alt="Clothing">
+                        <img src="clothing/short sleeves shirt-3.jpg" alt="Clothing">
                     </div>
                     <div class="category-content">
                         <h3>Clothing</h3>
@@ -164,9 +172,9 @@
                     </div>
                 </div>
                 
-                <div class="category-card animate-item">
+                <div class="category-card">
                     <div class="category-image">
-                        <img src="images/categories/accessories/classic watch Background Removed.png" alt="Accessories">
+                        <img src="accessories/Designer Sunglasses-gold&black.jpg" alt="Accessories">
                     </div>
                     <div class="category-content">
                         <h3>Accessories</h3>
@@ -174,9 +182,9 @@
                     </div>
                 </div>
                 
-                <div class="category-card animate-item">
+                <div class="category-card">
                     <div class="category-image">
-                        <img src="images/categories/accessories/jewelry- chain Background Removed.png" alt="Jewelry">
+                        <img src="accessories/Diamond Pendant Necklace-4.jpg" alt="Jewelry">
                     </div>
                     <div class="category-content">
                         <h3>Jewelry</h3>
@@ -184,9 +192,9 @@
                     </div>
                 </div>
                 
-                <div class="category-card animate-item">
+                <div class="category-card">
                     <div class="category-image">
-                        <img src="images/categories/shoes/heal-black Background Removed.png" alt="Footwear">
+                        <img src="footwares/Italian Leather Loafers-Francis-2.jpg" alt="Footwear">
                     </div>
                     <div class="category-content">
                         <h3>Footwear</h3>
@@ -196,13 +204,30 @@
             </div>
         </div>
     </section>
-
-
+    
+    <!-- Featured Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Products</h2>
+                <p>Handpicked premium products for you</p>
+            </div>
+            
+            <div class="products-grid" id="featured-products">
+                <!-- Products will be loaded dynamically via JavaScript -->
+            </div>
+            
+            <div class="section-footer">
+                <a href="shop.html" class="btn primary-btn">View All Products</a>
+            </div>
+        </div>
+    </section>
+    
     <!-- Features Section -->
-    <section class="features-section animate-section">
+    <section class="features-section">
         <div class="container">
             <div class="features-grid">
-                <div class="feature-item animate-item">
+                <div class="feature-item">
                     <div class="feature-icon">
                         <i class="fas fa-shipping-fast"></i>
                     </div>
@@ -212,7 +237,7 @@
                     </div>
                 </div>
                 
-                <div class="feature-item animate-item">
+                <div class="feature-item">
                     <div class="feature-icon">
                         <i class="fas fa-undo"></i>
                     </div>
@@ -222,7 +247,7 @@
                     </div>
                 </div>
                 
-                <div class="feature-item animate-item">
+                <div class="feature-item">
                     <div class="feature-icon">
                         <i class="fas fa-lock"></i>
                     </div>
@@ -232,7 +257,7 @@
                     </div>
                 </div>
                 
-                <div class="feature-item animate-item">
+                <div class="feature-item">
                     <div class="feature-icon">
                         <i class="fas fa-headset"></i>
                     </div>
@@ -245,37 +270,19 @@
         </div>
     </section>
     
-    <!-- Featured Products Section -->
-    <section class="products-section animate-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Featured Products</h2>
-                <p>Our most popular premium items</p>
-            </div>
-            
-            <div class="products-grid" id="featured-products">
-                <!-- Products will be loaded dynamically -->
-            </div>
-            
-            <div class="section-footer">
-                <a href="shop.html?filter=featured" class="btn primary-btn">View All Products</a>
-            </div>
-        </div>
-    </section>
-    
     <!-- Collection Banner -->
-    <section class="collection-banner animate-section">
+    <section class="collection-banner">
         <div class="container">
             <div class="banner-content">
-                <h2 class="animate-item">Summer Collection 2023</h2>
-                <p class="animate-item">Discover our latest arrivals for the season</p>
-                <a href="shop.html?tag=summer" class="btn primary-btn animate-item">Shop the Collection</a>
+                <h2>Summer Collection 2023</h2>
+                <p>Discover our latest arrivals perfect for the summer season. Elegant designs crafted with premium materials.</p>
+                <a href="shop.html?tag=summer" class="btn primary-btn">Shop Collection</a>
             </div>
         </div>
     </section>
     
     <!-- New Arrivals Section -->
-    <section class="products-section new-arrivals animate-section">
+    <section class="products-section">
         <div class="container">
             <div class="section-header">
                 <h2>New Arrivals</h2>
@@ -283,54 +290,68 @@
             </div>
             
             <div class="products-tabs">
-                <div class="tabs-container">
-                    <div class="tab-triggers">
-                        <button class="tab-trigger active" data-tab="all">All</button>
-                        <button class="tab-trigger" data-tab="clothing">Clothing</button>
-                        <button class="tab-trigger" data-tab="accessories">Accessories</button>
-                        <button class="tab-trigger" data-tab="jewelry">Jewelry</button>
-                    </div>
-                    
-                    <div class="tab-contents">
-                        <div class="tab-content active" data-tab="all">
-                            <div class="products-grid" id="new-arrivals-all">
-                                <!-- Products will be loaded dynamically -->
-                            </div>
-                        </div>
-                        
-                        <div class="tab-content" data-tab="clothing">
-                            <div class="products-grid" id="new-arrivals-clothing">
-                                <!-- Products will be loaded dynamically -->
-                            </div>
-                        </div>
-                        
-                        <div class="tab-content" data-tab="accessories">
-                            <div class="products-grid" id="new-arrivals-accessories">
-                                <!-- Products will be loaded dynamically -->
-                            </div>
-                        </div>
-                        
-                        <div class="tab-content" data-tab="jewelry">
-                            <div class="products-grid" id="new-arrivals-jewelry">
-                                <!-- Products will be loaded dynamically -->
-                            </div>
-                        </div>
+                <div class="tab-triggers">
+                    <button class="tab-trigger active" data-tab="all">All</button>
+                    <button class="tab-trigger" data-tab="clothing">Clothing</button>
+                    <button class="tab-trigger" data-tab="accessories">Accessories</button>
+                    <button class="tab-trigger" data-tab="jewelry">Jewelry</button>
+                    <button class="tab-trigger" data-tab="footwear">Footwear</button>
+                    <button class="tab-trigger" data-tab="perfumes">Perfumes</button>
+                </div>
+                
+                <div class="tab-content active" data-tab="all">
+                    <div class="products-grid" id="new-arrivals-all">
+                        <!-- Products will be loaded dynamically via JavaScript -->
                     </div>
                 </div>
+                
+                <div class="tab-content" data-tab="clothing">
+                    <div class="products-grid" id="new-arrivals-clothing">
+                        <!-- Products will be loaded dynamically via JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="tab-content" data-tab="accessories">
+                    <div class="products-grid" id="new-arrivals-accessories">
+                        <!-- Products will be loaded dynamically via JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="tab-content" data-tab="jewelry">
+                    <div class="products-grid" id="new-arrivals-jewelry">
+                        <!-- Products will be loaded dynamically via JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="tab-content" data-tab="footwear">
+                    <div class="products-grid" id="new-arrivals-footwear">
+                        <!-- Products will be loaded dynamically via JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="tab-content" data-tab="perfumes">
+                    <div class="products-grid" id="new-arrivals-perfumes">
+                        <!-- Products will be loaded dynamically via JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-footer">
+                <a href="shop.html?tag=new" class="btn primary-btn">View All New Arrivals</a>
             </div>
         </div>
     </section>
     
     <!-- Testimonials Section -->
-    <section class="testimonials-section animate-section">
+    <section class="testimonials-section">
         <div class="container">
             <div class="section-header">
                 <h2>What Our Customers Say</h2>
-                <p>Hear from our satisfied clients</p>
+                <p>Testimonials from our satisfied customers</p>
             </div>
             
             <div class="testimonials-grid">
-                <div class="testimonial-card animate-item">
+                <div class="testimonial-card">
                     <div class="testimonial-rating">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -338,17 +359,19 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p class="testimonial-text">"The quality of the products is exceptional. I've been a loyal customer for years and have never been disappointed."</p>
+                    <div class="testimonial-text">
+                        <p>"I absolutely love the quality of the products from Kimverse Luxe. The attention to detail is remarkable, and the customer service is exceptional."</p>
+                    </div>
                     <div class="testimonial-author">
-                        <img src="images/testimonials/GodwinSarfo.JPG" alt="Godwin Sarfo">
+                        <img src="testimonials/GodwinSarfo.JPG" alt="Godwin Sarfo">
                         <div>
-                            <h4>Godwin Sarfo</h4>
-                            <p>Loyal Customer</p>
+                            <h4>Sarah Johnson</h4>
+                            <p>Regular Customer</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card animate-item">
+                <div class="testimonial-card">
                     <div class="testimonial-rating">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -356,17 +379,19 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p class="testimonial-text">"The attention to detail in every piece is remarkable. The customer service is also top-notch. Highly recommend!"</p>
+                    <div class="testimonial-text">
+                        <p>"The silk dress I purchased exceeded my expectations. The fabric is luxurious, and the fit is perfect. I've received so many compliments!"</p>
+                    </div>
                     <div class="testimonial-author">
-                        <img src="images/testimonials/Victoial member.JPG" alt="Michael Chen">
+                        <img src="testimonials/nico-black&yellow.JPG" alt="Nicky Hendrix">
                         <div>
-                            <h4>Michael Chen</h4>
-                            <p>Fashion Enthusiast</p>
+                            <h4>Michael Brown</h4>
+                            <p>Verified Buyer</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card animate-item">
+                <div class="testimonial-card">
                     <div class="testimonial-rating">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -374,12 +399,14 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <p class="testimonial-text">"I received so many compliments on my new handbag. The craftsmanship is impeccable and worth every penny."</p>
+                    <div class="testimonial-text">
+                        <p>"Fast shipping and beautiful packaging. The leather wallet I bought for my husband is of exceptional quality. Will definitely shop here again!"</p>
+                    </div>
                     <div class="testimonial-author">
-                        <img src="images/testimonials/nico-black&yellow.JPG" alt="Nicky hendrix">
+                        <img src="testimonials/Victoial member.JPG" alt="Emily Davis">
                         <div>
-                            <h4>Nicky hendrix</h4>
-                            <p>New Customer</p>
+                            <h4>Emily Davis</h4>
+                            <p>Loyal Customer</p>
                         </div>
                     </div>
                 </div>
@@ -388,7 +415,7 @@
     </section>
     
     <!-- Instagram Section -->
-    <section class="instagram-section animate-section">
+    <section class="instagram-section">
         <div class="container">
             <div class="section-header">
                 <h2>Follow Us on Instagram</h2>
@@ -396,43 +423,43 @@
             </div>
             
             <div class="instagram-grid">
-                <a href="index.html" class="instagram-item animate-item">
-                    <img src="images/categories/instagram posts/slides.jpg" alt="Instagram Post">
+                <a href="#" class="instagram-item">
+                    <img src="instagram posts/hoodie.jpg" alt="Instagram Post">
                     <div class="instagram-overlay">
                         <i class="fab fa-instagram"></i>
                     </div>
                 </a>
                 
-                <a href="index.html" class="instagram-item animate-item">
-                    <img src="images/categories/instagram posts/jeans.jpg" alt="Instagram Post">
+                <a href="#" class="instagram-item">
+                    <img src="instagram posts/jeans.jpg" alt="Instagram Post">
                     <div class="instagram-overlay">
                         <i class="fab fa-instagram"></i>
                     </div>
                 </a>
                 
-                <a href="index.html" class="instagram-item animate-item">
-                    <img src="images/categories/instagram posts/top and jean.jpg" alt="Instagram Post">
+                <a href="#" class="instagram-item">
+                    <img src="instagram posts/slides.jpg" alt="Instagram Post">
                     <div class="instagram-overlay">
                         <i class="fab fa-instagram"></i>
                     </div>
                 </a>
                 
-                <a href="index.html" class="instagram-item animate-item">
-                    <img src="images/categories/instagram posts/yellow top and jean.jpg" alt="Instagram Post">
+                <a href="#" class="instagram-item">
+                    <img src="instagram posts/t-shirts.jpg" alt="Instagram Post">
                     <div class="instagram-overlay">
                         <i class="fab fa-instagram"></i>
                     </div>
                 </a>
                 
-                <a href="index.html" class="instagram-item animate-item">
-                    <img src="images/categories/instagram posts/t-shirts.jpg" alt="Instagram Post">
+                <a href="#" class="instagram-item">
+                    <img src="instagram posts/top and jean.jpg" alt="Instagram Post">
                     <div class="instagram-overlay">
                         <i class="fab fa-instagram"></i>
                     </div>
                 </a>
                 
-                <a href="index.html" class="instagram-item animate-item">
-                    <img src="images/categories/instagram posts/hoodie.jpg" alt="Instagram Post">
+                <a href="#" class="instagram-item">
+                    <img src="instagram posts/yellow top and jean.jpg" alt="Instagram Post">
                     <div class="instagram-overlay">
                         <i class="fab fa-instagram"></i>
                     </div>
@@ -442,17 +469,17 @@
     </section>
     
     <!-- Newsletter Section -->
-    <section class="newsletter-section animate-section">
+    <section class="newsletter-section">
         <div class="container">
             <div class="newsletter-content">
-                <div class="newsletter-text animate-item">
+                <div class="newsletter-text">
                     <h2>Subscribe to Our Newsletter</h2>
-                    <p>Stay updated with our latest collections and exclusive offers</p>
+                    <p>Stay updated with our latest collections and exclusive offers.</p>
                 </div>
                 
-                <form class="newsletter-form animate-item">
+                <form class="newsletter-form">
                     <input type="email" placeholder="Your email address" required>
-                    <button type="submit" class="btn primary-btn">Subscribe</button>
+                    <button type="submit">Subscribe</button>
                 </form>
             </div>
         </div>
@@ -466,7 +493,7 @@
                     <div class="footer-logo">
                         <h2>Kimverse<span>Luxe</span></h2>
                     </div>
-                    <p>Premium fashion and accessories for the modern elite. Quality, elegance, and luxury in every piece.</p>
+                    <p>Premium boutique offering luxury clothing, accessories, jewelry, and more. Quality craftsmanship and exceptional customer service.</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -482,7 +509,7 @@
                         <li><a href="shop.html">Shop</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="contact.html">Contact</a></li>
-                        
+                        <li><a href="faq.html">FAQ</a></li>
                     </ul>
                 </div>
                 
@@ -493,27 +520,40 @@
                         <li><a href="#">Track Order</a></li>
                         <li><a href="#">Shipping Policy</a></li>
                         <li><a href="#">Returns & Exchanges</a></li>
-                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Contact Info</h3>
                     <ul class="contact-info">
-                        <li><i class="fas fa-map-marker-alt"></i>Takoradi-Ghana</li>
-                        <li><i class="fas fa-phone"></i> <a href="tel:+233208517482">+233 208 517 482</a> </li>
-                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@kimverseluxe.com">info@kimverseluxe.com</a> </li>
-                        <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM, Sat: 10AM-5PM</li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Fashion Street, Accra, Ghana</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:+233208517482">+233 208 517 482</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@kimverseluxe.com">info@kimverseluxe.com</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon - Sat: 9:00 AM - 8:00 PM</span>
+                        </li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
                 <div class="copyright">
-                    <p>&copy; 2023 KimverseLuxe. All Rights Reserved.</p>
+                    <p>&copy; 2023 Kimverse Luxe. All Rights Reserved.</p>
                 </div>
+                
                 <div class="payment-methods">
-                    <img style="width: 200px;" src="images/categories/payment-methods/payment-methods-removebg-preview.png" alt="Payment Methods">
+                    <img src="images/payment-methods.png" alt="Payment Methods">
                 </div>
             </div>
         </div>
@@ -521,289 +561,28 @@
     
     <!-- Back to Top Button -->
     <button id="back-to-top">
-        <i class="fas fa-chevron-up"></i>
+        <i class="fas fa-arrow-up"></i>
     </button>
     
-    <!-- Scripts -->
+    <!-- Quick View Modal -->
+    <div class="quick-view-modal">
+        <div class="modal-content">
+            <button class="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="quick-view-content">
+                <!-- Content will be loaded dynamically via JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Notification -->
+    <div id="notification">
+        <span id="notification-message"></span>
+    </div>
+    
+    <!-- JavaScript -->
     <script src="js/products.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/mobile-optimizations.js"></script>
-    <script src="js/wishlist.js"></script>
-    
-    <script>
-        // Initialize featured products and new arrivals
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load featured products
-            loadFeaturedProducts();
-            
-            // Load new arrivals
-            loadNewArrivals();
-            
-            // Initialize new arrivals tab triggers
-            initNewArrivalsTabTriggers();
-        });
-        
-        // Load featured products
-        function loadFeaturedProducts() {
-            const featuredContainer = document.getElementById('featured-products');
-            if (!featuredContainer) return;
-            
-            // Get featured products
-            let featuredProducts = [];
-            if (typeof getFeaturedProducts === 'function') {
-                featuredProducts = getFeaturedProducts().slice(0, 4);
-            } else if (typeof getProducts === 'function') {
-                featuredProducts = getProducts().filter(p => p.featured).slice(0, 4);
-            }
-            
-            // Render featured products
-            featuredProducts.forEach((product, index) => {
-                const productCard = createProductCard(product, index);
-                featuredContainer.appendChild(productCard);
-            });
-            
-            // Initialize product actions
-            initProductActions();
-        }
-        
-        // Load new arrivals
-        function loadNewArrivals() {
-            // Get new arrivals
-            let newArrivals = [];
-            if (typeof getNewProducts === 'function') {
-                newArrivals = getNewProducts().slice(0, 12); // Increased from 8 to 12 for more products
-            } else if (typeof getProducts === 'function') {
-                newArrivals = getProducts()
-                    .sort((a, b) => new Date(b.date) - new Date(a.date))
-                    .slice(0, 12);
-            }
-            
-            // Store new arrivals in a global variable for filtering
-            window.newArrivalsProducts = newArrivals;
-            
-            // Load all new arrivals
-            const allContainer = document.getElementById('new-arrivals-all');
-            if (allContainer) {
-                allContainer.innerHTML = ''; // Clear container first
-                newArrivals.forEach((product, index) => {
-                    const productCard = createProductCard(product, index);
-                    allContainer.appendChild(productCard);
-                });
-            }
-            
-            // Load category-specific new arrivals
-            const categories = ['clothing', 'accessories', 'jewelry'];
-            categories.forEach(category => {
-                const categoryContainer = document.getElementById(`new-arrivals-${category}`);
-                if (categoryContainer) {
-                    categoryContainer.innerHTML = ''; // Clear container first
-                    const categoryProducts = newArrivals.filter(p => p.category === category);
-                    
-                    if (categoryProducts.length === 0) {
-                        categoryContainer.innerHTML = '<p class="no-products">No products found in this category.</p>';
-                        return;
-                    }
-                    
-                    categoryProducts.forEach((product, index) => {
-                        const productCard = createProductCard(product, index);
-                        categoryContainer.appendChild(productCard);
-                    });
-                }
-            });
-            
-            // Initialize product actions
-            initProductActions();
-            
-            // Initialize tab triggers for new arrivals
-            initNewArrivalsTabTriggers();
-        }
-
-        // Now add the initNewArrivalsTabTriggers function after the loadNewArrivals function:
-        function initNewArrivalsTabTriggers() {
-            const tabTriggers = document.querySelectorAll('.products-tabs .tab-trigger');
-            const tabContents = document.querySelectorAll('.products-tabs .tab-content');
-            
-            tabTriggers.forEach(trigger => {
-                trigger.addEventListener('click', function() {
-                    // Get the tab name (category)
-                    const tabName = this.getAttribute('data-tab');
-                    
-                    // Remove active class from all triggers and contents
-                    tabTriggers.forEach(t => t.classList.remove('active'));
-                    tabContents.forEach(c => c.classList.remove('active'));
-                    
-                    // Add active class to clicked trigger and corresponding content
-                    this.classList.add('active');
-                    document.querySelector(`.tab-content[data-tab="${tabName}"]`).classList.add('active');
-                    
-                    // If we have the tab name and it's not "all", update the URL with the category
-                    if (tabName && tabName !== 'all') {
-                        // Update URL with the selected category (optional)
-                        const url = new URL(window.location.href);
-                        url.searchParams.set('category', tabName);
-                        window.history.replaceState({}, '', url);
-                    } else {
-                        // Remove category parameter if "all" is selected
-                        const url = new URL(window.location.href);
-                        url.searchParams.delete('category');
-                        window.history.replaceState({}, '', url);
-                    }
-                });
-            });
-            
-            // Check if there's a category in the URL and select that tab
-            const urlParams = new URLSearchParams(window.location.search);
-            const category = urlParams.get('category');
-            if (category) {
-                const categoryTab = document.querySelector(`.tab-trigger[data-tab="${category}"]`);
-                if (categoryTab) {
-                    categoryTab.click();
-                }
-            }
-        }
-        
-        // Create product card
-        function createProductCard(product, index) {
-            const productCard = document.createElement('div');
-            productCard.className = 'product-card animate-item';
-            productCard.style.animationDelay = `${index * 0.1}s`;
-            
-            const discount = product.oldPrice ? Math.round((1 - product.price / product.oldPrice) * 100) : 0;
-            
-            productCard.innerHTML = `
-                <div class="product-image">
-                    <a href="product.html?id=${product.id}">
-                        <img src="${product.image || '/placeholder.svg?height=300&width=300'}" alt="${product.name}">
-                    </a>
-                    ${discount > 0 ? `<span class="discount-badge">-${discount}%</span>` : ''}
-                    ${product.new ? '<span class="badge new-badge">New</span>' : ''}
-                    ${product.sale ? '<span class="badge sale-badge">Sale</span>' : ''}
-                    ${product.bestseller ? '<span class="badge bestseller-badge">Best Seller</span>' : ''}
-                    <div class="product-actions">
-                        <button class="action-btn add-to-cart-btn" data-product-id="${product.id}" title="Add to Cart">
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
-                        <button class="action-btn wishlist-btn" data-product-id="${product.id}" title="Add to Wishlist">
-                            <i class="far fa-heart"></i>
-                        </button>
-                        <button class="action-btn quick-view-btn" data-product-id="${product.id}" title="Quick View">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name"><a href="product.html?id=${product.id}">${product.name}</a></h3>
-                    <div class="product-price">
-                        ${product.oldPrice ? `<span class="old-price">₵${product.oldPrice.toFixed(2)}</span>` : ''}
-                        <span class="current-price">₵${product.price.toFixed(2)}</span>
-                    </div>
-                    <div class="product-rating">
-                        ${generateStarRating(product.rating || 0)}
-                        <span class="rating-count">(${product.reviews || 0})</span>
-                    </div>
-                </div>
-            `;
-            
-            return productCard;
-        }
-        
-        // Generate star rating HTML
-        function generateStarRating(rating) {
-            let stars = '';
-            for (let i = 1; i <= 5; i++) {
-                if (i <= rating) {
-                    stars += '<i class="fas fa-star"></i>';
-                } else if (i - 0.5 <= rating) {
-                    stars += '<i class="fas fa-star-half-alt"></i>';
-                } else {
-                    stars += '<i class="far fa-star"></i>';
-                }
-            }
-            return stars;
-        }
-        
-        // Initialize product actions
-        function initProductActions() {
-            // Add to cart buttons
-            const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-            addToCartButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    const productId = this.getAttribute('data-product-id');
-                    if (!productId) return;
-                    
-                    if (typeof addToCart === 'function') {
-                        addToCart(productId, 1);
-                        showNotification('Product added to cart!', 'success');
-                    } else {
-                        console.error('addToCart function not found');
-                    }
-                });
-            });
-            
-            // Wishlist buttons
-            const wishlistButtons = document.querySelectorAll('.wishlist-btn');
-            wishlistButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    this.classList.toggle('active');
-                    const isActive = this.classList.contains('active');
-                    
-                    if (this.querySelector('i')) {
-                        this.querySelector('i').className = isActive ? 'fas fa-heart' : 'far fa-heart';
-                    }
-                    
-                    showNotification(isActive ? 'Product added to wishlist!' : 'Product removed from wishlist!', isActive ? 'success' : 'info');
-                });
-            });
-            
-            // Quick view buttons
-            const quickViewButtons = document.querySelectorAll('.quick-view-btn');
-            quickViewButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    const productId = this.getAttribute('data-product-id');
-                    if (!productId) return;
-                    
-                    if (typeof showQuickView === 'function') {
-                        showQuickView(productId);
-                    } else {
-                        console.error('showQuickView function not found');
-                    }
-                });
-            });
-        }
-        
-        // Show notification
-        function showNotification(message, type = 'success') {
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.textContent = message;
-            
-            // Add to DOM
-            document.body.appendChild(notification);
-            
-            // Animate in
-            setTimeout(() => {
-                notification.classList.add('show');
-            }, 10);
-            
-            // Remove after delay
-            setTimeout(() => {
-                notification.classList.remove('show');
-                setTimeout(() => {
-                    notification.remove();
-                }, 300);
-            }, 3000);
-        }
-    </script>
 </body>
 </html>

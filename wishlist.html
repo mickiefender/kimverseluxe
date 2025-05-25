@@ -4,10 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wishlist - Kimverse Luxe</title>
+    <meta name="description" content="View and manage your wishlist at Kimverse Luxe.">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/wishlist.css">
-    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
     <!-- Header -->
@@ -15,9 +25,7 @@
         <div class="container">
             <div class="header-inner">
                 <div class="logo">
-                    <a href="index.html">
-                        <h1>Kimverse<span>Luxe</span></h1>
-                    </a>
+                    <h1><a href="index.html">Kimverse<span>Luxe</span></a></h1>
                 </div>
                 
                 <nav class="main-nav">
@@ -33,9 +41,8 @@
                     <a href="#" class="action-btn search-toggle">
                         <i class="fas fa-search"></i>
                     </a>
-                  
                     <a href="wishlist.html" class="action-btn">
-                        <i class="fas fa-heart"></i>
+                        <i class="far fa-heart"></i>
                         <span class="count wishlist-count">0</span>
                     </a>
                     <a href="cart.html" class="action-btn">
@@ -56,12 +63,13 @@
     <div class="mobile-menu">
         <div class="menu-header">
             <div class="logo">
-                <h1>Kimverse<span>Luxe</span></h1>
+                <h2>Kimverse<span>Luxe</span></h2>
             </div>
             <button class="close-menu">
                 <i class="fas fa-times"></i>
             </button>
         </div>
+        
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -70,8 +78,9 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+        
         <div class="menu-footer">
-            <div class="menu-social">
+            <div class="social-icons">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
@@ -86,8 +95,8 @@
             <button class="close-search">
                 <i class="fas fa-times"></i>
             </button>
-            <form>
-                <input type="text" placeholder="Search for products...">
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Search for products...">
                 <button type="submit">
                     <i class="fas fa-search"></i>
                 </button>
@@ -96,7 +105,7 @@
     </div>
     
     <!-- Page Header -->
-    <section class="page-header">
+    <div class="page-header">
         <div class="container">
             <h1>Wishlist</h1>
             <div class="breadcrumb">
@@ -105,21 +114,13 @@
                 <span>Wishlist</span>
             </div>
         </div>
-    </section>
+    </div>
     
     <!-- Wishlist Section -->
     <section class="wishlist-section">
         <div class="container">
-            <div class="wishlist-header">
-                <h2>My Wishlist</h2>
-                <div class="wishlist-actions">
-                    <a href="shop.html" class="btn outline-btn">Continue Shopping</a>
-                    <button class="btn primary-btn move-all-to-cart-btn">Move All to Cart</button>
-                </div>
-            </div>
-            
-            <div id="wishlist-items">
-                <!-- Wishlist items will be loaded dynamically -->
+            <div id="wishlist-content">
+                <!-- Wishlist content will be loaded dynamically via JavaScript -->
             </div>
         </div>
     </section>
@@ -132,7 +133,7 @@
                     <div class="footer-logo">
                         <h2>Kimverse<span>Luxe</span></h2>
                     </div>
-                    <p>Premium fashion and accessories for the modern elite. Quality, elegance, and luxury in every piece.</p>
+                    <p>Premium boutique offering luxury clothing, accessories, jewelry, and more. Quality craftsmanship and exceptional customer service.</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -148,6 +149,7 @@
                         <li><a href="shop.html">Shop</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="contact.html">Contact</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
                     </ul>
                 </div>
                 
@@ -158,27 +160,40 @@
                         <li><a href="#">Track Order</a></li>
                         <li><a href="#">Shipping Policy</a></li>
                         <li><a href="#">Returns & Exchanges</a></li>
-                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Contact Info</h3>
                     <ul class="contact-info">
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Fashion Street, New York, NY 10001</li>
-                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-                        <li><i class="fas fa-envelope"></i> info@kimverseluxe.com</li>
-                        <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM, Sat: 10AM-5PM</li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Fashion Street, Accra, Ghana</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:+233208517482">+233 208 517 482</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@kimverseluxe.com">info@kimverseluxe.com</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon - Sat: 9:00 AM - 8:00 PM</span>
+                        </li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
                 <div class="copyright">
-                    <p>&copy; 2023 KimverseLuxe. All Rights Reserved.</p>
+                    <p>&copy; 2023 Kimverse Luxe. All Rights Reserved.</p>
                 </div>
+                
                 <div class="payment-methods">
-                    <img src="/images/payment-methods.png" alt="Payment Methods">
+                    <img src="images/payment-methods.png" alt="Payment Methods">
                 </div>
             </div>
         </div>
@@ -186,29 +201,17 @@
     
     <!-- Back to Top Button -->
     <button id="back-to-top">
-        <i class="fas fa-chevron-up"></i>
+        <i class="fas fa-arrow-up"></i>
     </button>
     
-    <!-- Scripts -->
-    <script src="js/products.js"></script>
-    <script src="js/wishlist.js"></script>
-    <script src="js/cart.js"></script>
-    <script src="js/main.js"></script>
+    <!-- Notification -->
+    <div id="notification">
+        <span id="notification-message"></span>
+    </div>
     
-    <script>
-        // Initialize move all to cart button
-        document.addEventListener('DOMContentLoaded', function() {
-            const moveAllButton = document.querySelector('.move-all-to-cart-btn');
-            if (moveAllButton) {
-                moveAllButton.addEventListener('click', function() {
-                    if (typeof window.moveAllToCart === 'function') {
-                        window.moveAllToCart();
-                    } else {
-                        console.error('moveAllToCart function not found');
-                    }
-                });
-            }
-        });
-    </script>
+    <!-- JavaScript -->
+    <script src="js/products.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/wishlist.js"></script>
 </body>
 </html>

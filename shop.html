@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop - Kimverse Luxe</title>
+    <meta name="description" content="Browse our collection of premium clothing, accessories, jewelry, and more at Kimverse Luxe.">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/mobile-shop.css">
 </head>
 <body>
     <!-- Header -->
@@ -16,9 +24,7 @@
         <div class="container">
             <div class="header-inner">
                 <div class="logo">
-                    <a href="index.html">
-                        <h1>Kimverse<span>Luxe</span></h1>
-                    </a>
+                    <h1><a href="index.html">Kimverse<span>Luxe</span></a></h1>
                 </div>
                 
                 <nav class="main-nav">
@@ -34,7 +40,6 @@
                     <a href="#" class="action-btn search-toggle">
                         <i class="fas fa-search"></i>
                     </a>
-                    
                     <a href="wishlist.html" class="action-btn">
                         <i class="far fa-heart"></i>
                         <span class="count wishlist-count">0</span>
@@ -57,12 +62,13 @@
     <div class="mobile-menu">
         <div class="menu-header">
             <div class="logo">
-                <h1>Kimverse<span>Luxe</span></h1>
+                <h2>Kimverse<span>Luxe</span></h2>
             </div>
             <button class="close-menu">
                 <i class="fas fa-times"></i>
             </button>
         </div>
+        
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -71,8 +77,9 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+        
         <div class="menu-footer">
-            <div class="menu-social">
+            <div class="social-icons">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
@@ -87,8 +94,8 @@
             <button class="close-search">
                 <i class="fas fa-times"></i>
             </button>
-            <form>
-                <input type="text" placeholder="Search for products...">
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Search for products...">
                 <button type="submit">
                     <i class="fas fa-search"></i>
                 </button>
@@ -97,7 +104,7 @@
     </div>
     
     <!-- Page Header -->
-    <section class="page-header">
+    <div class="page-header">
         <div class="container">
             <h1>Shop</h1>
             <div class="breadcrumb">
@@ -106,142 +113,161 @@
                 <span>Shop</span>
             </div>
         </div>
-    </section>
+    </div>
     
     <!-- Shop Section -->
     <section class="shop-section">
         <div class="container">
             <div class="shop-layout">
-                <!-- Sidebar / Filters -->
-                <aside class="shop-sidebar">
+                <div class="shop-sidebar">
                     <div class="shop-filters">
                         <h3>Filter Products</h3>
-                        <form>
-                            <div class="filter-group">
-                                <h4>Categories</h4>
-                                <div class="filter-options">
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="category" value="clothing">
-                                        <span class="checkbox-custom"></span>
-                                        Clothing
-                                    </label>
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="category" value="accessories">
-                                        <span class="checkbox-custom"></span>
-                                        Accessories
-                                    </label>
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="category" value="jewelry">
-                                        <span class="checkbox-custom"></span>
-                                        Jewelry
-                                    </label>
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="category" value="footwear">
-                                        <span class="checkbox-custom"></span>
-                                        Footwear
-                                    </label>
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="category" value="watches">
-                                        <span class="checkbox-custom"></span>
-                                        Watches
-                                    </label>
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="category" value="perfumes">
-                                        <span class="checkbox-custom"></span>
-                                        Perfumes
-                                    </label>
-                                </div>
+                        
+                        <div class="filter-group">
+                            <h4>Categories</h4>
+                            <div class="filter-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="category" value="all" checked>
+                                    <span class="checkbox-custom"></span>
+                                    All Categories
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="category" value="clothing">
+                                    <span class="checkbox-custom"></span>
+                                    Clothing
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="category" value="accessories">
+                                    <span class="checkbox-custom"></span>
+                                    Accessories
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="category" value="jewelry">
+                                    <span class="checkbox-custom"></span>
+                                    Jewelry
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="category" value="footwear">
+                                    <span class="checkbox-custom"></span>
+                                    Footwear
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="category" value="perfumes">
+                                    <span class="checkbox-custom"></span>
+                                    Perfumes
+                                </label>
                             </div>
-                            
-                            <div class="filter-group">
-                                <h4>Price Range</h4>
-                                <div class="price-slider">
-                                    <input type="range" id="price-range" min="0" max="3000" step="10" value="3000">
-                                    <div id="price-output">$0 - $3000</div>
-                                </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <h4>Gender</h4>
+                            <div class="filter-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="gender" value="all" checked>
+                                    <span class="checkbox-custom"></span>
+                                    All
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="gender" value="men">
+                                    <span class="checkbox-custom"></span>
+                                    Men
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="gender" value="women">
+                                    <span class="checkbox-custom"></span>
+                                    Women
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="gender" value="unisex">
+                                    <span class="checkbox-custom"></span>
+                                    Unisex
+                                </label>
                             </div>
-                            
-                            <div class="filter-actions">
-                                <button type="submit" class="btn primary-btn">Apply Filters</button>
-                                <button type="button" class="btn outline-btn reset-filters">Reset</button>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <h4>Price Range</h4>
+                            <div class="price-slider">
+                                <input type="range" id="price-range" min="0" max="1000" value="1000">
+                                <div id="price-output">$0 - $1000</div>
                             </div>
-                        </form>
+                        </div>
+                        
+                        <div class="filter-actions">
+                            <button id="apply-filters" class="btn primary-btn">Apply Filters</button>
+                            <button id="reset-filters" class="btn outline-btn">Reset</button>
+                        </div>
                     </div>
                     
                     <div class="promo-banner">
                         <h3>Summer Sale</h3>
                         <p>Up to 50% off on selected items</p>
-                        <a href="#" class="btn primary-btn">Shop Now</a>
+                        <a href="shop.html?tag=sale" class="btn outline-btn">Shop Now</a>
                     </div>
-                </aside>
+                </div>
                 
-                <!-- Main Content -->
-                <div class="shop-main">
+                <div class="shop-content">
                     <div class="shop-header">
                         <div class="shop-controls">
-                            <div class="product-count">16 products found</div>
+                            <button class="filter-toggle">
+                                <i class="fas fa-filter"></i> Filter
+                            </button>
                             
-                            <div class="view-options">
-                                <div class="sort-by">
-                                    <label for="sort-by">Sort by:</label>
-                                    <select id="sort-by">
-                                        <option value="default">Featured</option>
-                                        <option value="price-low">Price: Low to High</option>
-                                        <option value="price-high">Price: High to Low</option>
-                                        <option value="name-asc">Name: A to Z</option>
-                                        <option value="name-desc">Name: Z to A</option>
-                                        <option value="newest">Newest First</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="view-switcher">
-                                    <button class="view-button active" data-view="4">
-                                        <i class="fas fa-th"></i>
-                                    </button>
-                                    <button class="view-button" data-view="3">
-                                        <i class="fas fa-th-large"></i>
-                                    </button>
-                                    <button class="view-button" data-view="2">
-                                        <i class="fas fa-list"></i>
-                                    </button>
-                                </div>
+                            <div class="sort-by">
+                                <label for="sort-select">Sort by:</label>
+                                <select id="sort-select">
+                                    <option value="default">Default</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                    <option value="name-asc">Name: A to Z</option>
+                                    <option value="name-desc">Name: Z to A</option>
+                                    <option value="newest">Newest First</option>
+                                </select>
+                            </div>
+                            
+                            <div class="view-switcher">
+                                <button class="view-button active" data-view="grid-4">
+                                    <i class="fas fa-th"></i>
+                                </button>
+                                <button class="view-button" data-view="grid-3">
+                                    <i class="fas fa-th-large"></i>
+                                </button>
+                                <button class="view-button" data-view="grid-2">
+                                    <i class="fas fa-th-list"></i>
+                                </button>
                             </div>
                         </div>
                         
                         <div class="shop-search">
-                            <input type="text" id="search-products" placeholder="Search products...">
-                            <button>
+                            <input type="text" id="shop-search-input" placeholder="Search products...">
+                            <button id="shop-search-btn">
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
                         
-                        <button class="filter-toggle">
-                            <i class="fas fa-filter"></i> Filters
-                        </button>
+                        <div class="shop-results">
+                            Showing <span id="product-count">0</span> products
+                        </div>
                     </div>
                     
-                    <div class="products-grid grid-4">
-                        <!-- Products will be loaded dynamically -->
+                    <div class="products-grid grid-4" id="shop-products">
+                        <!-- Products will be loaded dynamically via JavaScript -->
                     </div>
                     
                     <div class="shop-footer">
-                        <button class="btn outline-btn load-more-btn">Load More</button>
+                        <button id="load-more" class="btn primary-btn">Load More</button>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Recently Viewed -->
-    <section class="recently-viewed-section animate-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Recently Viewed</h2>
-                <p>Products you've checked out recently</p>
-            </div>
             
-            <div class="products-grid">
-                <!-- Products will be loaded dynamically -->
+            <div class="recently-viewed-section">
+                <div class="section-header">
+                    <h2>Recently Viewed</h2>
+                </div>
+                
+                <div class="products-grid" id="recently-viewed-products">
+                    <!-- Products will be loaded dynamically via JavaScript -->
+                </div>
             </div>
         </div>
     </section>
@@ -254,7 +280,7 @@
                     <div class="footer-logo">
                         <h2>Kimverse<span>Luxe</span></h2>
                     </div>
-                    <p>Premium fashion and accessories for the modern elite. Quality, elegance, and luxury in every piece.</p>
+                    <p>Premium boutique offering luxury clothing, accessories, jewelry, and more. Quality craftsmanship and exceptional customer service.</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -270,7 +296,7 @@
                         <li><a href="shop.html">Shop</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
                     </ul>
                 </div>
                 
@@ -281,27 +307,40 @@
                         <li><a href="#">Track Order</a></li>
                         <li><a href="#">Shipping Policy</a></li>
                         <li><a href="#">Returns & Exchanges</a></li>
-                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Contact Info</h3>
                     <ul class="contact-info">
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Fashion Street, New York, NY 10001</li>
-                        <li><i class="fas fa-phone"> <a href="tel:208517282">+233 208 517 482</a></i></li>
-                        <li><i class="fas fa-envelope"><a href="mailto:">info@kimverseluxe.com</a></i> </li>
-                        <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM, Sat: 10AM-5PM</li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Fashion Street, Accra, Ghana</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:+233208517482">+233 208 517 482</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@kimverseluxe.com">info@kimverseluxe.com</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon - Sat: 9:00 AM - 8:00 PM</span>
+                        </li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
                 <div class="copyright">
-                    <p>&copy; 2023 KimverseLuxe. All Rights Reserved.</p>
+                    <p>&copy; 2023 Kimverse Luxe. All Rights Reserved.</p>
                 </div>
+                
                 <div class="payment-methods">
-                    <img src="/images/payment-methods.png" alt="Payment Methods">
+                    <img src="images/payment-methods.png" alt="Payment Methods">
                 </div>
             </div>
         </div>
@@ -309,15 +348,29 @@
     
     <!-- Back to Top Button -->
     <button id="back-to-top">
-        <i class="fas fa-chevron-up"></i>
+        <i class="fas fa-arrow-up"></i>
     </button>
     
-    <!-- Scripts -->
+    <!-- Quick View Modal -->
+    <div class="quick-view-modal">
+        <div class="modal-content">
+            <button class="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="quick-view-content">
+                <!-- Content will be loaded dynamically via JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Notification -->
+    <div id="notification">
+        <span id="notification-message"></span>
+    </div>
+    
+    <!-- JavaScript -->
     <script src="js/products.js"></script>
-    <script src="js/shop.js"></script>
     <script src="js/main.js"></script>
-     <script src="js/animations.js"></script>
-    <script src="js/mobile-optimizations.js"></script>
-    <script src="js/mobile-shop.js"></script>
+    <script src="js/shop.js"></script>
 </body>
 </html>
