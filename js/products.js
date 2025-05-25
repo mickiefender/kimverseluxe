@@ -1,1206 +1,1926 @@
-// Products data and functions
+/**
+ * Kimverse Luxe E-commerce Website
+ * Products Data and Functions
+ */
 
-// Sample product data
+// Product Database
 const products = [
-  {
-    id: "1",
-    name: "Elegant Silk Blouse",
-    price: 89.99,
-    oldPrice: 129.99,
-    rating: 4.8,
-    reviews: 124,
-    image: "images/categories/accessories/Elegant Silk Blouse Background Removed.png",
-    gallery: [
-      "images/categories/accessories/Elegant Silk Blouse Background Removed.png",
-      "images/categories/accessories/Elegant Silk Blouse Background Removed.png",
-      "/placeholder.svg?height=600&width=600&text=Silk+Blouse+Detail",
-      "/placeholder.svg?height=600&width=600&text=Silk+Blouse+Model",
-    ],
-    category: "clothing",
-    tags: ["women", "blouse", "silk"],
-    featured: true,
-    new: true,
-    description:
-      "Luxurious silk blouse with elegant draping and pearl button details. Perfect for both formal and casual occasions.",
-    date: "2023-04-15",
-    colors: ["white", "black", "navy"],
-    sizes: ["XS", "S", "M", "L", "XL"],
-    stock: 25,
-  },
-  {
-    id: "2",
-    name: "Designer Leather Handbag",
-    price: 249.99,
-    oldPrice: 349.99,
-    rating: 4.9,
-    reviews: 86,
-    image: "images/categories/bags/Designer Leather Handbag Background Removed.png",
-    gallery: [
-      "images/categories/bags/Designer Leather Handbag Background Removed.png",
-      "/placeholder.svg?height=600&width=600&text=Leather+Handbag+Side",
-      "/placeholder.svg?height=600&width=600&text=Leather+Handbag+Inside",
-      "/placeholder.svg?height=600&width=600&text=Leather+Handbag+Detail",
-    ],
-    category: "accessories",
-    tags: ["women", "handbag", "leather"],
-    featured: true,
-    sale: true,
-    description:
-      "Handcrafted premium leather handbag with gold-tone hardware and multiple compartments for optimal organization.",
-    date: "2023-03-20",
-    colors: ["black", "brown", "red"],
-    stock: 12,
-  },
-  {
-    id: "3",
-    name: "Luxury Watch Collection",
-    price: 599.99,
-    rating: 4.7,
-    reviews: 53,
-    image: "images/categories/watches/Luxury Watch Collection Background Removed.png",
-    gallery: [
-      "images/categories/watches/Luxury Watch Collection Background Removed.png",
-      "/placeholder.svg?height=600&width=600&text=Luxury+Watch+Side",
-      "/placeholder.svg?height=600&width=600&text=Luxury+Watch+Back",
-      "/placeholder.svg?height=600&width=600&text=Luxury+Watch+Closeup",
-    ],
-    category: "accessories",
-    tags: ["men", "watch", "luxury"],
-    featured: true,
-    bestseller: true,
-    description:
-      "Precision crafted luxury timepiece with sapphire crystal face and genuine leather strap. Water resistant up to 100m.",
-    date: "2023-02-10",
-    colors: ["silver", "gold", "rose-gold"],
-    stock: 8,
-  },
-  {
-    id: "4",
-    name: "Premium Cashmere Scarf",
-    price: 129.99,
-    oldPrice: 159.99,
-    rating: 4.6,
-    reviews: 42,
-    image: "images/categories/accessories/Premium Cashmere Scarf Background Removed.png",
-    gallery: [
-      "images/categories/accessories/Premium Cashmere Scarf Background Removed.png",
-      "/placeholder.svg?height=600&width=600&text=Luxury+Watch+Side",
-      "/placeholder.svg?height=600&width=600&text=Luxury+Watch+Back",
-      "/placeholder.svg?height=600&width=600&text=Luxury+Watch+Closeup",
-    ],
-    category: "accessories",
-    tags: ["unisex", "scarf", "cashmere", "winter"],
-    featured: true,
-    new: true,
-    description:
-      "Ultra-soft 100% cashmere scarf woven from the finest Mongolian cashmere. Provides exceptional warmth and comfort.",
-    date: "2023-05-05",
-    colors: ["camel", "gray", "burgundy", "navy"],
-    stock: 20,
-  },
-  {
-    id: "5",
-    name: "Designer Sunglasses",
-    price: 179.99,
-    rating: 4.5,
-    reviews: 38,
-    image: "images/categories/accessories/Designer Sunglasses1 Background Removed.png",
-    gallery: [
-      "images/categories/accessories/Designer Sunglasses1 Background Removed.png",
-      "images/categories/accessories/Designer Sunglasses2 Background Removed.png",
-      "images/categories/accessories/Designer Sunglasses3 Background Removed.png",
-    ],
-    category: "accessories",
-    tags: ["unisex", "sunglasses", "summer"],
-    bestseller: true,
-    description:
-      "Polarized designer sunglasses with UV400 protection and lightweight acetate frames. Includes premium case and cleaning cloth.",
-    date: "2023-01-15",
-    colors: ["black", "tortoise", "blue"],
-    stock: 15,
-  },
-  {
-    id: "6",
-    name: "Italian Leather Shoes",
-    price: 299.99,
-    oldPrice: 399.99,
-    rating: 4.8,
-    reviews: 65,
-    image: "images/categories/shoes/Italian Leather Shoes Background Removed.png",
-    gallery: [
-      "images/categories/shoes/Italian Leather Shoes Background Removed.png",
-      "images/categories/shoes/Italian Leather Shoes-brown Background Removed.png",
-      "images/categories/shoes/Italian Leather Shoes-clacks Background Removed.png",
-    ],
-    category: "footwear",
-    tags: ["men", "shoes", "leather"],
-    sale: true,
-    description:
-      "Handcrafted Italian leather shoes with Goodyear welt construction. Combines classic style with modern comfort.",
-    date: "2023-02-28",
-    colors: ["black", "brown", "tan"],
-    sizes: ["39", "40", "41", "42", "43", "44", "45", "46", ],
-    stock: 10,
-  },
-  {
-    id: "7",
-    name: "Diamond Pendant Necklace",
-    price: 1299.99,
-    rating: 4.9,
-    reviews: 29,
-    image: "images/categories/accessories/Diamond Pendant Necklace Background Removed.png",
-    gallery: [
-      "images/categories/accessories/Diamond Pendant Necklace Background Removed.png",
-      "images/categories/accessories/Diamond Pendant Necklace2 Background Removed.png",
-      "images/categories/accessories/Diamond Pendant Necklace3 Background Removed.png",
-    ],
-    category: "jewelry",
-    tags: ["women", "necklace", "diamond"],
-    featured: true,
-    description:
-      "18K white gold necklace featuring a brilliant-cut diamond pendant. Comes with certificate of authenticity.",
-    date: "2023-03-10",
-    stock: 5,
-  },
-  {
-    id: "8",
-    name: "Long Sleeve",
-    price: 149.99,
-    oldPrice: 189.99,
-    rating: 4.7,
-    reviews: 47,
-    image: "images/categories/fashion/Long Sleeve-ash Background Removed.png",
-    gallery:["images/categories/fashion/Long Sleeve-black Background Removed.png",
-      "images/categories/fashion/Long Sleeve-blue Background Removed.png",
-      "images/categories/fashion/Long Sleeve-wine Background Removed.png"
-    ],
-    category: "clothing",
-    tags: ["unisex", "sweater", "wool", "winter"],
-    sale: true,
-    description:
-      "Luxuriously soft merino wool sweater that regulates body temperature. Perfect for layering in colder months.",
-    date: "2023-04-20",
-    colors: ["cream", "black", "navy", "wine"],
-    sizes: ["S", "M", "L", "XL"],
-    stock: 18,
-  },
-  {
-    id: "9",
-    name: "Silk Evening Dress",
-    price: 399.99,
-    rating: 4.8,
-    reviews: 36,
-    image: "images/categories/fashion/Silk Evening Dress Background Removed.png",
-    gallery:[
-      "images/categories/fashion/Silk Evening Dress Background Removed.png",
-      "images/categories/fashion/silk evening-blue Background Removed.png",
-      "images/categories/fashion/Silk-evening-mintGreen Background Removed.png",
-    ],
-    category: "clothing",
-    tags: ["women", "dress", "evening", "silk"],
-    new: true,
-    description:
-      "Stunning silk evening dress with delicate beading and elegant silhouette. Perfect for formal events and galas.",
-    date: "2023-05-15",
-    colors: ["green", "tan", "blue"],
-    sizes: ["XS", "S", "M", "L"],
-    stock: 8,
-  },
-  {
-    id: "10",
-    name: "Premium Leather Belt",
-    price: 89.99,
-    rating: 4.6,
-    reviews: 52,
-    image: "images/categories/accessories/Premium Leather Belt-2 Background Removed.png",
-    gallery: [
-      "images/categories/accessories/Premium Leather Belt-2 Background Removed.png",
-      "images/categories/accessories/Premium Leather Belt-brown Background Removed.png",
-      "images/categories/accessories/Premium Leather Belt-rough surface Background Removed.png",
-    ],
-    category: "accessories",
-    tags: ["men", "belt", "leather"],
-    bestseller: true,
-    description:
-      "Full-grain leather belt with precision stitching and classic buckle. A timeless addition to any wardrobe.",
-    date: "2023-01-25",
-    colors: ["black", "brown", "tan"],
-    sizes: ["32", "34", "36", "38", "40", "42"],
-    stock: 22,
-  },
-  {
-    id: "11",
-    name: "Voyage perfume",
-    price: 129.99,
-    oldPrice: 159.99,
-    rating: 4.7,
-    reviews: 78,
-    image: "images/categories/perfumes/voyage perfume1 Background Removed.png",
-    gallery: [
-      "images/categories/perfumes/voyage perfume1 Background Removed.png",
-      "images/categories/perfumes/voyage perfume2 Background Removed.png",
-      "images/categories/perfumes/voyage perfume3 Background Removed.png",
-    ],
+    {
+        id: 1,
+        name: "Long Sleeves shirt",
+        price: 1,
+        oldPrice: 249.99,
+        discount: 24,
+        category: "clothing",
+        gender: "unisex",
+        tags: ["new", "featured", "bestseller"],
+        colors: ["#000000", "#e74c3c", "#3498db"],
+        sizes: ["XS", "S", "M", "L", "XL"],
+        images: [
+            "clothing/long sleeves shirt-1.jpg",
+      "clothing/long sleeves shirt-2.jpg",
+      "clothing/long sleeves shirt-3.jpg",
+      "clothing/long sleeves shirt-4.jpg",
+        ],
+        thumbnail: "clothing/long sleeves shirt-4.jpg",
+        description: "This elegant long sleeves shirt is made from high-quality cotton, offering both comfort and style. The classic design makes it suitable for both casual and formal occasions.",
+        shortDescription: "Elegant long sleeves shirt made from high-quality cotton.",
+        rating: 4.8,
+        reviewCount: 24,
+        stock: 15,
+        isNew: true,
+        isFeatured: true,
+        isBestseller: false,
+        additionalInfo: {
+            material: "100% Cotton",
+            careInstructions: "Machine wash cold",
+            origin: "Made in Nigeria",
+            modelSize: "Model wears size S"
+        }
+    },
+    {
+        id: 2,
+        name: "Premium Leather Handbag",
+        price: 299.99,
+        oldPrice: 349.99,
+        discount: 14,
+        category: "accessories",
+        gender: "women",
+        tags: ["featured", "bestseller"],
+        colors: ["#6b4423", "#000000", "#7f8c8d","red"],
+        sizes: [],
+        images: [
+             "accessories/Designer Leather Handbag-LV-1.jpg",
+      "accessories/Designer Leather Handbag-LV-Black.jpg",
+      "accessories/Designer Leather Handbag-LV-Brown.jpg",
+      "accessories/Designer Leather Bag-LV-red.jpg",
+        ],
+        thumbnail: "images/products/handbag-1-thumb.jpg",
+        description: "Crafted from premium full-grain leather, this handbag combines elegance with functionality. Features multiple compartments and a detachable shoulder strap.",
+        shortDescription: "Premium full-grain leather handbag with multiple compartments.",
+        rating: 4.9,
+        reviewCount: 42,
+        stock: 8,
+        isNew: false,
+        isFeatured: true,
+        isBestseller: true,
+        additionalInfo: {
+            material: "Full-grain leather",
+            dimensions: "30cm x 22cm x 10cm",
+            features: "Detachable shoulder strap, interior pockets",
+            origin: "Made in Ghana"
+        }
+    },
+    {
+        id: 3,
+        name: "Diamond Pendant Necklace",
+        price: 599.99,
+        oldPrice: null,
+        discount: 0,
+        category: "jewelry",
+        gender: "women",
+        tags: ["luxury", "featured"],
+        colors: ["#FFD700", "#C0C0C0"],
+        sizes: [],
+        images: [
+            "accessories/Diamond Pendant Necklace-1.jpg",
+            "accessories/Diamond Pendant Necklace-2.jpg",
+            "accessories/Diamond Pendant Necklace-4.jpg",
+            "accessories/Diamond Pendant Necklace3.jpg"
+        ],
+        thumbnail: "images/products/necklace-1-thumb.jpg",
+        description: "This exquisite diamond pendant necklace features a 0.5 carat diamond set in 18k gold. The delicate chain and timeless design make it perfect for any occasion.",
+        shortDescription: "Exquisite 0.5 carat diamond pendant in 18k gold.",
+        rating: 5.0,
+        reviewCount: 18,
+        stock: 5,
+        isNew: false,
+        isFeatured: true,
+        isBestseller: false,
+        additionalInfo: {
+            material: "18k Gold, 0.5 carat diamond",
+            chainLength: "45cm with 5cm extender",
+            certification: "Includes authenticity certificate",
+            origin: "Made in South Africa"
+        }
+    },
+    {
+        id: 4,
+        name: "Italian Leather Loafers",
+        price: 249.99,
+        oldPrice: 299.99,
+        discount: 17,
+        category: "footwear",
+        gender: "men",
+        tags: ["bestseller", "summer"],
+        colors: ["#6b4423", "#000000"],
+        sizes: [40, 41, 42, 43, 44, 45],
+        images: [
+             "footwares/Italian Leather Loafers-Francis-1.jpg",
+      "footwares/Italian Leather Loafers-Francis-2.jpg",
+      "footwares/Italian Leather Loafers-Francis-3.jpg",
+        ],
+        thumbnail: "images/products/loafers-1-thumb.jpg",
+        description: "Handcrafted in Italy, these premium leather loafers combine comfort with sophisticated style. Perfect for both casual and formal occasions.",
+        shortDescription: "Handcrafted Italian leather loafers for sophisticated style.",
+        rating: 4.7,
+        reviewCount: 36,
+        stock: 12,
+        isNew: false,
+        isFeatured: false,
+        isBestseller: true,
+        additionalInfo: {
+            material: "Full-grain Italian leather",
+            sole: "Leather sole with rubber inserts",
+            features: "Cushioned insole for comfort",
+            origin: "Made in Italy"
+        }
+    },
+    {
+        id: 5,
+        name: "Designer Sunglasses",
+        price: 179.99,
+        oldPrice: null,
+        discount: 0,
+        category: "accessories",
+        gender: "unisex",
+        tags: ["new", "summer"],
+        colors: ["#000000", "#8e44ad", "#e74c3c"],
+        sizes: [],
+        images: [
+            "accessories/Designer Sunglasses-black.jpg",
+      "accessories/Designer Sunglasses-gold&black.jpg",
+      "accessories/Designer Sunglasses-red.jpg",
+      "accessories/Designer Sunglasses-2.jpg",
+        ],
+        thumbnail: "images/products/sunglasses-1-thumb.jpg",
+        description: "These designer sunglasses feature polarized lenses and a lightweight frame. The timeless design suits most face shapes and provides 100% UV protection.",
+        shortDescription: "Designer sunglasses with polarized lenses and UV protection.",
+        rating: 4.6,
+        reviewCount: 29,
+        stock: 20,
+        isNew: true,
+        isFeatured: false,
+        isBestseller: false,
+        additionalInfo: {
+            material: "Acetate frame, polarized lenses",
+            protection: "100% UV protection",
+            dimensions: "Lens width: 52mm, Bridge: 21mm, Temple length: 145mm",
+            includes: "Protective case and cleaning cloth"
+        }
+    },
+    {
+        id: 6,
+        name: "Cashmere Scarf",
+        price: 229.99,
+        discount: 18,
+        category: "accessories",
+        gender: "unisex",
+        tags: ["featured", "bestseller"],
+        colors: ["#2c3e50", "#7f8c8d", "#c0392b", "#2980b9","black"],
+        sizes: ["S", "M", "L", "XL"],
+        images: [
+            "accessories/Cashmere Scarf-multicolored.jpg",
+      "accessories/Cashmere Scarf-cream-colors.jpg",
+      "accessories/Cashmere Scarf-3.jpg",
+      "accessories/Cashmere Scarf-4.jpg",
+        ],
+        thumbnail: "/placeholder.svg?height=600&width=600&text=Luxury+Watch+Closeup",
+        description: "This luxurious cashmere scarf is perfect for adding a touch of elegance to any outfit. The soft, breathable fabric ensures all-day comfort.",
+        shortDescription: "Luxurious cashmere scarf for all-day comfort.",
+        rating: 4.1,
+        reviewCount: 45,
+        stock: 10,
+        isNew: false,
+        isFeatured: true,
+        isBestseller: true,
+        additionalInfo: {
+            material: "100% Cashmere",
+            care: "Hand wash cold or dry clean only",
+            weight: "Medium weight, 12-gauge knit",
+            origin: "Made in Scotland"
+        }
+    },
+    {
+        id: 7,
+        name: "Gold Hoop Earrings",
+        price: 149.99,
+        oldPrice: null,
+        discount: 0,
+        category: "jewelry",
+        gender: "women",
+        tags: ["new", "featured"],
+        colors: ["#FFD700"],
+        sizes: [],
+        images: [
+             "accessories/Gold Hoop Earrings-1.jpg",
+      "accessories/Gold Hoop Earrings-2.jpg",
+      "accessories/Gold Hoop Earrings-3.jpg",
+        "accessories/Gold Hoop Earrings-4.jpg",
+        ],
+        thumbnail: "images/products/earrings-1-thumb.jpg",
+        description: "These elegant 18k gold hoop earrings feature a classic design with a modern twist. The secure clasp ensures comfortable all-day wear.",
+        shortDescription: "Elegant 18k gold hoop earrings with secure clasp.",
+        rating: 4.8,
+        reviewCount: 22,
+        stock: 15,
+        isNew: true,
+        isFeatured: true,
+        isBestseller: false,
+        additionalInfo: {
+            material: "18k Gold",
+            diameter: "40mm",
+            weight: "4g each",
+            origin: "Made in Ghana"
+        }
+    },
+    {
+        id: 8,
+        name: "Leather Belt with Designer Buckle",
+        price: 129.99,
+        oldPrice: 159.99,
+        discount: 19,
+        category: "accessories",
+        gender: "men",
+        tags: ["bestseller"],
+        colors: ["#6b4423", "#000000"],
+        sizes: [90, 95, 100, 105, 110],
+        images: [
+"accessories/Leather Belt Infinitude-1.jpg",
+      "accessories/Leather Belt Infinitude-2.jpg",
+      "accessories/Leather Belt Infinitude-3.jpg",
+        ],
+        thumbnail: "images/products/belt-1-thumb.jpg",
+        description: "This premium leather belt features a distinctive designer buckle. Crafted from full-grain leather, it offers durability and timeless style.",
+        shortDescription: "Premium full-grain leather belt with distinctive designer buckle.",
+        rating: 4.7,
+        reviewCount: 31,
+        stock: 18,
+        isNew: false,
+        isFeatured: false,
+        isBestseller: true,
+        additionalInfo: {
+            material: "Full-grain leather",
+            buckle: "Solid brass with palladium finish",
+            width: "35mm",
+            origin: "Made in Ghana"
+        }
+    },
+    {
+        id: 9,
+        name: "Silk Scarf",
+        price: 89.99,
+        discount: 25,
+        category: "accessories",
+        gender: "women",
+        tags: ["sale", "summer"],
+        colors: ["#e74c3c", "#3498db", "#2ecc71", "#f39c12"],
+        sizes: [],
+        images: [
+            "accessories/Silk Scarf-2.jpg",
+            "accessories/Silk Scarf-3.jpg",
+            "accessories/Silk Scarf-4.jpg"
+        ],
+        thumbnail: "images/products/scarf-1-thumb.jpg",
+        description: "This luxurious silk scarf features a vibrant print inspired by African art. The versatile size allows it to be worn in multiple ways.",
+        shortDescription: "Luxurious silk scarf with vibrant African-inspired print.",
+        rating: 4.6,
+        reviewCount: 27,
+        stock: 22,
+        isNew: false,
+        isFeatured: false,
+        isBestseller: false,
+        additionalInfo: {
+            material: "100% Silk",
+            dimensions: "90cm x 90cm",
+            care: "Dry clean only",
+            origin: "Made in Ghana"
+        }
+    },
+    {
+        id: 10,
+        name: "Patek Philippe Watch",
+        price: 1299.99,
+        oldPrice: 1499.99,
+        discount: 13,
+        category: "accessories",
+        gender: "men",
+        tags: ["luxury", "featured"],
+        colors: ["#C0C0C0","black", "#FFD700"],
+        sizes: [],
+        images: [
+            "accessories/Patek Philippe-2.jpg",
+            "accessories/Patek Philippe-1.jpg",
+            "accessories/Patek Philippe-3.jpg"
+        ],
+        thumbnail: "images/products/watch-1-thumb.jpg",
+        description: "This luxury watch features a Swiss automatic movement and a sapphire crystal. The stainless steel case and leather strap add to its elegance.",
+        shortDescription: "Luxury timepiece with Swiss automatic movement and sapphire crystal.",
+        rating: 4.9,
+        reviewCount: 19,
+        stock: 7,
+        isNew: false,
+        isFeatured: true,
+        isBestseller: false,
+        additionalInfo: {
+            movement: "Swiss automatic",
+            case: "Stainless steel, 42mm",
+            waterResistance: "100 meters",
+            warranty: "2-year international warranty"
+        }
+    },
+    {
+        id: 11,
+        name: "Designer Perfume",
+        price: 119.99,
+        oldPrice: null,
+        discount: 0,
+        category: "perfumes",
+        gender: "women",
+        tags: ["new", "luxury"],
+        colors: [],
+        sizes: ["50ml", "100ml"],
+        images: [
+            "perfumes/Designer Perfume Bakarat-1.jpg",
+            "perfumes/Designer Perfume Bakarat-2.jpg",
+            "perfumes/Designer Perfume Bakarat-4.jpg",
+            "perfumes/Designer Perfume Bakarat-13.jpg"
+        ],
+        thumbnail: "images/products/perfume-1-thumb.jpg",
+        description: "This exquisite perfume features notes of jasmine, rose, and sandalwood. The elegant bottle design makes it a beautiful addition to any vanity.",
+        shortDescription: "Exquisite perfume with notes of jasmine, rose, and sandalwood.",
+        rating: 4.8,
+        reviewCount: 33,
+        stock: 25,
+        isNew: true,
+        isFeatured: false,
+        isBestseller: false,
+        additionalInfo: {
+            fragrance: "Floral Woody",
+            notes: "Top: Bergamot, Middle: Jasmine and Rose, Base: Sandalwood and Vanilla",
+            concentration: "Eau de Parfum",
+            origin: "Made in France"
+        }
+    },
+    {
+        id: 12,
+        name: "Ladies accessories set",
+        price: 79.99,
+        oldPrice: 99.99,
+        discount: 20,
+        category: "accessories",
+        gender: "men",
+        tags: ["bestseller", "sale"],
+        colors: ["#6b4423", "#000000"],
+        sizes: [],
+        images: [
+            "accessories/ladies-accessories set-1.jpg",
+            "accessories/ladies-accessories set-2.jpg",
+            "accessories/ladies-accessories set-3.jpg",
+            "accessories/ladies-accessories set-4.jpg"
+        ],
+        thumbnail: "accessories/ladies-accessories set-3.jpg",
+        description: "This ladies accessories set includes a matching keychain, and a chic bracelet. Perfect for gifting or personal use.",
+        shortDescription: " Stylish accessories set including keychain and bracelet.",
+        rating: 4.7,
+        reviewCount: 48,
+        stock: 30,
+        isNew: false,
+        isFeatured: false,
+        isBestseller: true,
+        additionalInfo: {
+            material: "Genuine leather and stainless steel",
+            dimensions: "Keychain: 10cm, Bracelet: Adjustable",
+            features: "Stylish design, durable materials",
+            origin: "Made in Ghana"
+        }
+    },
+    {
+        id: 13,
+        name: "Men summer shorts",
+        price: 45,
+        oldPrice: null,
+        discount: 0,
+        category: "clothing",
+        gender: "men",
+        tags: ["new", "summer"],
+        colors: ["#FFFFFF", "#87CEEB", "#F5F5DC", "#FFB6C1","red"],
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        images: [
+            "clothing/men undershorts-1.jpg",
+            "clothing/men undershorts-2.jpg",
+            "clothing/men undershorts-3.jpg",
+            "clothing/men undershorts-4.jpg"
+        ],
+        thumbnail: "clothing/men undershorts-3.jpg",
+        description: " These premium linen shorts are perfect for summer. They feature a relaxed fit, breathable fabric, and an elastic waistband for comfort.",
+        shortDescription: "Premium linen shirt with relaxed fit for summer comfort.",
+        rating: 4.6,
+        reviewCount: 26,
+        stock: 20,
+        isNew: true,
+        isFeatured: false,
+        isBestseller: false,
+        additionalInfo: {
+            material: "100% Linen",
+            care: "Machine wash cold, tumble dry low",
+            fit: "Relaxed fit",
+            origin: "Made in Ghana"
+        }
+    },
+    {
+        id: 14,
+        name: "Dior slippers",
+        price: 230.99,
+        discount: 13,
+        category: "footwear",
+        gender: "women",
+        tags: ["featured", "luxury"],
+        colors: ["#000000", "#FF0000", "#C0C0C0"],
+        sizes: [36, 37, 38, 39, 40, 41],
+        images: [
+            "footwares/Dior slippers-2.jpg",
+            "footwares/Dior slippers-1.jpg",
+            "footwares/Dior slippers-3.jpg",
+            "footwares/Dior slippers-4.jpg"
+        ],
+        thumbnail: "footwares/Dior slippers-2.jpg",
+        description: " These designer slippers feature a sleek silhouette and a comfortable 3-inch heel. Made from premium leather, they are perfect for both casual and formal occasions.",
+        shortDescription: "Designer leather slippers with comfortable 3-inch heel.",
+        rating: 4.8,
+        reviewCount: 21,
+        stock: 12,
+        isNew: false,
+        isFeatured: true,
+        isBestseller: false,
+        additionalInfo: {
+            material: "Premium leather upper, leather lining",
+            sole: "Leather with rubber insert",
+            origin: "Made in Italy"
+        }
+    },
+    {
+        id: 15,
+        name: "Luxury Cologne",
+        price: 129.99,
+        discount: 13,
+        category: "perfumes",
+        gender: "men",
+        tags: ["bestseller", "luxury"],
+        colors: [],
+        sizes: ["50ml", "100ml", "200ml"],
+        images: [
+            "perfumes/Luxury Cologne-3.jpg",
+            "perfumes/Luxury Cologne-2.jpg",
+            "perfumes/Luxury Cologne-1.jpg",
+            "perfumes/Luxury Cologne-4.jpg"
+        ],
+        thumbnail: "images/products/cologne-1-thumb.jpg",
+        description: "This luxury cologne features notes of bergamot, cedar, and amber. The sophisticated scent is perfect for both day and evening wear.",
+        shortDescription: "Luxury cologne with notes of bergamot, cedar, and amber.",
+        rating: 4.9,
+        reviewCount: 37,
+        stock: 18,
+        isNew: false,
+        isFeatured: false,
+        isBestseller: true,
+        additionalInfo: {
+            fragrance: "Woody Aromatic",
+            notes: "Top: Bergamot and Lemon, Middle: Cedar and Lavender, Base: Amber and Musk",
+            concentration: "Eau de Parfum",
+            origin: "Made in France"
+        }
+    },
+    {
+        id: 16,
+        name: "Silk Blouse",
+        price: 149.99,
+        oldPrice: 179.99,
+        discount: 17,
+        category: "clothing",
+        gender: "women",
+        tags: ["featured", "summer"],
+        colors: ["#FFFFFF", "green", "#87CEEB", "#000000"],
+        sizes: ["XS", "S", "M", "L", "XL"],
+        images: [
+            "clothing/Silk Blouse-1.jpg",
+            "clothing/Silk Blouse-2.jpg",
+            "clothing/Silk Blouse-3.jpg"
+        ],
+        thumbnail: "images/products/blouse-1-thumb.jpg",
+        description: "This elegant silk blouse features a flattering cut and delicate details. The versatile design makes it perfect for both office wear and special occasions.",
+        shortDescription: "Elegant silk blouse with flattering cut and delicate details.",
+        rating: 4.7,
+        reviewCount: 29,
+        stock: 15,
+        isNew: false,
+        isFeatured: true,
+        isBestseller: false,
+        additionalInfo: {
+            material: "100% Silk",
+            care: "Dry clean only",
+            fit: "Regular fit",
+            origin: "Made in Ghana"
+        }
+    },
+    {
+        id: 17,
+        name: "Ladies Shoe",
+        price: 79.99,
+        oldPrice: null,
+        discount: 0,
+        category: "footwear",
+        gender: "women",
+        tags: ["luxury", "new"],
+        colors: ["pink", "brown", "black"],
+        sizes: [],
+        images: [
+            "footwares/Ladies shoe-1.jpg",
+            "footwares/Ladies show-2.jpg",
+            "footwares/Ladies Shoe-3.jpg"
+        ],
+        thumbnail: "footwares/Ladies Shoe-1.jpg",
+        description: " This designer shoe features a distinctive pattern and a comfortable heel. Perfect for formal occasions or adding a touch of elegance to any outfit.",
+        shortDescription: "Designer shoe with distinctive pattern and comfortable heel.",
+        rating: 4.8,
+        reviewCount: 18,
+        stock: 25,
+        isNew: true,
+        isFeatured: false,
+        isBestseller: false,
+        additionalInfo: {
+            material: "Premium leather upper, leather lining",
+            sole: "Leather with rubber insert",
+            width: "Standard",
+            care: "Clean with a damp cloth and leather conditioner",
+            origin: "Made in Italy"
+        }
+    },
+    {
+        id: 18,
+        name: "Gucci Crossbody Bag",
+        price: 199.99,
+        oldPrice: 249.99,
+        discount: 20,
+        category: "accessories",
+        gender: "women",
+        tags: ["bestseller", "sale"],
+        colors: ["#000000", "#6b4423", "#8B0000"],
+        sizes: [],
+        images: [
+            "accessories/Gucci Crossbody Bad-4.jpg",
+            "accessories/Gucci Crossbody Bad-3.jpg",
+            "accessories/Gucci Crossbody Bag-1.jpg",
+            "accessories/Gucci Crossbody Bag-2.jpg"
+        ],
+        thumbnail: "images/products/bag-1-thumb.jpg",
+        description: "This leather crossbody bag combines style with functionality. Features multiple compartments, adjustable strap, and premium hardware.",
+        shortDescription: "Stylish leather crossbody bag with multiple compartments.",
+        rating: 4.9,
+        reviewCount: 42,
+        stock: 10,
+        isNew: false,
+        isFeatured: false,
+        isBestseller: true,
+        additionalInfo: {
+            material: "Full-grain leather",
+            dimensions: "22cm x 15cm x 6cm",
+            features: "Adjustable strap, multiple compartments, premium hardware",
+            origin: "Made in Ghana"
+        }
+    },
+    {
+        id: 19,
+        name: "short sleeves",
+        price: 200,
+        discount: 19,
+        category: "clothing",
+        gender: "unisex",
+        tags: ["luxury", "featured"],
+        colors: ["#C0C0C0", "#000000", "#8B0000"],
+        sizes: [],
+        images: [
+            "clothing/short sleeves shirt-1.jpg",
+            "clothing/short sleeves shirt-2.jpg",
+            "clothing/short sleeves shirt-3.jpg",
+            "clothing/short sleeves shirt-4.jpg"
+        ],
+        thumbnail: "clothing/short sleeves shirt-1.jpg",
+        description: "This short sleeves shirt is made from luxurious cashmere, offering exceptional softness and warmth. The classic design makes it suitable for both casual and formal occasions.",
+        shortDescription: " Luxurious short sleeves shirt with classic design.",
+        rating: 4.8,
+        reviewCount: 23,
+        stock: 15,
+        isNew: false,
+        isFeatured: true,
+        isBestseller: false,
+        additionalInfo: {
+            material: "100% Cashmere",
+            dimensions: "Available in S, M, L, XL",
+            features: "Soft, breathable, and lightweight",
+            care: "Dry clean only",
+            origin: "Made in Scotland"
+        }
+    },
+    {
+        id: 20,
+        name: "Nike SB Sneakers",
+        price: 270,
+        discount: 18,
+        category: "footwear",
+        gender: "unisex",
+        tags: ["bestseller", "new"],
+        colors: ["#FFFFFF", "#000000", "#8B0000","yellow","green"],
+        sizes: [36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
+        images: [
+            "footwares/Nike SB-1.jpg",
+            "footwares/Nike SB-2.jpg",
+            "footwares/Nike SB-3.jpg",
+            "footwares/Nike SB-4.jpg"
+        ],
+        thumbnail: "footwares/Nike SB-3.jpg",
+        description: "These Nike SB sneakers are perfect for skateboarding and casual wear. The durable rubber sole provides excellent grip, while the canvas upper offers a classic look.",
+        shortDescription: "Durable Nike SB sneakers for skateboarding and casual wear.",
+        rating: 4.6,
+        reviewCount: 31,
+        stock: 30,
+        isNew: true,
+        isFeatured: false,
+        isBestseller: true,
+        additionalInfo: {
+            material: "Canvas upper, rubber sole",
+            features: "Durable, grippy sole, classic look",
+            care: "Wipe with a damp cloth",
+            origin: "Made in the USA"
+        }
+           
+    },
+    {
+        id: 21,
+        name: "Victoria's Secret Perfume",
+        price: 89.99,
+        discount: 18,
+        category: "perfumes",
+        gender: "women",
+        tags: ["bestseller", "new", "luxury"],
+        colors: ["#FFFFFF", "#000000", "#8B0000","yellow","green"],
+        sizes: ["50ml", "100ml"],
+        images: [
+            "perfumes/Victoria's secret-1.jpg",
+            "perfumes/Victoria's secret-2.jpg",
+            "perfumes/Victoria's secret-3.jpg",
+            "perfumes/Victoria Secret-4.jpg"
+        ],
+        thumbnail: "perfumes/Victoria Secret-4.jpg",
+        description: " This Victoria's Secret perfume features a blend of floral and fruity notes, creating a fresh and inviting scent. The elegant bottle design adds a touch of luxury to your fragrance collection.",
+        shortDescription: "Floral and fruity Victoria's Secret perfume with elegant bottle design.",
+        rating: 4.6,
+        reviewCount: 31,
+        stock: 30,
+        isNew: true,
+        isFeatured: false,
+        isBestseller: true,
+        additionalInfo: {
+            material: "Floral and fruity notes",
+            fragrance: "Top: Citrus, Middle: Floral, Base: Woody",
+            concentration: "Eau de Parfum",
+            care: "Store in a cool, dry place away from direct sunlight",
+            origin: "Made in the USA"
+        }
+    },
+    
+     {
+        id: 22,
+        name: "Vera Wang Perfume",
+        price: 150,
+        discount: 18,
+        category: "perfumes",
+        gender: "women",
+        tags: ["bestseller", "new", "luxury"],
+        colors: ["#FFFFFF", "#000000", "#8B0000","yellow","green"],
+        sizes: ["50ml", "100ml"],
+        images: [
+            "perfumes/Vera wang-2.jpg",
+            "perfumes/Vera wang men-1.jpg",
+            
+        ],
+        thumbnail: "perfumes/Vera wang men-1.jpg",
+        description: " This Vera Wang perfume features a blend of floral and fruity notes, creating a fresh and inviting scent. The elegant bottle design adds a touch of luxury to your fragrance collection.",
+        shortDescription: "Floral and fruity Vera Wang perfume with elegant bottle design.",
+        rating: 4.6,
+        reviewCount: 31,
+        stock: 30,
+        isNew: true,
+        isFeatured: false,
+        isBestseller: true,
+        additionalInfo: {
+            material: "Floral and fruity notes",
+            fragrance: "Top: Citrus, Middle: Floral, Base: Woody",
+            concentration: "Eau de Parfum",
+            care: "Store in a cool, dry place away from direct sunlight",
+            origin: "Made in the USA"
+        }
+    },
+    
+];
 
-    category: "perfumes",
-    tags: ["unisex", "perfume", "fragrance"],
-    sale: true,
-    description:
-      "Exquisite designer fragrance with notes of jasmine, bergamot, and sandalwood. Long-lasting and elegantly bottled.",
-    date: "2023-03-05",
-    stock: 15,
-  },
-  {
-    id: "12",
-    name: "Gucci slides",
-    price: 199.99,
-    rating: 4.8,
-    reviews: 31,
-    image: "images/categories/shoes/gucci slides Background Removed.png",
-    gallery: [
-      "images/categories/shoes/gucci slides Background Removed.png",
-      "images/categories/shoes/gucci slides black Background Removed.png",
-      "images/categories/shoes/gucci slides green Background Removed.png",
-    ],
-    category: "accessories",
-    tags: ["unisex", "footware", "slides", "summer"],
-    featured: true,
-    description:
-      "Stylish Gucci slides with iconic logo and cushioned footbed. Perfect for poolside lounging or casual outings.",
-    date: "2023-02-18",
-    colors: ["black", "blue", "green"],
-    stock: 10,
-  },
-  {
-    id: "13",
-    name: "Cashmere Blend Coat",
-    price: 499.99,
-    oldPrice: 699.99,
-    rating: 4.9,
-    reviews: 42,
-    image: "/placeholder.svg?height=300&width=300&text=Cashmere+Coat",
-    category: "clothing",
-    tags: ["women", "coat", "cashmere", "winter"],
-    sale: true,
-    description:
-      "Luxurious cashmere blend coat with tailored silhouette and satin lining. Provides exceptional warmth without bulk.",
-    date: "2023-04-10",
-    colors: ["camel", "black", "gray"],
-    sizes: ["XS", "S", "M", "L", "XL"],
-    stock: 7,
-  },
-  {
-    id: "14",
-    name: "Handcrafted Leather Wallet",
-    price: 79.99,
-    rating: 4.6,
-    reviews: 58,
-    image: "/placeholder.svg?height=300&width=300&text=Leather+Wallet",
-    category: "accessories",
-    tags: ["men", "wallet", "leather"],
-    bestseller: true,
-    description:
-      "Slim profile wallet handcrafted from full-grain leather. Features RFID blocking technology and multiple card slots.",
-    date: "2023-01-30",
-    colors: ["black", "brown", "tan"],
-    stock: 25,
-  },
-  {
-    id: "15",
-    name: "Men GLasses",
-    price: 75.99,
-    rating: 4.0,
-    reviews: 34,
-    image: "images/categories/accessories/spectacles-black Background Removed.png",
-    gallery: [
-      "images/categories/accessories/spectacles-black Background Removed.png",
-      "images/categories/accessories/spectacles-blue Background Removed.png",
-      "images/categories/accessories/spectacle-red Background Removed.png",
-    ],
-    category: "home",
-    tags: ["glasses", "spectacles", "men"],
-    new: true,
-    description:
-      "A transitional pair of spectacles with a black frame. Perfect for reading or everyday wear.",
-    date: "2023-05-08",
-    stock: 12,
-  },
-  {
-    id: "16",
-    name: "Silk Pajama Set",
-    price: 189.99,
-    oldPrice: 229.99,
-    rating: 4.8,
-    reviews: 45,
-    image: "/placeholder.svg?height=300&width=300&text=Silk+Pajamas",
-    category: "clothing",
-    tags: ["women", "pajama", "silk", "sleep"],
-    sale: true,
-    description:
-      "Luxurious 100% mulberry silk pajama set. Breathable, temperature-regulating, and incredibly soft against the skin.",
-    date: "2023-03-25",
-    colors: ["ivory", "black", "navy", "rose"],
-    sizes: ["XS", "S", "M", "L", "XL"],
-    stock: 15,
-  },
-  // Adding new products
-  {
-    id: "17",
-    name: "Designer Tote Bag",
-    price: 50,
-    oldPrice: 70,
-    rating: 4.7,
-    reviews: 63,
-    image: "images/categories/bags/Designer Tote Bag-cream Background Removed.png",
-    gallery: [
-      "images/categories/bags/Designer Tote Bag-cream Background Removed.png",
-      "images/categories/bags/Designer Tote Bag-black Background Removed.png",
-      "images/categories/bags/Designer Tote Bag-blue Background Removed.png",
-    ],
-    category: "accessories",
-    tags: ["women", "bag", "tote", "summer"],
-    new: true,
-    sale: true,
-    description:
-      "Spacious designer tote bag crafted from premium materials with signature hardware. Perfect for work, travel, or everyday use.",
-    date: "2023-05-20",
-    colors: ["cream", "black", "blue", "red"],
-    stock: 18,
-  },
-  {
-    id: "18",
-    name: "Men's Tailored Suit",
-    price: 899.99,
-    rating: 4.9,
-    reviews: 47,
-    image: "/placeholder.svg?height=300&width=300&text=Tailored+Suit",
-    category: "clothing",
-    tags: ["men", "suit", "formal", "business"],
-    featured: true,
-    description:
-      "Impeccably tailored suit crafted from premium Italian wool. Classic fit with modern details for a sophisticated look.",
-    date: "2023-04-12",
-    colors: ["navy", "charcoal", "black"],
-    sizes: ["38R", "40R", "42R", "44R", "46R", "48R"],
-    stock: 10,
-  },
-  {
-    id: "19",
-    name: "Pearl Stud Earrings",
-    price: 299.99,
-    rating: 4.8,
-    reviews: 52,
-    image: "/placeholder.svg?height=300&width=300&text=Pearl+Earrings",
-    category: "jewelry",
-    tags: ["women", "earrings", "pearl", "classic"],
-    bestseller: true,
-    description:
-      "Timeless freshwater pearl stud earrings set in 14K gold. The perfect accessory for both everyday wear and special occasions.",
-    date: "2023-02-15",
-    colors: ["white", "cream", "black"],
-    stock: 20,
-  },
-  {
-    id: "20",
-    name: "Leather Ankle Boots",
-    price: 249.99,
-    oldPrice: 299.99,
-    rating: 4.6,
-    reviews: 38,
-    image: "/placeholder.svg?height=300&width=300&text=Ankle+Boots",
-    category: "footwear",
-    tags: ["women", "boots", "leather", "autumn"],
-    sale: true,
-    description:
-      "Stylish leather ankle boots with stacked heel and side zipper. Versatile design pairs well with jeans, dresses, and skirts.",
-    date: "2023-03-18",
-    colors: ["black", "brown", "tan"],
-    sizes: ["5", "6", "7", "8", "9", "10"],
-    stock: 15,
-  },
-  {
-    id: "21",
-    name: "Basic Tops",
-    price: 79.99,
-    rating: 4.5,
-    reviews: 29,
-    image: "images/categories/fashion/basic top brown Background Removed.png",
-    gallery: [
-      "images/categories/fashion/basic top brown Background Removed.png",
-      "images/categories/fashion/basic top cream Background Removed.png",
-      "images/categories/fashion/basic top green Background Removed.png",
-      "images/categories/fashion/basic top pink Background Removed.png"
-    ],
-    category: "clothing",
-    tags: ["unisex", "tops", "basic", "casual", ],
-    new: true,
-    description:
-      "Essential basic tops made from soft, breathable fabric. Perfect for layering or wearing alone. Available in multiple colors.",
-    date: "2023-05-10",
-    colors: ["brown", "cream", "pink", "burgundy"],
-    sizes: ["One Size"],
-    stock: 30,
-  },
-  {
-    id: "22",
-    name: "Mini Skirt",
-    price: 110.00,
-    rating: 4.7,
-    reviews: 41,
-    image: "images/categories/fashion/mini black skirt2 Background Removed.png",
-    gallery: [
-      "images/categories/fashion/mini black skirt2 Background Removed.png",
-      "images/categories/fashion/mini black skirt3 Background Removed.png",
-      "images/categories/fashion/mini black skirt4 Background Removed.png",
-      "images/categories/fashion/mini black skirt Background Removed.png",
-    ],
-    category: "clothing",
-    tags: ["women", "dress", "mini", "skirt",],
-    new: true,
-    description:
-      "Trendy mini skirt with a flattering fit and stylish design. Made from high-quality fabric for comfort and durability.",
-    date: "2023-05-22",
-    colors: ["white", "beige", "blue", "sage"],
-    sizes: ["XS", "S", "M", "L", "XL"],
-    stock: 22,
-  },
-  {
-    id: "23",
-    name: "Gold Chain Bracelet",
-    price: 349.99,
-    oldPrice: 399.99,
-    rating: 4.8,
-    reviews: 33,
-    image: "/placeholder.svg?height=300&width=300&text=Gold+Bracelet",
-    category: "jewelry",
-    tags: ["women", "bracelet", "gold", "chain"],
-    sale: true,
-    description:
-      "Elegant 14K gold chain bracelet with toggle clasp. Versatile piece that can be worn alone or layered with other bracelets.",
-    date: "2023-04-05",
-    stock: 8,
-  },
-  {
-    id: "24",
-    name: "Men's Leather Loafers",
-    price: 229.99,
-    rating: 4.6,
-    reviews: 45,
-    image: "/placeholder.svg?height=300&width=300&text=Leather+Loafers",
-    category: "footwear",
-    tags: ["men", "shoes", "loafers", "leather"],
-    bestseller: true,
-    description:
-      "Classic leather loafers with hand-stitched details and comfortable cushioned insole. Perfect for both casual and formal occasions.",
-    date: "2023-03-12",
-    colors: ["black", "brown", "burgundy"],
-    sizes: ["7", "8", "9", "10", "11", "12", "13"],
-    stock: 18,
-  },
-  {
-    id: "25",
-    name: "Silk Neck Scarf",
-    price: 69.99,
-    rating: 4.5,
-    reviews: 27,
-    image: "/placeholder.svg?height=300&width=300&text=Silk+Scarf",
-    category: "accessories",
-    tags: ["women", "scarf", "silk", "spring"],
-    featured: true,
-    description:
-      "Luxurious silk scarf with vibrant print. Versatile accessory that can be worn around the neck, as a headband, or tied to a handbag.",
-    date: "2023-04-18",
-    colors: ["multicolor"],
-    stock: 25,
-  },
-  {
-    id: "26",
-    name: "Wool Blend Blazer",
-    price: 279.99,
-    oldPrice: 329.99,
-    rating: 4.7,
-    reviews: 39,
-    image: "/placeholder.svg?height=300&width=300&text=Wool+Blazer",
-    category: "clothing",
-    tags: ["women", "blazer", "wool", "autumn"],
-    sale: true,
-    description:
-      "Tailored wool blend blazer with classic notched lapels and single-button closure. A versatile piece for work or evening wear.",
-    date: "2023-03-28",
-    colors: ["black", "navy", "camel"],
-    sizes: ["XS", "S", "M", "L", "XL"],
-    stock: 12,
-  },
-  {
-    id: "27",
-    name: "Sterling Silver Cufflinks",
-    price: 119.99,
-    rating: 4.6,
-    reviews: 22,
-    image: "images/categories/accessories/Sterling Silver Cufflinks-blue.jpg",
-    gallery: [
-      "images/categories/accessories/Sterling Silver Cufflinks-blue.jpg",
-      "images/categories/accessories/Sterling Silver Cufflinks-gold.jpg",
-      "images/categories/accessories/Sterling Silver Cufflinks.jpg",
-    ],
-    category: "jewelry",
-    tags: ["men", "cufflinks", "silver", "formal"],
-    new: true,
-    description:
-      "Elegant sterling silver cufflinks with modern geometric design. The perfect finishing touch for formal attire.",
-    date: "2023-05-08",
-    stock: 15,
-  },
-  {
-    id: "28",
-    name: "Women's Leather Sneakers",
-    price: 159.99,
-    rating: 4.8,
-    reviews: 56,
-    image: "/placeholder.svg?height=300&width=300&text=Leather+Sneakers",
-    category: "footwear",
-    tags: ["women", "sneakers", "leather", "casual"],
-    bestseller: true,
-    description:
-      "Premium leather sneakers with minimalist design and cushioned insole. Versatile style that pairs with everything from jeans to dresses.",
-    date: "2023-04-02",
-    colors: ["white", "black", "blush"],
-    sizes: ["5", "6", "7", "8", "9", "10"],
-    stock: 20,
-  },
-  {
-    id: "29",
-    name: "Leather Crossbody Bag",
-    price: 179.99,
-    oldPrice: 219.99,
-    rating: 4.7,
-    reviews: 48,
-    image: "/placeholder.svg?height=300&width=300&text=Crossbody+Bag",
-    category: "accessories",
-    tags: ["women", "bag", "leather", "crossbody"],
-    sale: true,
-    description:
-      "Compact leather crossbody bag with adjustable strap and multiple compartments. Perfect for everyday essentials.",
-    date: "2023-03-15",
-    colors: ["black", "brown", "navy", "red"],
-    stock: 14,
-  },
-  {
-    id: "30",
-    name: "Men's Denim Jacket",
-    price: 149.99,
-    rating: 4.6,
-    reviews: 37,
-    image: "/placeholder.svg?height=300&width=300&text=Denim+Jacket",
-    category: "clothing",
-    tags: ["men", "jacket", "denim", "casual"],
-    featured: true,
-    description:
-      "Classic denim jacket with button front closure and chest pockets. A timeless piece that never goes out of style.",
-    date: "2023-04-25",
-    colors: ["light wash", "medium wash", "dark wash"],
-    sizes: ["S", "M", "L", "XL", "XXL"],
-    stock: 18,
-  },
-  {
-    id: "31",
-    name: "Diamond Tennis Bracelet",
-    price: 1999.99,
-    rating: 4.9,
-    reviews: 19,
-    image: "/placeholder.svg?height=300&width=300&text=Tennis+Bracelet",
-    category: "jewelry",
-    tags: ["women", "bracelet", "diamond", "luxury"],
-    featured: true,
-    description:
-      "Exquisite diamond tennis bracelet set in 18K white gold. Features 3 carats of brilliant-cut diamonds with secure clasp.",
-    date: "2023-02-20",
-    stock: 5,
-  },
-  {
-    id: "32",
-    name: "Suede Chelsea Boots",
-    price: 219.99,
-    oldPrice: 259.99,
-    rating: 4.7,
-    reviews: 43,
-    image: "/placeholder.svg?height=300&width=300&text=Chelsea+Boots",
-    category: "footwear",
-    tags: ["men", "boots", "suede", "chelsea"],
-    sale: true,
-    description:
-      "Classic suede Chelsea boots with elastic side panels and pull tab. Versatile style that works with both casual and smart outfits.",
-    date: "2023-03-22",
-    colors: ["black", "brown", "tan"],
-    sizes: ["7", "8", "9", "10", "11", "12"],
-    stock: 16,
-  },
-  {
-    id: "33",
-    name: "Ladies ring",
-    price: 65.00,
-    rating: 4,
-    reviews: 31,
-    image: "images/categories/accessories/ring4 Background Removed.png",
-    gallery: [
-      "images/categories/accessories/ring4 Background Removed.png",
-      "images/categories/accessories/ring for women-gold Background Removed.png",
-      "images/categories/accessories/ring for women-silver Background Removed.png",
-    ],
-    category: "accessories",
-    tags: ["women", "ring", "silver", "formal"],
-    new: true,
-    description:
-      "Stylish ladies ring with intricate design. Made from high-quality materials, perfect for everyday wear or special occasions.",
-    date: "2023-05-12",
-    colors: ["black", "brown", "burgundy"],
-    sizes: ["S", "M", "L"],
-    stock: 22,
-  },
-  {
-    id: "34",
-    name: "Silk Tie Collection",
-    price: 79.99,
-    rating: 4.6,
-    reviews: 28,
-    image: "/placeholder.svg?height=300&width=300&text=Silk+Ties",
-    category: "accessories",
-    tags: ["men", "tie", "silk", "formal"],
-    bestseller: true,
-    description:
-      "Set of three premium silk ties in classic patterns. Handcrafted with attention to detail for a refined look.",
-    date: "2023-04-08",
-    colors: ["assorted"],
-    stock: 20,
-  },
-  {
-    id: "35",
-    name: "Women's Trench Coat",
-    price: 299.99,
-    oldPrice: 349.99,
-    rating: 4.8,
-    reviews: 52,
-    image: "/placeholder.svg?height=300&width=300&text=Trench+Coat",
-    category: "clothing",
-    tags: ["women", "coat", "trench", "spring"],
-    sale: true,
-    description:
-      "Classic trench coat with double-breasted front, belted waist, and water-resistant fabric. A timeless piece for transitional weather.",
-    date: "2023-03-10",
-    colors: ["beige", "black", "navy"],
-    sizes: ["XS", "S", "M", "L", "XL"],
-    stock: 14,
-  },
-  {
-    id: "36",
-    name: "Earrings",
-    price: 499.99,
-    rating: 4.8,
-    reviews: 26,
-    image: "images/categories/accessories/Earrings1 Background Removed.png",
-    gallery: [
-      "images/categories/accessories/Earrings1 Background Removed.png",
-      "images/categories/accessories/Earrings2 Background Removed.png",
-      "images/categories/accessories/Earrings3 Background Removed.png",
-    ],
-    category: "jewelry",
-    tags: ["women", "earrings", "luxury"],
-    new: true,
-    description:
-      "Elegant earrings featuring a unique design with sparkling gemstones. Perfect for adding a touch of glamour to any outfit.",
-    date: "2023-05-18",
-    stock: 8,
-  },
-]
-
-// Make products available globally
-window.products = products
-
-// Get all products
-function getProducts() {
-  return products
+// Utility Functions
+function formatCurrency(amount) {
+    return new Intl.NumberFormat('en-GH', {
+        style: 'currency',
+        currency: 'GHS'
+    }).format(amount);
 }
 
-// Get product by ID
+function getDiscountPercentage(oldPrice, currentPrice) {
+    return Math.round(((oldPrice - currentPrice) / oldPrice) * 100);
+}
+
 function getProductById(id) {
-  return products.find((product) => product.id === id)
+    return products.find(product => product.id === parseInt(id));
 }
 
-// Get products by category
-function getProductsByCategory(category) {
-  if (category === "all") return products
-  return products.filter((product) => product.category === category)
-}
-
-// Get products by tag
-function getProductsByTag(tag) {
-  return products.filter((product) => product.tags && product.tags.includes(tag))
-}
-
-// Get featured products
-function getFeaturedProducts() {
-  return products.filter((product) => product.featured)
-}
-
-// Get new products
-function getNewProducts() {
-  return products.filter((product) => product.new)
-}
-
-// Get sale products
-function getSaleProducts() {
-  return products.filter((product) => product.sale)
-}
-
-// Get bestseller products
-function getBestsellerProducts() {
-  return products.filter((product) => product.bestseller)
-}
-
-// Sort products by price (low to high)
-function sortProductsByPriceLowToHigh(productsArray) {
-  return [...productsArray].sort((a, b) => a.price - b.price)
-}
-
-// Sort products by price (high to low)
-function sortProductsByPriceHighToLow(productsArray) {
-  return [...productsArray].sort((a, b) => b.price - a.price)
-}
-
-// Sort products by name (A to Z)
-function sortProductsByNameAsc(productsArray) {
-  return [...productsArray].sort((a, b) => a.name.localeCompare(b.name))
-}
-
-// Sort products by name (Z to A)
-function sortProductsByNameDesc(productsArray) {
-  return [...productsArray].sort((a, b) => b.name.localeCompare(a.name))
-}
-
-// Sort products by newest
-function sortProductsByNewest(productsArray) {
-  return [...productsArray].sort((a, b) => new Date(b.date) - new Date(a.date))
-}
-
-// Filter products by price range
-function filterProductsByPriceRange(productsArray, min, max) {
-  return productsArray.filter((product) => product.price >= min && product.price <= max)
-}
-
-// Search products
-function searchProducts(query) {
-  query = query.toLowerCase()
-  return products.filter(
-    (product) =>
-      product.name.toLowerCase().includes(query) ||
-      product.description.toLowerCase().includes(query) ||
-      (product.tags && product.tags.some((tag) => tag.toLowerCase().includes(query))),
-  )
-}
-
-// Add to cart
-function addToCart(productId, quantity = 1) {
-  // Get current cart from localStorage
-  const cart = JSON.parse(localStorage.getItem("cart")) || []
-
-  // Check if product already in cart
-  const existingProductIndex = cart.findIndex((item) => item.id === productId)
-
-  if (existingProductIndex !== -1) {
-    // Update quantity if product already in cart
-    cart[existingProductIndex].quantity += quantity
-  } else {
-    // Add new product to cart
-    cart.push({
-      id: productId,
-      quantity: quantity,
-    })
-  }
-
-  // Save updated cart to localStorage
-  localStorage.setItem("cart", JSON.stringify(cart))
-
-  // Update cart count in UI
-  updateCartCount()
-
-  return cart
-}
-
-// Remove from cart
-function removeFromCart(productId) {
-  // Get current cart from localStorage
-  let cart = JSON.parse(localStorage.getItem("cart")) || []
-
-  // Remove product from cart
-  cart = cart.filter((item) => item.id !== productId)
-
-  // Save updated cart to localStorage
-  localStorage.setItem("cart", JSON.stringify(cart))
-
-  // Update cart count in UI
-  updateCartCount()
-
-  return cart
-}
-
-// Update cart quantity
-function updateCartQuantity(productId, quantity) {
-  // Get current cart from localStorage
-  let cart = JSON.parse(localStorage.getItem("cart")) || []
-
-  // Find product in cart
-  const productIndex = cart.findIndex((item) => item.id === productId)
-
-  if (productIndex !== -1) {
-    // Update quantity
-    if (quantity > 0) {
-      cart[productIndex].quantity = quantity
-    } else {
-      // Remove product if quantity is 0 or less
-      cart = cart.filter((item) => item.id !== productId)
+function getRelatedProducts(product, limit = 4) {
+    // Get products in the same category, excluding the current product
+    const sameCategory = products.filter(p => p.category === product.category && p.id !== product.id);
+    
+    // If we don't have enough products in the same category, add some from the same gender
+    let related = [...sameCategory];
+    if (related.length < limit) {
+        const sameGender = products.filter(p => p.gender === product.gender && p.id !== product.id && !related.includes(p));
+        related = [...related, ...sameGender];
     }
-
-    // Save updated cart to localStorage
-    localStorage.setItem("cart", JSON.stringify(cart))
-
-    // Update cart count in UI
-    updateCartCount()
-  }
-
-  return cart
+    
+    // Shuffle the array and return the requested number of products
+    return shuffleArray(related).slice(0, limit);
 }
 
-// Get cart
-function getCart() {
-  // Get cart from localStorage
-  const cart = JSON.parse(localStorage.getItem("cart")) || []
-
-  // Get full product details for each cart item
-  const cartWithDetails = cart.map((item) => {
-    const product = getProductById(item.id)
-    return {
-      ...item,
-      product: product,
-      total: product.price * item.quantity,
+function shuffleArray(array) {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     }
-  })
-
-  return cartWithDetails
+    return newArray;
 }
 
-// Calculate cart total
-function calculateCartTotal() {
-  const cart = getCart()
-  return cart.reduce((total, item) => total + item.total, 0)
-}
-
-// Update cart count in UI
-function updateCartCount() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || []
-  const count = cart.reduce((total, item) => total + item.quantity, 0)
-
-  // Update all cart count elements
-  const cartCountElements = document.querySelectorAll(".cart-count")
-  cartCountElements.forEach((element) => {
-    element.textContent = count
-  })
-
-  return count
-}
-
-// Apply coupon
-function applyCoupon(code) {
-  // Sample coupon codes
-  const coupons = {
-    LUXE2023: {
-      type: "percentage",
-      value: 15,
-    },
-    WELCOME10: {
-      type: "percentage",
-      value: 10,
-    },
-    FREESHIP: {
-      type: "shipping",
-      value: "free",
-    },
-  }
-
-  // Check if coupon exists
-  if (coupons[code]) {
-    return coupons[code]
-  }
-
-  return null
-}
-
-// Calculate shipping cost
-function calculateShipping(subtotal, country = "US") {
-  // Sample shipping rates
-  const shippingRates = {
-    US: {
-      standard: 5.99,
-      express: 12.99,
-      freeThreshold: 100,
-    },
-    CA: {
-      standard: 8.99,
-      express: 15.99,
-      freeThreshold: 150,
-    },
-    UK: {
-      standard: 9.99,
-      express: 18.99,
-      freeThreshold: 150,
-    },
-    EU: {
-      standard: 11.99,
-      express: 21.99,
-      freeThreshold: 200,
-    },
-    default: {
-      standard: 14.99,
-      express: 24.99,
-      freeThreshold: 250,
-    },
-  }
-
-  // Get shipping rates for country or use default
-  const rates = shippingRates[country] || shippingRates.default
-
-  // Free shipping if subtotal is above threshold
-  if (subtotal >= rates.freeThreshold) {
-    return {
-      standard: 0,
-      express: rates.express - rates.standard,
-    }
-  }
-
-  return rates
-}
-
-// Get related products
-function getRelatedProducts(productId, limit = 4) {
-  const product = getProductById(productId)
-
-  if (!product) return []
-
-  // Get products in same category
-  let related = products.filter(
-    (p) =>
-      p.id !== productId &&
-      (p.category === product.category || (p.tags && product.tags && p.tags.some((tag) => product.tags.includes(tag)))),
-  )
-
-  // Shuffle array to get random selection
-  related = related.sort(() => 0.5 - Math.random())
-
-  // Return limited number of products
-  return related.slice(0, limit)
-}
-
-// Show quick view
-function showQuickView(productId) {
-  // Get product data
-  const product = getProductById(productId)
-  if (!product) {
-    console.error(`Product with ID ${productId} not found`)
-    return
-  }
-
-  // Create modal element
-  const modal = document.createElement("div")
-  modal.className = "quick-view-modal"
-
-  // Generate modal content
-  modal.innerHTML = `
-        <div class="modal-content">
-            <button class="close-modal">&times;</button>
-            <div class="product-quick-view">
-                <div class="product-image">
-                    <img src="${product.image}" alt="${product.name}">
+// Product HTML Generation Functions
+function generateProductCard(product) {
+    const discountBadge = product.discount > 0 ? 
+        `<div class="discount-badge">-${product.discount}%</div>` : '';
+    
+    const newBadge = product.isNew ? 
+        `<div class="badge new-badge">New</div>` : '';
+    
+    const bestsellerBadge = product.isBestseller && !product.isNew ? 
+        `<div class="badge bestseller-badge">Bestseller</div>` : '';
+    
+    const oldPriceHtml = product.oldPrice ? 
+        `<div class="old-price">${formatCurrency(product.oldPrice)}</div>` : '';
+    
+    return `
+        <div class="product-card" data-product-id="${product.id}">
+            <div class="product-image">
+                ${discountBadge}
+                ${newBadge}
+                ${bestsellerBadge}
+                <img src="${product.images[0]}" alt="${product.name}">
+                <div class="product-actions">
+                    <button class="action-btn quick-view-btn" data-product-id="${product.id}" title="Quick View">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="action-btn add-to-cart-btn" data-product-id="${product.id}" title="Add to Cart">
+                        <i class="fas fa-shopping-cart"></i>
+                    </button>
+                    <button class="action-btn add-to-wishlist-btn" data-product-id="${product.id}" title="Add to Wishlist">
+                        <i class="far fa-heart"></i>
+                    </button>
                 </div>
-                <div class="product-details">
-                    <h2>${product.name}</h2>
-                    <div class="product-price">
-                        ${product.oldPrice ? `<span class="old-price">$${product.oldPrice.toFixed(2)}</span>` : ""}
-                        <span class="current-price">$${product.price.toFixed(2)}</span>
-                    </div>
-                    <div class="product-rating">
-                        ${generateStarRating(product.rating)}
-                        <span class="rating-count">(${product.reviews || 0} reviews)</span>
-                    </div>
-                    <p class="product-description">${product.description || "No description available."}</p>
-                    <div class="product-actions">
-                        <div class="quantity-selector">
-                            <button class="quantity-btn minus">-</button>
-                            <input type="number" value="1" min="1" class="quantity-input">
-                            <button class="quantity-btn plus">+</button>
-                        </div>
-                        <button class="btn primary-btn add-to-cart-btn" data-product-id="${product.id}">
-                            Add to Cart
-                        </button>
-                    </div>
-                    <div class="product-meta">
-                        <p><strong>Category:</strong> ${product.category || "Uncategorized"}</p>
-                        <p><strong>Tags:</strong> ${product.tags ? product.tags.join(", ") : "None"}</p>
-                    </div>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">
+                    <a href="product.html?id=${product.id}">${product.name}</a>
+                </h3>
+                <div class="product-price">
+                    ${oldPriceHtml}
+                    <div class="current-price">${formatCurrency(product.price)}</div>
+                </div>
+                <div class="product-rating">
+                    ${generateRatingStars(product.rating)}
+                    <span class="rating-count">(${product.reviewCount})</span>
                 </div>
             </div>
         </div>
-    `
-
-  // Add to DOM
-  document.body.appendChild(modal)
-  document.body.style.overflow = "hidden"
-
-  // Animate in
-  setTimeout(() => {
-    modal.classList.add("active")
-  }, 10)
-
-  // Close button
-  const closeButton = modal.querySelector(".close-modal")
-  closeButton.addEventListener("click", () => {
-    closeQuickView(modal)
-  })
-
-  // Close on outside click
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      closeQuickView(modal)
-    }
-  })
-
-  // Quantity buttons
-  const quantityInput = modal.querySelector(".quantity-input")
-  const minusButton = modal.querySelector(".quantity-btn.minus")
-  const plusButton = modal.querySelector(".quantity-btn.plus")
-
-  minusButton.addEventListener("click", () => {
-    const currentValue = Number.parseInt(quantityInput.value)
-    if (currentValue > 1) {
-      quantityInput.value = currentValue - 1
-    }
-  })
-
-  plusButton.addEventListener("click", () => {
-    const currentValue = Number.parseInt(quantityInput.value)
-    quantityInput.value = currentValue + 1
-  })
-
-  // Add to cart button
-  const addToCartButton = modal.querySelector(".add-to-cart-btn")
-  addToCartButton.addEventListener("click", () => {
-    const quantity = Number.parseInt(quantityInput.value)
-    addToCart(product.id, quantity)
-    showNotification(`${quantity} ${quantity > 1 ? "items" : "item"} added to cart!`)
-    closeQuickView(modal)
-  })
-
-  console.log(`Quick view opened for product ${productId}`)
+    `;
 }
 
-// Close Quick View
-function closeQuickView(modal) {
-  modal.classList.remove("active")
-  setTimeout(() => {
-    modal.remove()
-    document.body.style.overflow = ""
-  }, 300)
+function generateRatingStars(rating) {
+    let stars = '';
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5;
+    
+    for (let i = 0; i < fullStars; i++) {
+        stars += '<i class="fas fa-star"></i>';
+    }
+    
+    if (halfStar) {
+        stars += '<i class="fas fa-star-half-alt"></i>';
+    }
+    
+    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+    for (let i = 0; i < emptyStars; i++) {
+        stars += '<i class="far fa-star"></i>';
+    }
+    
+    return stars;
 }
 
-// Generate star rating HTML
-function generateStarRating(rating) {
-  let stars = ""
-  for (let i = 1; i <= 5; i++) {
-    if (i <= rating) {
-      stars += '<i class="fas fa-star"></i>'
-    } else if (i - 0.5 <= rating) {
-      stars += '<i class="fas fa-star-half-alt"></i>'
+function generateQuickViewHtml(product) {
+    const oldPriceHtml = product.oldPrice ? 
+        `<div class="old-price">${formatCurrency(product.oldPrice)}</div>` : '';
+    
+    const stockStatus = product.stock > 0 ? 
+        `<span class="in-stock">In Stock</span>` : 
+        `<span class="out-of-stock">Out of Stock</span>`;
+    
+    // Generate color options
+    let colorOptions = '';
+    if (product.colors && product.colors.length > 0) {
+        product.colors.forEach((color, index) => {
+            colorOptions += `
+                <div class="color-option ${index === 0 ? 'active' : ''}" 
+                     style="background-color: ${color};" 
+                     data-color="${color}">
+                </div>
+            `;
+        });
+    }
+    
+    // Generate size options
+    let sizeOptions = '';
+    if (product.sizes && product.sizes.length > 0) {
+        product.sizes.forEach((size, index) => {
+            sizeOptions += `
+                <div class="size-option ${index === 0 ? 'active' : ''}" 
+                     data-size="${size}">
+                    ${size}
+                </div>
+            `;
+        });
+    }
+    
+    // Generate color and size sections if applicable
+    const colorSection = product.colors && product.colors.length > 0 ? `
+        <div class="product-colors">
+            <h4>Color</h4>
+            <div class="color-options">
+                ${colorOptions}
+            </div>
+        </div>
+    ` : '';
+    
+    const sizeSection = product.sizes && product.sizes.length > 0 ? `
+        <div class="product-sizes">
+            <h4>Size</h4>
+            <div class="size-options">
+                ${sizeOptions}
+            </div>
+        </div>
+    ` : '';
+    
+    return `
+        <div class="product-quick-view-inner">
+            <div class="product-gallery">
+                <div class="main-image">
+                    <img src="${product.images[0]}" alt="${product.name}" id="quick-view-main-image">
+                </div>
+                <div class="gallery-thumbs">
+                    ${product.images.map((image, index) => `
+                        <div class="thumb-item ${index === 0 ? 'active' : ''}" data-image="${image}">
+                            <img src="${image}" alt="${product.name} ${index + 1}">
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            <div class="product-details">
+                <h2>${product.name}</h2>
+                <div class="product-price">
+                    ${oldPriceHtml}
+                    <div class="current-price">${formatCurrency(product.price)}</div>
+                </div>
+                <div class="product-rating">
+                    ${generateRatingStars(product.rating)}
+                    <span class="rating-count">(${product.reviewCount} reviews)</span>
+                </div>
+                <p>${product.shortDescription}</p>
+                <div class="product-meta">
+                    <p class="product-sku">SKU: KL-${product.id.toString().padStart(4, '0')}</p>
+                    <p class="product-availability">Availability: ${stockStatus}</p>
+                </div>
+                ${colorSection}
+                ${sizeSection}
+                <div class="product-actions">
+                    <div class="quantity-selector">
+                        <button class="quantity-btn decrease">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1" max="${product.stock}">
+                        <button class="quantity-btn increase">+</button>
+                    </div>
+                    <button class="btn primary-btn add-to-cart-btn" data-product-id="${product.id}">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                    <button class="btn outline-btn add-to-wishlist-btn" data-product-id="${product.id}">
+                        <i class="far fa-heart"></i> Add to Wishlist
+                    </button>
+                </div>
+                <div class="product-meta">
+                    <p>Category: <a href="shop.html?category=${product.category}">${product.category.charAt(0).toUpperCase() + product.category.slice(1)}</a></p>
+                    <p>Tags: ${product.tags.map(tag => `<a href="shop.html?tag=${tag}">${tag.charAt(0).toUpperCase() + tag.slice(1)}</a>`).join(', ')}</p>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function generateProductDetailHtml(product) {
+    const oldPriceHtml = product.oldPrice ? 
+        `<div class="old-price">${formatCurrency(product.oldPrice)}</div>` : '';
+    
+    const stockStatus = product.stock > 0 ? 
+        `<span class="in-stock">In Stock</span>` : 
+        `<span class="out-of-stock">Out of Stock</span>`;
+    
+    // Generate color options
+    let colorOptions = '';
+    if (product.colors && product.colors.length > 0) {
+        product.colors.forEach((color, index) => {
+            colorOptions += `
+                <div class="color-option ${index === 0 ? 'active' : ''}" 
+                     style="background-color: ${color};" 
+                     data-color="${color}">
+                </div>
+            `;
+        });
+    }
+    
+    // Generate size options
+    let sizeOptions = '';
+    if (product.sizes && product.sizes.length > 0) {
+        product.sizes.forEach((size, index) => {
+            sizeOptions += `
+                <div class="size-option ${index === 0 ? 'active' : ''}" 
+                     data-size="${size}">
+                    ${size}
+                </div>
+            `;
+        });
+    }
+    
+    // Generate color and size sections if applicable
+    const colorSection = product.colors && product.colors.length > 0 ? `
+        <div class="product-colors">
+            <h4>Color</h4>
+            <div class="color-options">
+                ${colorOptions}
+            </div>
+        </div>
+    ` : '';
+    
+    const sizeSection = product.sizes && product.sizes.length > 0 ? `
+        <div class="product-sizes">
+            <h4>Size</h4>
+            <div class="size-options">
+                ${sizeOptions}
+            </div>
+        </div>
+    ` : '';
+    
+    return `
+        <div class="product-gallery">
+            <div class="main-image">
+                <img src="${product.images[0]}" alt="${product.name}" id="product-main-image">
+            </div>
+            <div class="gallery-thumbnails">
+                ${product.images.map((image, index) => `
+                    <div class="gallery-thumbnail ${index === 0 ? 'active' : ''}" data-image="${image}">
+                        <img src="${image}" alt="${product.name} ${index + 1}">
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+        <div class="product-info">
+            <h1>${product.name}</h1>
+            <div class="product-price">
+                ${oldPriceHtml}
+                <div class="current-price">${formatCurrency(product.price)}</div>
+            </div>
+            <div class="product-rating">
+                ${generateRatingStars(product.rating)}
+                <span class="rating-count">(${product.reviewCount} reviews)</span>
+            </div>
+            <p>${product.shortDescription}</p>
+            <div class="product-meta">
+                <p class="product-sku">SKU: KL-${product.id.toString().padStart(4, '0')}</p>
+                <p class="product-availability">Availability: ${stockStatus}</p>
+            </div>
+            ${colorSection}
+            ${sizeSection}
+            <div class="product-actions">
+                <div class="quantity-selector">
+                    <button class="quantity-btn decrease">-</button>
+                    <input type="number" class="quantity-input" value="1" min="1" max="${product.stock}">
+                    <button class="quantity-btn increase">+</button>
+                </div>
+                <button class="btn primary-btn add-to-cart-btn" data-product-id="${product.id}">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+                <button class="btn outline-btn add-to-wishlist-btn" data-product-id="${product.id}">
+                    <i class="far fa-heart"></i> Add to Wishlist
+                </button>
+            </div>
+            <div class="product-share">
+                <span>Share:</span>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="product-categories">
+                Category: <a href="shop.html?category=${product.category}">${product.category.charAt(0).toUpperCase() + product.category.slice(1)}</a>
+            </div>
+            <div class="product-tags">
+                Tags: ${product.tags.map(tag => `<a href="shop.html?tag=${tag}">${tag.charAt(0).toUpperCase() + tag.slice(1)}</a>`).join(', ')}
+            </div>
+        </div>
+    `;
+}
+
+function generateProductDescriptionHtml(product) {
+    return `
+        <div class="product-description-content">
+            <h3>Product Description</h3>
+            <p>${product.description}</p>
+            <h3>Features</h3>
+            <ul>
+                ${Object.entries(product.additionalInfo).map(([key, value]) => `
+                    <li><strong>${key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}:</strong> ${value}</li>
+                `).join('')}
+            </ul>
+        </div>
+    `;
+}
+
+function generateAdditionalInfoHtml(product) {
+    return `
+        <table class="additional-info-table">
+            <tbody>
+                ${Object.entries(product.additionalInfo).map(([key, value]) => `
+                    <tr>
+                        <th>${key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}</th>
+                        <td>${value}</td>
+                    </tr>
+                `).join('')}
+                <tr>
+                    <th>Weight</th>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <th>Colors</th>
+                    <td>
+                        ${product.colors.map(color => `
+                            <span class="color-dot" style="background-color: ${color};"></span>
+                        `).join('')}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Sizes</th>
+                    <td>${product.sizes.length > 0 ? product.sizes.join(', ') : 'N/A'}</td>
+                </tr>
+            </tbody>
+        </table>
+    `;
+}
+
+function generateReviewsHtml(product) {
+    // Generate random reviews for demo purposes
+    const reviewers = [
+        { name: 'John Doe', image: 'images/testimonials/testimonial-1.jpg', date: '2023-05-15' },
+        { name: 'Jane Smith', image: 'images/testimonials/testimonial-2.jpg', date: '2023-06-22' },
+        { name: 'Michael Johnson', image: 'images/testimonials/testimonial-3.jpg', date: '2023-07-10' }
+    ];
+    
+    const reviewTitles = [
+        'Excellent quality!',
+        'Highly recommended',
+        'Great purchase',
+        'Exceeded expectations',
+        'Worth every penny'
+    ];
+    
+    const reviewContents = [
+        'This product is amazing! The quality is exceptional and it looks even better in person.',
+        'I am very satisfied with my purchase. The product arrived quickly and was exactly as described.',
+        'Absolutely love it! The attention to detail is remarkable and the quality is outstanding.',
+        'This exceeded my expectations. The craftsmanship is excellent and it feels very premium.',
+        'Definitely worth the investment. The quality is superb and it has quickly become one of my favorites.'
+    ];
+    
+    // Generate random reviews
+    let reviewsHtml = '';
+    const numReviews = Math.min(3, product.reviewCount);
+    
+    for (let i = 0; i < numReviews; i++) {
+        const reviewer = reviewers[i % reviewers.length];
+        const title = reviewTitles[Math.floor(Math.random() * reviewTitles.length)];
+        const content = reviewContents[Math.floor(Math.random() * reviewContents.length)];
+        const rating = Math.min(5, Math.max(3, Math.round(product.rating + (Math.random() * 0.5 - 0.25))));
+        
+        reviewsHtml += `
+            <div class="review-item">
+                <div class="review-header">
+                    <div class="review-author">
+                        <img src="${reviewer.image}" alt="${reviewer.name}">
+                        <div class="review-author-info">
+                            <h4>${reviewer.name}</h4>
+                            <div class="review-date">${reviewer.date}</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        ${generateRatingStars(rating)}
+                    </div>
+                </div>
+                <h3 class="review-title">${title}</h3>
+                <p>${content}</p>
+                <div class="review-actions">
+                    <div class="review-action">
+                        <i class="far fa-thumbs-up"></i> Helpful (${Math.floor(Math.random() * 10) + 1})
+                    </div>
+                    <div class="review-action">
+                        <i class="far fa-comment"></i> Reply
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    
+    // Generate review summary
+    const reviewSummary = `
+        <div class="reviews-summary">
+            <div class="reviews-average">
+                <div class="rating">${product.rating.toFixed(1)}</div>
+                <div class="stars">${generateRatingStars(product.rating)}</div>
+                <div class="count">Based on ${product.reviewCount} reviews</div>
+            </div>
+            <div class="reviews-breakdown">
+                <div class="review-bar">
+                    <div class="review-bar-label">5 Star</div>
+                    <div class="review-bar-track">
+                        <div class="review-bar-fill" style="width: ${Math.round(70 + Math.random() * 30)}%;"></div>
+                    </div>
+                    <div class="review-bar-count">${Math.round(product.reviewCount * 0.7)}</div>
+                </div>
+                <div class="review-bar">
+                    <div class="review-bar-label">4 Star</div>
+                    <div class="review-bar-track">
+                        <div class="review-bar-fill" style="width: ${Math.round(40 + Math.random() * 30)}%;"></div>
+                    </div>
+                    <div class="review-bar-count">${Math.round(product.reviewCount * 0.2)}</div>
+                </div>
+                <div class="review-bar">
+                    <div class="review-bar-label">3 Star</div>
+                    <div class="review-bar-track">
+                        <div class="review-bar-fill" style="width: ${Math.round(10 + Math.random() * 15)}%;"></div>
+                    </div>
+                    <div class="review-bar-count">${Math.round(product.reviewCount * 0.07)}</div>
+                </div>
+                <div class="review-bar">
+                    <div class="review-bar-label">2 Star</div>
+                    <div class="review-bar-track">
+                        <div class="review-bar-fill" style="width: ${Math.round(Math.random() * 5)}%;"></div>
+                    </div>
+                    <div class="review-bar-count">${Math.round(product.reviewCount * 0.02)}</div>
+                </div>
+                <div class="review-bar">
+                    <div class="review-bar-label">1 Star</div>
+                    <div class="review-bar-track">
+                        <div class="review-bar-fill" style="width: ${Math.round(Math.random() * 3)}%;"></div>
+                    </div>
+                    <div class="review-bar-count">${Math.round(product.reviewCount * 0.01)}</div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Generate write review form
+    const writeReviewForm = `
+        <div class="write-review">
+            <h3>Write a Review</h3>
+            <form id="review-form">
+                <div class="form-group">
+                    <label>Your Rating</label>
+                    <div class="rating-input">
+                        <input type="radio" id="star5" name="rating" value="5">
+                        <label for="star5"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label for="star4"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star3" name="rating" value="3">
+                        <label for="star3"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label for="star2"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star1" name="rating" value="1">
+                        <label for="star1"><i class="fas fa-star"></i></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="review-title">Review Title</label>
+                    <input type="text" id="review-title" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="review-content">Your Review</label>
+                    <textarea id="review-content" class="form-control" rows="5" required></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="review-name">Your Name</label>
+                        <input type="text" id="review-name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="review-email">Your Email</label>
+                        <input type="email" id="review-email" class="form-control" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn primary-btn">Submit Review</button>
+            </form>
+        </div>
+    `;
+    
+    return `
+        <div class="reviews-container">
+            ${reviewSummary}
+            <div class="reviews-list">
+                ${reviewsHtml}
+            </div>
+            ${writeReviewForm}
+        </div>
+    `;
+}
+
+// Product Loading Functions
+function loadFeaturedProducts(containerId, limit = 8) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    const featuredProducts = products.filter(product => product.isFeatured);
+    const productsToShow = shuffleArray(featuredProducts).slice(0, limit);
+    
+    let html = '';
+    productsToShow.forEach(product => {
+        html += generateProductCard(product);
+    });
+    
+    container.innerHTML = html;
+    
+    // Add event listeners
+    addProductCardEventListeners();
+}
+
+function loadNewArrivals(containerId, category = null, limit = 8) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    let newProducts = products.filter(product => product.isNew);
+    
+    // Filter by category if specified
+    if (category && category !== 'all') {
+        newProducts = newProducts.filter(product => product.category === category);
+    }
+    
+    const productsToShow = shuffleArray(newProducts).slice(0, limit);
+    
+    let html = '';
+    productsToShow.forEach(product => {
+        html += generateProductCard(product);
+    });
+    
+    container.innerHTML = html;
+    
+    // Add event listeners
+    addProductCardEventListeners();
+}
+
+function loadBestsellerProducts(containerId, limit = 8) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    const bestsellerProducts = products.filter(product => product.isBestseller);
+    const productsToShow = shuffleArray(bestsellerProducts).slice(0, limit);
+    
+    let html = '';
+    productsToShow.forEach(product => {
+        html += generateProductCard(product);
+    });
+    
+    container.innerHTML = html;
+    
+    // Add event listeners
+    addProductCardEventListeners();
+}
+
+function loadShopProducts(containerId, filters = {}, sort = 'default', page = 1, limit = 12) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    // Apply filters
+    let filteredProducts = [...products];
+    
+    if (filters.category && filters.category !== 'all') {
+        filteredProducts = filteredProducts.filter(product => product.category === filters.category);
+    }
+    
+    if (filters.gender && filters.gender !== 'all') {
+        filteredProducts = filteredProducts.filter(product => product.gender === filters.gender);
+    }
+    
+    if (filters.tag) {
+        filteredProducts = filteredProducts.filter(product => product.tags.includes(filters.tag));
+    }
+    
+    if (filters.priceRange) {
+        filteredProducts = filteredProducts.filter(product => 
+            product.price >= filters.priceRange.min && product.price <= filters.priceRange.max
+        );
+    }
+    
+    if (filters.search) {
+        const searchTerm = filters.search.toLowerCase();
+        filteredProducts = filteredProducts.filter(product => 
+            product.name.toLowerCase().includes(searchTerm) || 
+            product.description.toLowerCase().includes(searchTerm) ||
+            product.category.toLowerCase().includes(searchTerm) ||
+            product.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+        );
+    }
+    
+    // Apply sorting
+    switch (sort) {
+        case 'price-low':
+            filteredProducts.sort((a, b) => a.price - b.price);
+            break;
+        case 'price-high':
+            filteredProducts.sort((a, b) => b.price - a.price);
+            break;
+        case 'name-asc':
+            filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+            break;
+        case 'name-desc':
+            filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
+            break;
+        case 'newest':
+            filteredProducts.sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
+            break;
+        default:
+            // Default sorting (featured first, then bestsellers, then new)
+            filteredProducts.sort((a, b) => {
+                if (a.isFeatured && !b.isFeatured) return -1;
+                if (!a.isFeatured && b.isFeatured) return 1;
+                if (a.isBestseller && !b.isBestseller) return -1;
+                if (!a.isBestseller && b.isBestseller) return 1;
+                if (a.isNew && !b.isNew) return -1;
+                if (!a.isNew && b.isNew) return 1;
+                return 0;
+            });
+    }
+    
+    // Pagination
+    const startIndex = (page - 1) * limit;
+    const endIndex = startIndex + limit;
+    const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
+    
+    // Update product count
+    const productCountElement = document.getElementById('product-count');
+    if (productCountElement) {
+        productCountElement.textContent = filteredProducts.length;
+    }
+    
+    // Generate HTML
+    let html = '';
+    paginatedProducts.forEach(product => {
+        html += generateProductCard(product);
+    });
+    
+    // If no products found
+    if (paginatedProducts.length === 0) {
+        html = `
+            <div class="no-products">
+                <h3>No Products Found</h3>
+                <p>Try adjusting your filters or search criteria.</p>
+                <button id="reset-all-filters" class="btn primary-btn">Reset All Filters</button>
+            </div>
+        `;
+    }
+    
+    container.innerHTML = html;
+    
+    // Add event listeners
+    addProductCardEventListeners();
+    
+    // Return total count for pagination
+    return {
+        total: filteredProducts.length,
+        showing: paginatedProducts.length,
+        hasMore: endIndex < filteredProducts.length
+    };
+}
+
+function loadProductDetail(productId) {
+    const product = getProductById(productId);
+    if (!product) return false;
+    
+    // Update page title
+    document.title = `${product.name} - Kimverse Luxe`;
+    
+    // Update breadcrumb
+    const breadcrumbElement = document.getElementById('product-breadcrumb-name');
+    if (breadcrumbElement) {
+        breadcrumbElement.textContent = product.name;
+    }
+    
+    // Load product detail
+    const productDetailElement = document.getElementById('product-detail');
+    if (productDetailElement) {
+        productDetailElement.innerHTML = generateProductDetailHtml(product);
+    }
+    
+    // Load product tabs
+    const descriptionTab = document.getElementById('tab-description');
+    if (descriptionTab) {
+        descriptionTab.innerHTML = generateProductDescriptionHtml(product);
+    }
+    
+    const additionalInfoTab = document.getElementById('tab-additional-info');
+    if (additionalInfoTab) {
+        additionalInfoTab.innerHTML = generateAdditionalInfoHtml(product);
+    }
+    
+    const reviewsTab = document.getElementById('tab-reviews');
+    if (reviewsTab) {
+        reviewsTab.innerHTML = generateReviewsHtml(product);
+    }
+    
+    // Load related products
+    const relatedProductsElement = document.getElementById('related-products');
+    if (relatedProductsElement) {
+        const relatedProducts = getRelatedProducts(product, 4);
+        let html = '';
+        relatedProducts.forEach(relatedProduct => {
+            html += generateProductCard(relatedProduct);
+        });
+        relatedProductsElement.innerHTML = html;
+    }
+    
+    // Add to recently viewed
+    addToRecentlyViewed(product.id);
+    
+    // Add event listeners
+    addProductDetailEventListeners();
+    addProductCardEventListeners();
+    
+    return true;
+}
+
+function loadQuickView(productId) {
+    const product = getProductById(productId);
+    if (!product) return false;
+    
+    const quickViewContent = document.getElementById('quick-view-content');
+    if (quickViewContent) {
+        quickViewContent.innerHTML = generateQuickViewHtml(product);
+    }
+    
+    // Add event listeners
+    addQuickViewEventListeners();
+    
+    return true;
+}
+
+function loadRecentlyViewed(containerId, limit = 4) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    const recentlyViewed = getRecentlyViewed();
+    if (recentlyViewed.length === 0) {
+        container.parentElement.style.display = 'none';
+        return;
+    }
+    
+    const recentProducts = recentlyViewed
+        .map(id => getProductById(parseInt(id)))
+        .filter(product => product !== undefined)
+        .slice(0, limit);
+    
+    let html = '';
+    recentProducts.forEach(product => {
+        html += generateProductCard(product);
+    });
+    
+    container.innerHTML = html;
+    
+    // Add event listeners
+    addProductCardEventListeners();
+}
+
+// Recently Viewed Functions
+function getRecentlyViewed() {
+    const recentlyViewed = localStorage.getItem('recentlyViewed');
+    return recentlyViewed ? JSON.parse(recentlyViewed) : [];
+}
+
+function addToRecentlyViewed(productId) {
+    let recentlyViewed = getRecentlyViewed();
+    
+    // Remove if already exists
+    recentlyViewed = recentlyViewed.filter(id => id !== productId);
+    
+    // Add to beginning of array
+    recentlyViewed.unshift(productId);
+    
+    // Limit to 10 items
+    recentlyViewed = recentlyViewed.slice(0, 10);
+    
+    // Save to localStorage
+    localStorage.setItem('recentlyViewed', JSON.stringify(recentlyViewed));
+}
+
+// Event Listeners
+function addProductCardEventListeners() {
+    // Quick View buttons
+    const quickViewButtons = document.querySelectorAll('.quick-view-btn');
+    quickViewButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const productId = parseInt(this.getAttribute('data-product-id'));
+            loadQuickView(productId);
+            document.querySelector('.quick-view-modal').classList.add('active');
+        });
+    });
+    
+    // Add to Cart buttons
+    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const productId = parseInt(this.getAttribute('data-product-id'));
+            const quantity = 1;
+            const selectedColor = document.querySelector('.color-option.active')?.getAttribute('data-color') || null;
+            const selectedSize = document.querySelector('.size-option.active')?.getAttribute('data-size') || null;
+            
+            addToCart(productId, quantity, selectedColor, selectedSize);
+            showNotification('Product added to cart!', 'success');
+            updateCartCount();
+        });
+    });
+    
+    // Add to Wishlist buttons
+    const addToWishlistButtons = document.querySelectorAll('.add-to-wishlist-btn');
+    addToWishlistButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const productId = parseInt(this.getAttribute('data-product-id'));
+            
+            addToWishlist(productId);
+            showNotification('Product added to wishlist!', 'success');
+            updateWishlistCount();
+        });
+    });
+}
+
+function addQuickViewEventListeners() {
+    // Thumbnail click
+    const thumbItems = document.querySelectorAll('.thumb-item');
+    thumbItems.forEach(thumb => {
+        thumb.addEventListener('click', function() {
+            const image = this.getAttribute('data-image');
+            document.getElementById('quick-view-main-image').src = image;
+            
+            // Update active state
+            document.querySelector('.thumb-item.active').classList.remove('active');
+            this.classList.add('active');
+        });
+    });
+    
+    // Color options
+    const colorOptions = document.querySelectorAll('.color-option');
+    colorOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            document.querySelector('.color-option.active')?.classList.remove('active');
+            this.classList.add('active');
+        });
+    });
+    
+    // Size options
+    const sizeOptions = document.querySelectorAll('.size-option');
+    sizeOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            document.querySelector('.size-option.active')?.classList.remove('active');
+            this.classList.add('active');
+        });
+    });
+    
+    // Quantity buttons
+    const decreaseBtn = document.querySelector('.quantity-btn.decrease');
+    const increaseBtn = document.querySelector('.quantity-btn.increase');
+    const quantityInput = document.querySelector('.quantity-input');
+    
+    if (decreaseBtn && increaseBtn && quantityInput) {
+        decreaseBtn.addEventListener('click', function() {
+            let value = parseInt(quantityInput.value);
+            if (value > 1) {
+                quantityInput.value = value - 1;
+            }
+        });
+        
+        increaseBtn.addEventListener('click', function() {
+            let value = parseInt(quantityInput.value);
+            const max = parseInt(quantityInput.getAttribute('max'));
+            if (value < max) {
+                quantityInput.value = value + 1;
+            }
+        });
+        
+        quantityInput.addEventListener('change', function() {
+            let value = parseInt(this.value);
+            const max = parseInt(this.getAttribute('max'));
+            
+            if (isNaN(value) || value < 1) {
+                this.value = 1;
+            } else if (value > max) {
+                this.value = max;
+            }
+        });
+    }
+}
+
+function addProductDetailEventListeners() {
+    // Thumbnail click
+    const thumbItems = document.querySelectorAll('.gallery-thumbnail');
+    thumbItems.forEach(thumb => {
+        thumb.addEventListener('click', function() {
+            const image = this.getAttribute('data-image');
+            document.getElementById('product-main-image').src = image;
+            
+            // Update active state
+            document.querySelector('.gallery-thumbnail.active').classList.remove('active');
+            this.classList.add('active');
+        });
+    });
+    
+    // Color options
+    const colorOptions = document.querySelectorAll('.color-option');
+    colorOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            document.querySelector('.color-option.active')?.classList.remove('active');
+            this.classList.add('active');
+        });
+    });
+    
+    // Size options
+    const sizeOptions = document.querySelectorAll('.size-option');
+    sizeOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            document.querySelector('.size-option.active')?.classList.remove('active');
+            this.classList.add('active');
+        });
+    });
+    
+    // Quantity buttons
+    const decreaseBtn = document.querySelector('.quantity-btn.decrease');
+    const increaseBtn = document.querySelector('.quantity-btn.increase');
+    const quantityInput = document.querySelector('.quantity-input');
+    
+    if (decreaseBtn && increaseBtn && quantityInput) {
+        decreaseBtn.addEventListener('click', function() {
+            let value = parseInt(quantityInput.value);
+            if (value > 1) {
+                quantityInput.value = value - 1;
+            }
+        });
+        
+        increaseBtn.addEventListener('click', function() {
+            let value = parseInt(quantityInput.value);
+            const max = parseInt(quantityInput.getAttribute('max'));
+            if (value < max) {
+                quantityInput.value = value + 1;
+            }
+        });
+        
+        quantityInput.addEventListener('change', function() {
+            let value = parseInt(this.value);
+            const max = parseInt(this.getAttribute('max'));
+            
+            if (isNaN(value) || value < 1) {
+                this.value = 1;
+            } else if (value > max) {
+                this.value = max;
+            }
+        });
+    }
+    
+    // Tab switching
+    const tabTriggers = document.querySelectorAll('.tab-trigger');
+    tabTriggers.forEach(trigger => {
+        trigger.addEventListener('click', function() {
+            const tab = this.getAttribute('data-tab');
+            
+            // Update active tab trigger
+            document.querySelector('.tab-trigger.active').classList.remove('active');
+            this.classList.add('active');
+            
+            // Update active tab content
+            document.querySelector('.tab-content.active').classList.remove('active');
+            document.querySelector(`.tab-content[data-tab="${tab}"]`).classList.add('active');
+        });
+    });
+    
+    // Review form submission
+    const reviewForm = document.getElementById('review-form');
+    if (reviewForm) {
+        reviewForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            showNotification('Thank you for your review! It will be published after moderation.', 'success');
+            this.reset();
+        });
+    }
+}
+
+// Cart Functions
+function addToCart(productId, quantity = 1, selectedColor = null, selectedSize = null) {
+    const product = getProductById(productId);
+    if (!product) return false;
+    
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Check if product already exists in cart
+    const existingItemIndex = cart.findIndex(item => 
+        item.id === productId && 
+        item.selectedColor === selectedColor && 
+        item.selectedSize === selectedSize
+    );
+    
+    if (existingItemIndex !== -1) {
+        // Update quantity
+        cart[existingItemIndex].quantity += quantity;
     } else {
-      stars += '<i class="far fa-star"></i>'
+        // Add new item
+        cart.push({
+            id: productId,
+            name: product.name,
+            price: product.price,
+            image: product.images[0],
+            quantity: quantity,
+            selectedColor: selectedColor,
+            selectedSize: selectedSize
+        });
     }
-  }
-  return stars
+    
+    localStorage.setItem('cart', JSON.stringify(cart));
+    return true;
 }
 
-// Show notification
-function showNotification(message, type = "success", duration = 3000) {
-  const notification = document.createElement("div")
-  notification.className = `notification ${type}`
-  notification.textContent = message
+function removeFromCart(index) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    if (index >= 0 && index < cart.length) {
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        return true;
+    }
+    
+    return false;
+}
 
-  document.body.appendChild(notification)
+function updateCartItemQuantity(index, quantity) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    if (index >= 0 && index < cart.length) {
+        cart[index].quantity = quantity;
+        localStorage.setItem('cart', JSON.stringify(cart));
+        return true;
+    }
+    
+    return false;
+}
 
-  // Animate in
-  setTimeout(() => {
-    notification.classList.add("active")
-  }, 10)
+function clearCart() {
+    localStorage.removeItem('cart');
+}
 
-  // Auto-close
-  setTimeout(() => {
-    notification.classList.remove("active")
+function calculateCartTotal(cart) {
+    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+}
+
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const count = cart.reduce((total, item) => total + item.quantity, 0);
+    
+    const cartCountElements = document.querySelectorAll('.cart-count');
+    cartCountElements.forEach(element => {
+        element.textContent = count;
+    });
+}
+
+// Wishlist Functions
+function addToWishlist(productId) {
+    const product = getProductById(productId);
+    if (!product) return false;
+    
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    
+    // Check if product already exists in wishlist
+    const existingItemIndex = wishlist.findIndex(item => item.id === productId);
+    
+    if (existingItemIndex === -1) {
+        // Add new item
+        wishlist.push({
+            id: productId,
+            name: product.name,
+            price: product.price,
+            image: product.images[0],
+            stock: product.stock
+        });
+        
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        return true;
+    }
+    
+    return false;
+}
+
+function removeFromWishlist(index) {
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    
+    if (index >= 0 && index < wishlist.length) {
+        wishlist.splice(index, 1);
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        return true;
+    }
+    
+    return false;
+}
+
+function updateWishlistCount() {
+    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    const count = wishlist.length;
+    
+    const wishlistCountElements = document.querySelectorAll('.wishlist-count');
+    wishlistCountElements.forEach(element => {
+        element.textContent = count;
+    });
+}
+
+// Utility Functions
+function showNotification(message, type = 'success') {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
+    
+    document.body.appendChild(notification);
+    
+    // Show notification
     setTimeout(() => {
-      notification.remove()
-    }, 300)
-  }, duration)
+        notification.classList.add('show');
+    }, 10);
+    
+    // Hide and remove notification
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 3000);
 }
 
-// Make functions available globally
-window.getProducts = getProducts
-window.getProductById = getProductById
-window.getProductsByCategory = getProductsByCategory
-window.getProductsByTag = getProductsByTag
-window.getFeaturedProducts = getFeaturedProducts
-window.getNewProducts = getNewProducts
-window.getSaleProducts = getSaleProducts
-window.getBestsellerProducts = getBestsellerProducts
-window.sortProductsByPriceLowToHigh = sortProductsByPriceLowToHigh
-window.sortProductsByPriceHighToLow = sortProductsByPriceHighToLow
-window.sortProductsByNameAsc = sortProductsByNameAsc
-window.sortProductsByNameDesc = sortProductsByNameDesc
-window.sortProductsByNewest = sortProductsByNewest
-window.filterProductsByPriceRange = filterProductsByPriceRange
-window.searchProducts = searchProducts
-window.addToCart = addToCart
-window.removeFromCart = removeFromCart
-window.updateCartQuantity = updateCartQuantity
-window.getCart = getCart
-window.calculateCartTotal = calculateCartTotal
-window.updateCartCount = updateCartCount
-window.applyCoupon = applyCoupon
-window.calculateShipping = calculateShipping
-window.getRelatedProducts = getRelatedProducts
-window.showQuickView = showQuickView
-
-// Export functions
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = {
-    getProducts,
+// Export functions for use in other scripts
+window.kimverseLuxe = {
+    products,
     getProductById,
-    getProductsByCategory,
-    getProductsByTag,
-    getFeaturedProducts,
-    getNewProducts,
-    getSaleProducts,
-    getBestsellerProducts,
-    sortProductsByPriceLowToHigh,
-    sortProductsByPriceHighToLow,
-    sortProductsByNameAsc,
-    sortProductsByNameDesc,
-    sortProductsByNewest,
-    filterProductsByPriceRange,
-    searchProducts,
+    getRelatedProducts,
+    loadFeaturedProducts,
+    loadNewArrivals,
+    loadBestsellerProducts,
+    loadShopProducts,
+    loadProductDetail,
+    loadQuickView,
+    loadRecentlyViewed,
     addToCart,
     removeFromCart,
-    updateCartQuantity,
-    getCart,
+    updateCartItemQuantity,
+    clearCart,
     calculateCartTotal,
     updateCartCount,
-    applyCoupon,
-    calculateShipping,
-    getRelatedProducts,
-    showQuickView,
-  }
-}
+    addToWishlist,
+    removeFromWishlist,
+    updateWishlistCount,
+    formatCurrency,
+    showNotification
+};

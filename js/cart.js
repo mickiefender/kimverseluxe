@@ -1,620 +1,435 @@
-// Cart functionality
+/**
+ * Kimverse Luxe E-commerce Website
+ * Cart Page JavaScript
+ */
 
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Cart script loaded")
+document.addEventListener('DOMContentLoaded', function() {
+    // Load cart content
+    loadCartContent();
+    
+    // Load recommended products
+    loadRecommendedProducts();
+});
 
-  // Initialize cart
-  initCart()
-
-  // Update cart count in header
-  updateCartCount()
-})
-
-// Initialize cart
-function initCart() {
-  // Check if on cart page
-  const cartContainer = document.getElementById("cart-items")
-  if (cartContainer) {
-    loadCartItems()
-  }
-
-  // Add event listeners for add to cart buttons
-  const addToCartButtons = document.querySelectorAll(".add-to-cart-btn")
-  addToCartButtons.forEach((button) => {
-    button.addEventListener("click", function (e) {
-      e.preventDefault()
-      e.stopPropagation()
-
-      const productId = this.getAttribute("data-product-id")
-      if (!productId) return
-
-      // Get quantity if available
-      const quantityInput = document.getElementById("product-quantity")
-      const quantity = quantityInput ? Number.parseInt(quantityInput.value) : 1
-
-      addToCart(productId, quantity)
-    })
-  })
-}
-
-// Add to cart
-function addToCart(productId, quantity = 1) {
-  // Get current cart
-  const cart = getCart()
-
-  // Check if product already in cart
-  const existingItemIndex = cart.findIndex((item) => item.id === productId)
-
-  if (existingItemIndex !== -1) {
-    // Update quantity if product already in cart
-    cart[existingItemIndex].quantity += quantity
-  } else {
-    // Add new product to cart
-    cart.push({
-      id: productId,
-      quantity: quantity,
-      addedAt: new Date().toISOString(),
-    })
-  }
-
-  // Save updated cart
-  saveCart(cart)
-
-  // Update cart count
-  updateCartCount()
-
-  // Show notification
-  showNotification(`${quantity} ${quantity > 1 ? "items" : "item"} added to cart!`, "success")
-
-  // Reload cart items if on cart page
-  const cartContainer = document.getElementById("cart-items")
-  if (cartContainer) {
-    loadCartItems()
-  }
-}
-
-// Remove from cart
-function removeFromCart(productId) {
-  // Get current cart
-  let cart = getCart()
-
-  // Remove product from cart
-  cart = cart.filter((item) => item.id !== productId)
-
-  // Save updated cart
-  saveCart(cart)
-
-  // Update cart count
-  updateCartCount()
-
-  // Show notification
-  showNotification("Product removed from cart!", "info")
-
-  // Reload cart items if on cart page
-  const cartContainer = document.getElementById("cart-items")
-  if (cartContainer) {
-    loadCartItems()
-  }
-}
-
-// Update cart quantity
-function updateCartQuantity(productId, quantity) {
-  // Get current cart
-  let cart = getCart()
-
-  // Find product in cart
-  const productIndex = cart.findIndex((item) => item.id === productId)
-
-  if (productIndex !== -1) {
-    // Update quantity
-    if (quantity > 0) {
-      cart[productIndex].quantity = quantity
-    } else {
-      // Remove product if quantity is 0 or less
-      cart = cart.filter((item) => item.id !== productId)
+// Load Cart Content
+function loadCartContent() {
+    const cartContentElement = document.getElementById('cart-content');
+    if (!cartContentElement) return;
+    
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    if (cart.length === 0) {
+        // Empty cart
+        cartContentElement.innerHTML = `
+            <div class="cart-empty">
+                <i class="fas fa-shopping-cart"></i>
+                <h2>Your Cart is Empty</h2>
+                <p>Looks like you haven't added any products to your cart yet.</p>
+                <a href="shop.html" class="btn primary-btn">Continue Shopping</a>
+            </div>
+        `;
+        
+        // Hide recommended products section
+        const recommendedSection = document.querySelector('.recommended-products-section');
+        if (recommendedSection) {
+            recommendedSection.style.display = 'none';
+        }
+        
+        return;
     }
-
-    // Save updated cart
-    saveCart(cart)
-
-    // Update cart count
-    updateCartCount()
-
-    // Update cart totals
-    updateCartTotals()
-
-    // Reload cart items if on cart page
-    const cartContainer = document.getElementById("cart-items")
-    if (cartContainer) {
-      loadCartItems()
-    }
-  }
-}
-
-// Get cart from localStorage
-function getCart() {
-  return JSON.parse(localStorage.getItem("cart")) || []
-}
-
-// Save cart to localStorage
-function saveCart(cart) {
-  localStorage.setItem("cart", JSON.stringify(cart))
-}
-
-// Update cart count in header
-function updateCartCount() {
-  const cart = getCart()
-  const count = cart.reduce((total, item) => total + item.quantity, 0)
-
-  // Update all cart count elements
-  const cartCountElements = document.querySelectorAll(".cart-count")
-  cartCountElements.forEach((element) => {
-    element.textContent = count
-  })
-
-  return count
-}
-
-// Get cart with product details
-window.getCartWithDetails = () => {
-  try {
-    const cartItems = JSON.parse(localStorage.getItem("cart") || "[]")
-
-    // If we already have product details in the cart items, return them
-    if (cartItems.length > 0 && cartItems[0].product) {
-      return cartItems
-    }
-
-    // Otherwise, fetch product details
-    const products = getAllProducts()
-
-    return cartItems.map((item) => {
-      const product = products.find((p) => p.id === item.id) || {
-        name: "Unknown Product",
-        price: item.price || 0,
-        image: "/placeholder.svg?height=100&width=100",
-      }
-
-      return {
-        id: item.id,
-        product: product,
-        quantity: item.quantity,
-        total: product.price * item.quantity,
-      }
-    })
-  } catch (error) {
-    console.error("Error getting cart with details:", error)
-    return []
-  }
-}
-
-// Calculate cart subtotal
-window.calculateCartSubtotal = () => {
-  try {
-    const cartItems = JSON.parse(localStorage.getItem("cart") || "[]")
-    const products = getAllProducts()
-
-    return cartItems.reduce((total, item) => {
-      const product = products.find((p) => p.id === item.id)
-      const price = product ? product.price : item.price || 0
-      return total + price * item.quantity
-    }, 0)
-  } catch (error) {
-    console.error("Error calculating cart subtotal:", error)
-    return 0
-  }
-}
-
-// Calculate discount
-window.calculateDiscount = () => {
-  const subtotal = window.calculateCartSubtotal()
-  const discountPercent = Number.parseInt(sessionStorage.getItem("discountPercent") || "0")
-
-  if (discountPercent > 0) {
-    return (subtotal * discountPercent) / 100
-  }
-
-  return 0
-}
-
-// Calculate shipping cost
-window.calculateShippingCost = () => {
-  const subtotal = window.calculateCartSubtotal()
-  const shippingMethod = sessionStorage.getItem("shippingMethod") || "standard"
-
-  // Check if free shipping coupon is applied
-  if (sessionStorage.getItem("freeShipping") === "true") {
-    return 0
-  }
-
-  switch (shippingMethod) {
-    case "express":
-      return 30
-    case "pickup":
-      return 0
-    case "standard":
-    default:
-      // Free shipping over ₵200
-      return subtotal >= 200 ? 0 : 15
-  }
-}
-
-// Calculate cart total
-window.calculateCartTotal = () => {
-  const subtotal = window.calculateCartSubtotal()
-  const shipping = window.calculateShippingCost()
-  const discount = window.calculateDiscount()
-
-  return subtotal + shipping - discount
-}
-
-// Apply coupon
-window.applyCoupon = (code) => {
-  code = code.toUpperCase()
-
-  // Reset previous coupons
-  sessionStorage.removeItem("appliedCoupon")
-  sessionStorage.removeItem("discountPercent")
-  sessionStorage.removeItem("freeShipping")
-
-  if (code === "DISCOUNT10") {
-    sessionStorage.setItem("appliedCoupon", code)
-    sessionStorage.setItem("discountPercent", "10")
-    return true
-  } else if (code === "DISCOUNT20") {
-    sessionStorage.setItem("appliedCoupon", code)
-    sessionStorage.setItem("discountPercent", "20")
-    return true
-  } else if (code === "FREESHIP") {
-    sessionStorage.setItem("appliedCoupon", code)
-    sessionStorage.setItem("freeShipping", "true")
-    return true
-  }
-
-  return false
-}
-
-// Clear cart
-window.clearCart = () => {
-  localStorage.removeItem("cart")
-  updateCartCount()
-}
-
-// Helper function to get all products
-function getAllProducts() {
-  try {
-    return window.products || []
-  } catch (error) {
-    console.error("Error getting products:", error)
-    return []
-  }
-}
-
-// Load cart items on cart page
-function loadCartItems() {
-  const cartContainer = document.getElementById("cart-items")
-  if (!cartContainer) return
-
-  // Get cart with product details
-  const cartItems = window.getCartWithDetails()
-
-  // Clear container
-  cartContainer.innerHTML = ""
-
-  // Check if cart is empty
-  if (cartItems.length === 0) {
-    cartContainer.innerHTML = `
-      <div class="cart-empty">
-        <i class="fas fa-shopping-cart"></i>
-        <h2>Your cart is empty</h2>
-        <p>Looks like you haven't added any products to your cart yet.</p>
-        <a href="shop.html" class="btn primary-btn">Continue Shopping</a>
-      </div>
-    `
-
-    // Hide cart totals
-    const cartTotals = document.querySelector(".cart-totals")
-    if (cartTotals) {
-      cartTotals.style.display = "none"
-    }
-
-    return
-  }
-
-  // Show cart totals
-  const cartTotals = document.querySelector(".cart-totals")
-  if (cartTotals) {
-    cartTotals.style.display = "block"
-  }
-
-  // Create cart table
-  const cartTable = document.createElement("table")
-  cartTable.className = "cart-table"
-  cartTable.innerHTML = `
-    <thead>
-      <tr>
-        <th>Product</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Total</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  `
-
-  const tableBody = cartTable.querySelector("tbody")
-
-  // Add cart items to table
-  cartItems.forEach((item) => {
-    const { product, quantity, total } = item
-
-    const row = document.createElement("tr")
-    row.innerHTML = `
-      <td>
-        <div class="cart-product">
-          <img src="${product.image || "/placeholder.svg?height=80&width=80"}" alt="${product.name}">
-          <div class="cart-product-info">
-            <h3><a href="product.html?id=${product.id}">${product.name}</a></h3>
-            <p>${product.category ? product.category.charAt(0).toUpperCase() + product.category.slice(1) : "Uncategorized"}</p>
-          </div>
+    
+    // Calculate totals
+    const subtotal = window.kimverseLuxe.calculateCartTotal(cart);
+    const shipping = subtotal > 10 ? 0 : 1;
+    const tax = subtotal * 0.07; // 7% tax
+    const total = subtotal + shipping + tax;
+    
+    // Generate cart items HTML
+    let cartItemsHtml = '';
+    cart.forEach((item, index) => {
+        const product = window.kimverseLuxe.getProductById(item.id);
+        
+        cartItemsHtml += `
+            <tr>
+                <td>
+                    <div class="cart-product">
+                        <div class="cart-product-image">
+                            <img src="${item.image}" alt="${item.name}">
+                        </div>
+                        <div class="cart-product-info">
+                            <h3><a href="product.html?id=${item.id}">${item.name}</a></h3>
+                            <p>
+                                ${item.selectedSize ? `Size: ${item.selectedSize}` : ''}
+                                ${item.selectedColor ? `Color: <span class="color-dot" style="background-color: ${item.selectedColor};"></span>` : ''}
+                            </p>
+                        </div>
+                    </div>
+                </td>
+                <td class="cart-price">${window.kimverseLuxe.formatCurrency(item.price)}</td>
+                <td>
+                    <div class="quantity-selector">
+                        <button class="quantity-btn decrease" data-index="${index}">-</button>
+                        <input type="number" class="quantity-input" value="${item.quantity}" min="1" max="${product ? product.stock : 10}" data-index="${index}">
+                        <button class="quantity-btn increase" data-index="${index}">+</button>
+                    </div>
+                </td>
+                <td class="cart-item-total">${window.kimverseLuxe.formatCurrency(item.price * item.quantity)}</td>
+                <td>
+                    <button class="remove-item-btn" data-index="${index}">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+        `;
+    });
+    
+    // Generate cart content HTML
+    const cartHtml = `
+        <div class="cart-header">
+            <h2>Shopping Cart</h2>
+            <span>${cart.length} item${cart.length > 1 ? 's' : ''}</span>
         </div>
-      </td>
-      <td class="cart-price">₵${product.price.toFixed(2)}</td>
-      <td>
-        <div class="quantity-selector">
-          <button class="quantity-btn minus" data-product-id="${product.id}">-</button>
-          <input type="number" value="${quantity}" min="1" class="quantity-input" data-product-id="${product.id}">
-          <button class="quantity-btn plus" data-product-id="${product.id}">+</button>
+        
+        <div class="cart-table-container">
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${cartItemsHtml}
+                </tbody>
+            </table>
         </div>
-      </td>
-      <td class="cart-total">₵${total.toFixed(2)}</td>
-      <td>
-        <button class="cart-remove-btn" data-product-id="${product.id}">
-          <i class="fas fa-times"></i>
-        </button>
-      </td>
-    `
-
-    tableBody.appendChild(row)
-  })
-
-  // Add table to container
-  cartContainer.appendChild(cartTable)
-
-  // Add cart actions
-  const cartActions = document.createElement("div")
-  cartActions.className = "cart-actions"
-  cartActions.innerHTML = `
-    <div class="coupon-form">
-      <input type="text" placeholder="Coupon code" id="coupon-code" value="${localStorage.getItem("couponCode") || ""}">
-      <button class="btn outline-btn apply-coupon-btn">Apply Coupon</button>
-    </div>
-    <div class="cart-buttons">
-      <button class="btn outline-btn update-cart-btn">Update Cart</button>
-      <button class="btn outline-btn clear-cart-btn">Clear Cart</button>
-    </div>
-  `
-  cartContainer.appendChild(cartActions)
-
-  // Update cart totals
-  updateCartTotals()
-
-  // Add event listeners for cart actions
-  initCartActions()
+        
+        <div class="cart-summary-section">
+            <div class="cart-coupon">
+                <input type="text" placeholder="Coupon code">
+                <button class="btn primary-btn">Apply Coupon</button>
+            </div>
+            
+            <div class="cart-totals">
+                <h3>Cart Totals</h3>
+                <div class="cart-total-row">
+                    <span>Subtotal</span>
+                    <span>${window.kimverseLuxe.formatCurrency(subtotal)}</span>
+                </div>
+                <div class="cart-total-row">
+                    <span>Shipping</span>
+                    <span>${shipping === 0 ? 'Free' : window.kimverseLuxe.formatCurrency(shipping)}</span>
+                </div>
+                <div class="cart-total-row">
+                    <span>Tax (7%)</span>
+                    <span>${window.kimverseLuxe.formatCurrency(tax)}</span>
+                </div>
+                <div class="cart-total-row final">
+                    <span>Total</span>
+                    <span>${window.kimverseLuxe.formatCurrency(total)}</span>
+                </div>
+                <a href="checkout.html" class="btn primary-btn cart-checkout-btn">Proceed to Checkout</a>
+                <a href="shop.html" class="cart-continue-shopping">Continue Shopping</a>
+            </div>
+        </div>
+    `;
+    
+    cartContentElement.innerHTML = cartHtml;
+    
+    // Add event listeners
+    addCartEventListeners();
 }
 
-// Update cart totals
-function updateCartTotals() {
-  const subtotalElement = document.getElementById("cart-subtotal")
-  const shippingElement = document.getElementById("cart-shipping")
-  const discountElement = document.getElementById("cart-discount")
-  const totalElement = document.getElementById("cart-total")
-
-  if (!subtotalElement || !shippingElement || !discountElement || !totalElement) return
-
-  const subtotal = window.calculateCartSubtotal()
-  const shipping = window.calculateShippingCost()
-  const discount = window.calculateDiscount()
-  const total = calculateCartTotal()
-
-  subtotalElement.textContent = `₵${subtotal.toFixed(2)}`
-  shippingElement.textContent = shipping === 0 ? "Free" : `₵${shipping.toFixed(2)}`
-  discountElement.textContent = discount === 0 ? "₵0.00" : `₵${discount.toFixed(2)}`
-  totalElement.textContent = `₵${total.toFixed(2)}`
+// Add Cart Event Listeners
+function addCartEventListeners() {
+    // Quantity decrease buttons
+    const decreaseButtons = document.querySelectorAll('.quantity-btn.decrease');
+    decreaseButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const index = parseInt(this.getAttribute('data-index'));
+            const input = document.querySelector(`.quantity-input[data-index="${index}"]`);
+            let value = parseInt(input.value);
+            
+            if (value > 1) {
+                value--;
+                input.value = value;
+                updateCartItemQuantity(index, value);
+            }
+        });
+    });
+    
+    // Quantity increase buttons
+    const increaseButtons = document.querySelectorAll('.quantity-btn.increase');
+    increaseButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const index = parseInt(this.getAttribute('data-index'));
+            const input = document.querySelector(`.quantity-input[data-index="${index}"]`);
+            let value = parseInt(input.value);
+            const max = parseInt(input.getAttribute('max'));
+            
+            if (value < max) {
+                value++;
+                input.value = value;
+                updateCartItemQuantity(index, value);
+            }
+        });
+    });
+    
+    // Quantity inputs
+    const quantityInputs = document.querySelectorAll('.quantity-input');
+    quantityInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            const index = parseInt(this.getAttribute('data-index'));
+            let value = parseInt(this.value);
+            const max = parseInt(this.getAttribute('max'));
+            
+            if (isNaN(value) || value < 1) {
+                value = 1;
+                this.value = 1;
+            } else if (value > max) {
+                value = max;
+                this.value = max;
+            }
+            
+            updateCartItemQuantity(index, value);
+        });
+    });
+    
+    // Remove item buttons
+    const removeButtons = document.querySelectorAll('.remove-item-btn');
+    removeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const index = parseInt(this.getAttribute('data-index'));
+            removeCartItem(index);
+        });
+    });
+    
+    // Apply coupon button
+    const applyCouponBtn = document.querySelector('.cart-coupon button');
+    if (applyCouponBtn) {
+        applyCouponBtn.addEventListener('click', function() {
+            const couponInput = document.querySelector('.cart-coupon input');
+            const couponCode = couponInput.value.trim();
+            
+            if (couponCode) {
+                // For demo purposes, just show a notification
+                window.kimverseLuxe.showNotification('Coupon code applied successfully!', 'success');
+                couponInput.value = '';
+            } else {
+                window.kimverseLuxe.showNotification('Please enter a coupon code.', 'error');
+            }
+        });
+    }
 }
 
-// Initialize cart actions
-function initCartActions() {
-  // Quantity buttons
-  const minusButtons = document.querySelectorAll(".quantity-btn.minus")
-  const plusButtons = document.querySelectorAll(".quantity-btn.plus")
-  const quantityInputs = document.querySelectorAll(".quantity-input")
-
-  minusButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      const productId = this.getAttribute("data-product-id")
-      if (!productId) return
-
-      const input = document.querySelector(`.quantity-input[data-product-id="${productId}"]`)
-      if (!input) return
-
-      let quantity = Number.parseInt(input.value)
-      if (quantity > 1) {
-        quantity--
-        input.value = quantity
-        updateCartQuantity(productId, quantity)
-      }
-    })
-  })
-
-  plusButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      const productId = this.getAttribute("data-product-id")
-      if (!productId) return
-
-      const input = document.querySelector(`.quantity-input[data-product-id="${productId}"]`)
-      if (!input) return
-
-      let quantity = Number.parseInt(input.value)
-      quantity++
-      input.value = quantity
-      updateCartQuantity(productId, quantity)
-    })
-  })
-
-  quantityInputs.forEach((input) => {
-    input.addEventListener("change", function () {
-      const productId = this.getAttribute("data-product-id")
-      if (!productId) return
-
-      let quantity = Number.parseInt(this.value)
-      if (isNaN(quantity) || quantity < 1) {
-        quantity = 1
-        this.value = quantity
-      }
-
-      updateCartQuantity(productId, quantity)
-    })
-  })
-
-  // Remove buttons
-  const removeButtons = document.querySelectorAll(".cart-remove-btn")
-  removeButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      const productId = this.getAttribute("data-product-id")
-      if (!productId) return
-
-      removeFromCart(productId)
-    })
-  })
-
-  // Update cart button
-  const updateCartButton = document.querySelector(".update-cart-btn")
-  if (updateCartButton) {
-    updateCartButton.addEventListener("click", () => {
-      // Get all quantity inputs
-      const quantityInputs = document.querySelectorAll(".quantity-input")
-
-      // Update quantities
-      quantityInputs.forEach((input) => {
-        const productId = input.getAttribute("data-product-id")
-        if (!productId) return
-
-        const quantity = Number.parseInt(input.value)
-        if (isNaN(quantity) || quantity < 1) return
-
-        updateCartQuantity(productId, quantity)
-      })
-
-      showNotification("Cart updated!", "success")
-    })
-  }
-
-  // Clear cart button
-  const clearCartButton = document.querySelector(".clear-cart-btn")
-  if (clearCartButton) {
-    clearCartButton.addEventListener("click", () => {
-      if (confirm("Are you sure you want to clear your cart?")) {
-        clearCart()
-      }
-    })
-  }
-
-  // Apply coupon button
-  const applyCouponButton = document.querySelector(".apply-coupon-btn")
-  if (applyCouponButton) {
-    applyCouponButton.addEventListener("click", () => {
-      const couponCode = document.getElementById("coupon-code").value.trim()
-
-      if (window.applyCoupon(couponCode)) {
-        // Update cart totals
-        updateCartTotals()
-      }
-    })
-  }
-
-  // Checkout button
-  const checkoutButton = document.getElementById("checkout-btn")
-  if (checkoutButton) {
-    checkoutButton.addEventListener("click", (e) => {
-      e.preventDefault()
-
-      // Check if cart is empty
-      const cart = getCart()
-      if (cart.length === 0) {
-        showNotification("Your cart is empty.", "error")
-        return
-      }
-
-      // Open WhatsApp with cart details
-      if (typeof window.openWhatsAppWithCart === "function") {
-        window.openWhatsAppWithCart()
-      } else {
-        console.error("openWhatsAppWithCart function not found")
-        showNotification("WhatsApp integration not available. Please try again later.", "error")
-
-        // Fallback to original behavior
-        window.location.href = "checkout.html"
-      }
-    })
-  }
+// Update Cart Item Quantity
+function updateCartItemQuantity(index, quantity) {
+    const success = window.kimverseLuxe.updateCartItemQuantity(index, quantity);
+    
+    if (success) {
+        // Reload cart content
+        loadCartContent();
+        
+        // Update cart count
+        window.kimverseLuxe.updateCartCount();
+    }
 }
 
-// Clear cart
-function clearCart() {
-  // Clear cart in localStorage
-  saveCart([])
-
-  // Remove coupon code
-  localStorage.removeItem("couponCode")
-
-  // Update cart count
-  updateCartCount()
-
-  // Reload cart items
-  loadCartItems()
-
-  // Show notification
-  showNotification("Cart cleared!", "info")
+// Remove Cart Item
+function removeCartItem(index) {
+    const success = window.kimverseLuxe.removeFromCart(index);
+    
+    if (success) {
+        // Show notification
+        window.kimverseLuxe.showNotification('Item removed from cart.', 'success');
+        
+        // Reload cart content
+        loadCartContent();
+        
+        // Update cart count
+        window.kimverseLuxe.updateCartCount();
+    }
 }
 
-// Show notification
-function showNotification(message, type = "success") {
-  // Check if showNotification function exists in global scope
-  if (typeof window.showNotification === "function") {
-    window.showNotification(message, type)
-    return
-  }
-
-  // Create notification element
-  const notification = document.createElement("div")
-  notification.className = `notification ${type}`
-  notification.textContent = message
-
-  // Add to DOM
-  document.body.appendChild(notification)
-
-  // Animate in
-  setTimeout(() => {
-    notification.classList.add("show")
-  }, 10)
-
-  // Remove after delay
-  setTimeout(() => {
-    notification.classList.remove("show")
-    setTimeout(() => {
-      notification.remove()
-    }, 300)
-  }, 3000)
+// Load Recommended Products
+function loadRecommendedProducts() {
+    const recommendedProductsElement = document.getElementById('recommended-products');
+    if (!recommendedProductsElement) return;
+    
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    if (cart.length === 0) {
+        // Hide recommended products section
+        const recommendedSection = document.querySelector('.recommended-products-section');
+        if (recommendedSection) {
+            recommendedSection.style.display = 'none';
+        }
+        return;
+    }
+    
+    // Get categories from cart items
+    const cartCategories = [];
+    cart.forEach(item => {
+        const product = window.kimverseLuxe.getProductById(item.id);
+        if (product && !cartCategories.includes(product.category)) {
+            cartCategories.push(product.category);
+        }
+    });
+    
+    // Get products from the same categories, excluding cart items
+    const cartProductIds = cart.map(item => item.id);
+    let recommendedProducts = window.kimverseLuxe.products.filter(product => 
+        cartCategories.includes(product.category) && 
+        !cartProductIds.includes(product.id)
+    );
+    
+    // If not enough products, add some bestsellers
+    if (recommendedProducts.length < 4) {
+        const bestsellers = window.kimverseLuxe.products.filter(product => 
+            product.isBestseller && 
+            !cartProductIds.includes(product.id) && 
+            !recommendedProducts.includes(product)
+        );
+        recommendedProducts = [...recommendedProducts, ...bestsellers];
+    }
+    
+    // Shuffle and limit to 4 products
+    recommendedProducts = shuffleArray(recommendedProducts).slice(0, 4);
+    
+    // Generate HTML
+    let html = '';
+    recommendedProducts.forEach(product => {
+        html += generateProductCard(product);
+    });
+    
+    recommendedProductsElement.innerHTML = html;
+    
+    // Add event listeners
+    addProductCardEventListeners();
 }
 
-// Make functions available globally
-window.addToCart = addToCart
-window.removeFromCart = removeFromCart
-window.updateCartQuantity = updateCartQuantity
-window.getCart = getCart
-window.saveCart = saveCart
-window.updateCartCount = updateCartCount
-window.loadCartItems = loadCartItems
+// Helper function to shuffle array
+function shuffleArray(array) {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+    return newArray;
+}
 
+// Helper function to generate product card
+function generateProductCard(product) {
+    const discountBadge = product.discount > 0 ? 
+        `<div class="discount-badge">-${product.discount}%</div>` : '';
+    
+    const newBadge = product.isNew ? 
+        `<div class="badge new-badge">New</div>` : '';
+    
+    const bestsellerBadge = product.isBestseller && !product.isNew ? 
+        `<div class="badge bestseller-badge">Bestseller</div>` : '';
+    
+    const oldPriceHtml = product.oldPrice ? 
+        `<div class="old-price">${window.kimverseLuxe.formatCurrency(product.oldPrice)}</div>` : '';
+    
+    return `
+        <div class="product-card" data-product-id="${product.id}">
+            <div class="product-image">
+                ${discountBadge}
+                ${newBadge}
+                ${bestsellerBadge}
+                <img src="${product.images[0]}" alt="${product.name}">
+                <div class="product-actions">
+                    <button class="action-btn quick-view-btn" data-product-id="${product.id}" title="Quick View">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="action-btn add-to-cart-btn" data-product-id="${product.id}" title="Add to Cart">
+                        <i class="fas fa-shopping-cart"></i>
+                    </button>
+                    <button class="action-btn add-to-wishlist-btn" data-product-id="${product.id}" title="Add to Wishlist">
+                        <i class="far fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">
+                    <a href="product.html?id=${product.id}">${product.name}</a>
+                </h3>
+                <div class="product-price">
+                    ${oldPriceHtml}
+                    <div class="current-price">${window.kimverseLuxe.formatCurrency(product.price)}</div>
+                </div>
+                <div class="product-rating">
+                    ${generateRatingStars(product.rating)}
+                    <span class="rating-count">(${product.reviewCount})</span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Helper function to generate rating stars
+function generateRatingStars(rating) {
+    let stars = '';
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5;
+    
+    for (let i = 0; i < fullStars; i++) {
+        stars += '<i class="fas fa-star"></i>';
+    }
+    
+    if (halfStar) {
+        stars += '<i class="fas fa-star-half-alt"></i>';
+    }
+    
+    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+    for (let i = 0; i < emptyStars; i++) {
+        stars += '<i class="far fa-star"></i>';
+    }
+    
+    return stars;
+}
+
+// Add Product Card Event Listeners
+function addProductCardEventListeners() {
+    // Quick View buttons
+    const quickViewButtons = document.querySelectorAll('.quick-view-btn');
+    quickViewButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const productId = parseInt(this.getAttribute('data-product-id'));
+            window.kimverseLuxe.loadQuickView(productId);
+            document.querySelector('.quick-view-modal').classList.add('active');
+        });
+    });
+    
+    // Add to Cart buttons
+    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const productId = parseInt(this.getAttribute('data-product-id'));
+            const quantity = 1;
+            
+            window.kimverseLuxe.addToCart(productId, quantity);
+            window.kimverseLuxe.showNotification('Product added to cart!', 'success');
+            window.kimverseLuxe.updateCartCount();
+        });
+    });
+    
+    // Add to Wishlist buttons
+    const addToWishlistButtons = document.querySelectorAll('.add-to-wishlist-btn');
+    addToWishlistButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const productId = parseInt(this.getAttribute('data-product-id'));
+            
+            window.kimverseLuxe.addToWishlist(productId);
+            window.kimverseLuxe.showNotification('Product added to wishlist!', 'success');
+            window.kimverseLuxe.updateWishlistCount();
+        });
+    });
+}
